@@ -1,0 +1,6 @@
+[1A[K[32m[OK](B[m - Removed existing simple_sddm_2 directory.
+[33m[NOTE](B[m Setting up the login screen.
+Backing up /etc/sddm.conf
+Updated Current=simple_sddm_2 in /etc/sddm.conf
+Updated InputMethod to qtvirtualkeyboard in /etc/sddm.conf
+[32m[OK](B[m - [35mAdditional [33msimple_sddm_2 SDDM Theme(B[m successfully installed.
