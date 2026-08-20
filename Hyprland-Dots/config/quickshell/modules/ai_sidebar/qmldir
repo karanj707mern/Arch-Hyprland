@@ -1,0 +1,7 @@
+module Quickshell.AISidebar
+
+AISidebar 1.0 AISidebar.qml
+ApiCommandButton 1.0 ApiCommandButton.qml
+ApiInputBoxIndicator 1.0 ApiInputBoxIndicator.qml
+DescriptionBox 1.0 DescriptionBox.qml
+ScrollToBottomButton 1.0 ScrollToBottomButton.qml

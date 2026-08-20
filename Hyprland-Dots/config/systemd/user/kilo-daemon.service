@@ -1,0 +1,12 @@
+[Unit]
+Description=KiloCode local daemon
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/kilo daemon start
+ExecStop=/usr/bin/kilo daemon stop
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,4 @@
+-- NOTE, THIS FILE IS BEING USED by disabling Laptop display monitor behaviour when closing lid.
+-- See notes on Laptops.lua
+
+-- hl.monitor({ name = "eDP-1", mode = "preferred", position = "auto", scale = 1 })
