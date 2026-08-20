@@ -14,7 +14,9 @@
 window#waybar {
 	background:transparent;
 	border-radius: 1px;
-	color: whitesmoke;
+	color: whitesmoke;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 	
 window#waybar.hidden {
@@ -135,7 +137,7 @@ window#waybar.empty #window {
 #temperature.critical {
 	background-color: #ff0000;
 }
-   
+
 #custom-tempfan.temp-cool {
     color: #39FF14;
 }

@@ -151,8 +151,8 @@ tooltip label{
 #custom-swaync,
 #custom-tty,
 #custom-updater,
-#custom-tempfan,
 #custom-hyprpicker,
+#custom-tempfan,
 #custom-weather,
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
@@ -183,16 +183,26 @@ tooltip label{
 	color: red;
 }
 
+/* Temperature & Fan */
+#custom-tempfan {
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
 #custom-tempfan.temp-cool {
-    color: #39FF14;
+  color: white;
 }
 
 #custom-tempfan.temp-warm {
-    color: #ffd700;
+  color: #cccccc;
 }
 
 #custom-tempfan.temp-hot {
-    color: #ff0000;
+  color: red;
+  font-weight: bold;
 }
 
 @keyframes blink {

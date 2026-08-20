@@ -183,18 +183,6 @@ button.active {
     border-bottom: 8px solid #227d74;
 }
 
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
-}
-
 @keyframes blink {
     to {
         background-color: #ffffff;
@@ -292,6 +280,28 @@ label:focus {
 }
 
 #temperature.critical {
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
     background-color: #eb4d4b;
 }
 

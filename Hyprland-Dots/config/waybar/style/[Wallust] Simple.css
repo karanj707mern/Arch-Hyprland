@@ -25,10 +25,10 @@ window#waybar.empty #window {
 }
 
 tooltip {
-	color: @color13;
-	background: @color10;
-	opacity: 1.0;
-	border-radius: 10px;
+ 	color: @foreground;
+ 	background: @color2;
+ 	opacity: 1.0;
+ 	border-radius: 10px;
 }
 
 /*-----module groups----*/
@@ -47,7 +47,7 @@ tooltip {
 
 #taskbar button,
 #workspaces button {
-    color: @color2;
+    color: @foreground;
     box-shadow: none;
 	text-shadow: none;
     padding: 0px;
@@ -69,17 +69,18 @@ tooltip {
 }
 
 #workspaces button.focused {
-    color: @color4;
+    color: @color15;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
+    color: @foreground;
+    background-color: #cc3436;
     border-radius: 10px;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
-    color: @color4;
+    color: @color15;
     padding-left: 2px;
     padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
@@ -147,11 +148,11 @@ tooltip {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	color: @color12;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-right: 6px;
-	padding-left: 6px;;
+ 	color: @foreground;
+ 	padding-top: 4px;
+ 	padding-bottom: 4px;
+ 	padding-right: 6px;
+ 	padding-left: 6px;;
 }
 
 #mode {
@@ -177,19 +178,29 @@ tooltip {
 	color: #cc3436;
 }
 #temperature.critical {
-    background-color: #ff0000;
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
-    color: #39FF14;
+  color: inherit;
 }
 
 #custom-tempfan.temp-warm {
-    color: #ffd700;
+  color: #ffaa00;
 }
 
 #custom-tempfan.temp-hot {
-    color: #ff0000;
+  color: #ff3333;
+  font-weight: bold;
+}
+    background-color: #ff0000;
 }
 
 @keyframes blink {

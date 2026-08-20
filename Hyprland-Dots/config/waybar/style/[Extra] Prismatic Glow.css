@@ -35,7 +35,9 @@
 window#waybar {
     background-color: transparent;
     color: black;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 /* Make window module transparent when no windows present */
@@ -192,6 +194,28 @@ window#waybar.empty {
 }
 
 #temperature.critical {
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
     background-color: red;
 }
 
@@ -204,18 +228,6 @@ window#waybar.empty {
 #battery.plugged {
     color: black;
     background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #FA8BFF 90%);
-}
-
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
 }
 
 @keyframes blink {

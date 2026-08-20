@@ -73,16 +73,26 @@ window#waybar.empty #window {
   transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 
 }
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
 #custom-tempfan.temp-cool {
-    color: #39FF14;
+  color: inherit;
 }
 
 #custom-tempfan.temp-warm {
-    color: #ffd700;
+  color: #ffaa00;
 }
 
 #custom-tempfan.temp-hot {
-    color: #ff0000;
+  color: #ff3333;
+  font-weight: bold;
 }
 
 @keyframes gradient_horizontal {
@@ -95,6 +105,28 @@ window#waybar.empty #window {
 100% {
   background-position: 0% 50%;
 	}
+}
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
 }
 
 @keyframes swiping {
@@ -259,7 +291,6 @@ color: #F3F4F5;
     background: linear-gradient(45deg, #95E6CB, #59C2FF, #D2A6FF);
 }
 
-#custom-tempfan,
 #custom-weather {
 	color: #59C2FF;
 	background: #0F1419;

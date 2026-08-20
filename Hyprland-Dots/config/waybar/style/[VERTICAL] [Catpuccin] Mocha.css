@@ -125,8 +125,7 @@ tooltip label {
 #custom-weather.severe,
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay,
-#custom-ai_assistant {
+#custom-weather.sunnyDay {
   opacity: 1;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -149,16 +148,26 @@ tooltip label {
   border-radius: 15px 0 0 15px;
 }
 
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
 #custom-tempfan.temp-cool {
-    color: #39FF14;
+  color: inherit;
 }
 
 #custom-tempfan.temp-warm {
-    color: #ffd700;
+  color: #ffaa00;
 }
 
 #custom-tempfan.temp-hot {
-    color: #ff0000;
+  color: #ff3333;
+  font-weight: bold;
 }
 
 @keyframes blink {

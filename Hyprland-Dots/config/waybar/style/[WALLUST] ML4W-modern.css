@@ -29,7 +29,9 @@ border-bottom: 0px solid @foreground;
     /* color: #FFFFFF; */
     background: transparent;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: .5s;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 #workspaces {
@@ -334,16 +336,26 @@ background-color: @color13;
     background-color: @backgroundlight;
 }
 
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
 #custom-tempfan.temp-cool {
-    color: #39FF14;
+  color: inherit;
 }
 
 #custom-tempfan.temp-warm {
-    color: #ffd700;
+  color: #ffaa00;
 }
 
 #custom-tempfan.temp-hot {
-    color: #ff0000;
+  color: #ff3333;
+  font-weight: bold;
 }
 
 @keyframes blink {

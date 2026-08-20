@@ -20,7 +20,9 @@ window#waybar {
 	transition-duration: 0.5s;
 	/* border-top: 8px transparent; */
 	border-radius: 0px;
-	transition-duration: 0.5s;
+	transition-duration: 0.5s;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 window#waybar.empty
@@ -257,18 +259,6 @@ tooltip label{
 	/* background-color: #26a65b; */
 }
 
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
-}
-
 @keyframes blink {
 	to {
 		background-color: rgba(30, 34, 42, 0.5);
@@ -324,6 +314,28 @@ label:focus {
 }
 
 #temperature.critical {
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
 	background-color: #eb4d4b;
 }
 

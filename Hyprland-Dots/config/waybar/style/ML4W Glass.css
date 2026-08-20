@@ -25,10 +25,12 @@ General
   padding-bottom: 2px;
 }
 
-@import "style/ML4W/glass.css";
+@import "ML4W/glass.css";
 
 window#waybar {
-  background: transparent;
+  background: transparent;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 .modules-left {
@@ -212,24 +214,36 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
+ * Temperature & Fan
+ * ----------------------------------------------------- */
+
+#custom-tempfan {
+  color: @on_surface;
+  padding: 3px 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease-out;
+}
+
+#custom-tempfan.temp-cool {
+  color: @on_surface;
+}
+
+#custom-tempfan.temp-warm {
+  color: @secondary;
+}
+
+#custom-tempfan.temp-hot {
+  color: @error;
+  background-color: @surface;
+}
+
+/* -----------------------------------------------------
  * Clock
  * ----------------------------------------------------- */
 
 #clock {
   margin-left: 12px;
   margin-right: 12px;
-}
-
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
 }
 
 @keyframes blink {
@@ -289,9 +303,9 @@ window#waybar.empty #window {
 #custom-settings,
 #custom-spotify,
 #custom-swaync,
+#custom-tempfan,
 #custom-tty,
 #custom-updater,
-#custom-tempfan,
 #custom-hyprpicker,
 #custom-weather,
 #custom-weather.clearNight,

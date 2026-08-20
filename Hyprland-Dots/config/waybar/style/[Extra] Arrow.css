@@ -138,6 +138,28 @@
 	animation-duration: 1s;
 }
 
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
+
 /* Each warning */
 #network.disconnected,
 #memory.warning,
@@ -148,18 +170,6 @@
 }
 
 /* Keyframes */
-
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
-}
 
 @keyframes blink-critical {
 	to {

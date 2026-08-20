@@ -3,7 +3,6 @@
 
 @import '../../.config/waybar/wallust/colors-waybar.css';
 
-
 * {
 	font-family: "JetBrainsMono Nerd Font";
 	font-weight: bold;
@@ -16,7 +15,9 @@ window#waybar {
     background-color: transparent;
     color: @foreground;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 15px;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 window#waybar.empty,
@@ -172,6 +173,28 @@ tooltip {
 }
 
 #temperature.critical {
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
     color: red;
 	border: 2px solid red;
 }
@@ -215,7 +238,6 @@ tooltip {
 #clock {
     color: #fab387;
 }
-
 
 #bluetooth {
     color: #b4befe;
@@ -267,18 +289,6 @@ tooltip {
     color: #f38ba8;
     border-left: 0px;
 	border: 2px solid @color8;
-}
-
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
 }
 
 @keyframes blink {

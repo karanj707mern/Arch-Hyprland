@@ -13,7 +13,9 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
+  border-radius: 6px;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+
+}
 }
 
 window#waybar.hidden {
@@ -66,27 +68,16 @@ window#waybar.empty #window {
 #custom-speaker,
 #custom-swaync,
 #custom-updater,
-#custom-tempfan,
 #custom-weather,
-#custom-tempfan,
 #custom-weather.clearNight,
-#custom-tempfan,
 #custom-weather.cloudyFoggyDay,
-#custom-tempfan,
 #custom-weather.cloudyFoggyNight,
-#custom-tempfan,
 #custom-weather.default,
-#custom-tempfan,
 #custom-weather.rainyDay,
-#custom-tempfan,
 #custom-weather.rainyNight,
-#custom-tempfan,
 #custom-weather.severe,
-#custom-tempfan,
 #custom-weather.showyIcyDay,
-#custom-tempfan,
 #custom-weather.snowyIcyNight,
-#custom-tempfan,
 #custom-weather.sunnyDay {
   padding-top: 2px;
   padding-bottom: 2px;
@@ -229,6 +220,28 @@ window#waybar.empty #window {
 }
 
 #temperature.critical {
+
+/* Temperature & Fan */
+#custom-tempfan {
+  color: inherit;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+#custom-tempfan.temp-cool {
+  color: inherit;
+}
+
+#custom-tempfan.temp-warm {
+  color: #ffaa00;
+}
+
+#custom-tempfan.temp-hot {
+  color: #ff3333;
+  font-weight: bold;
+}
   background-color: #f7768e;
 }
 
@@ -275,7 +288,6 @@ window#waybar.empty #window {
   color: #7aa2f7;
 }
 
-#custom-tempfan,
 #custom-weather {
   color: #9fe044;
 
@@ -360,16 +372,4 @@ window#waybar.empty #window {
 #custom-separator {
   padding-left: 6px;
   color: #f7768e;
-}
-
-#custom-tempfan.temp-cool {
-    color: #39FF14;
-}
-
-#custom-tempfan.temp-warm {
-    color: #ffd700;
-}
-
-#custom-tempfan.temp-hot {
-    color: #ff0000;
 }
