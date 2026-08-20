@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # 💫 https://github.com/JaKooLit 💫 #
 # Yay AUR Helper #
 # NOTE: If paru is already installed, yay will not be installed #

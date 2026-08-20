@@ -96,6 +96,9 @@ if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
   exit 1
 fi
 
+# Ensure pipelines return the rightmost non-zero exit code
+set -o pipefail
+
 
 
 # Set the name of the log file to include the current date and time

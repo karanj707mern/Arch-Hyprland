@@ -87,12 +87,35 @@ if git clone --depth=1 https://github.com/JaKooLit/ags_v1.9.0.git; then
         # 3) Fallback with Node to rewrite JSON if sed failed to catch patterns
         if grep -q '"moduleResolution"[[:space:]]*:[[:space:]]*"node10"' tsconfig.json; then
             if command -v node >/dev/null 2>&1; then
-                node -e '\n                const fs = require("fs");\n                const p = "tsconfig.json";\n                const j = JSON.parse(fs.readFileSync(p, "utf8"));\n                j.compilerOptions = j.compilerOptions || {};\n                if (j.compilerOptions.moduleResolution === "node10") j.compilerOptions.moduleResolution = "node16";\n                if (j.compilerOptions.ignoreDeprecations === undefined) j.compilerOptions.ignoreDeprecations = "6.0";\n                fs.writeFileSync(p, JSON.stringify(j, null, 2));\n                '
+                cat > /tmp/patch-tsconfig.js <<'NODE_PATCH'
+const fs = require("fs");
+const p = "tsconfig.json";
+const j = JSON.parse(fs.readFileSync(p, "utf8"));
+j.compilerOptions = j.compilerOptions || {};
+if (j.compilerOptions.moduleResolution === "node10") j.compilerOptions.moduleResolution = "node16";
+if (j.compilerOptions.ignoreDeprecations === undefined) j.compilerOptions.ignoreDeprecations = "6.0";
+fs.writeFileSync(p, JSON.stringify(j, null, 2));
+NODE_PATCH
+                node /tmp/patch-tsconfig.js
+                rm -f /tmp/patch-tsconfig.js
             fi
+        fi
+        # 4) Ensure rootDir is set to avoid TS5011 failure with newer tsc
+        if command -v node >/dev/null 2>&1; then
+            cat > /tmp/patch-tsconfig-rootdir.js <<'NODE_PATCH2'
+const fs = require("fs");
+const p = "tsconfig.json";
+const j = JSON.parse(fs.readFileSync(p, "utf8"));
+j.compilerOptions = j.compilerOptions || {};
+if (!j.compilerOptions.rootDir) j.compilerOptions.rootDir = "src";
+fs.writeFileSync(p, JSON.stringify(j, null, 2));
+NODE_PATCH2
+            node /tmp/patch-tsconfig-rootdir.js
+            rm -f /tmp/patch-tsconfig-rootdir.js
         fi
         # Log what we ended up with for troubleshooting
         echo "== tsconfig.json after patch ==" >> "$MLOG"
-        grep -n 'moduleResolution\|ignoreDeprecations' tsconfig.json >> "$MLOG" || true
+        grep -n 'moduleResolution\|ignoreDeprecations\|rootDir' tsconfig.json >> "$MLOG" || true
     fi
 
     # Replace pam.ts with a stub that does NOT depend on GUtils at all.
@@ -117,6 +140,7 @@ PAM_STUB
     fi
 
     npm install
+    npm install typescript@5.0.4
     meson setup build
     if sudo meson install -C build 2>&1 | tee -a "$MLOG"; then
         printf "\n${OK} ${YELLOW}Aylur's GTK shell $ags_tag${RESET} installed successfully.\n" 2>&1 | tee -a "$MLOG"

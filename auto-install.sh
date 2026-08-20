@@ -38,7 +38,8 @@ printf "\n%.0s" {1..1}
 if [ -d "$Distro_DIR" ]; then
     echo "${YELLOW}$Distro_DIR exists. Updating the repository... ${RESET}"
     cd "$Distro_DIR"
-    git stash && git pull
+    git stash push -u || echo "Warning: git stash failed, proceeding with pull"
+    git pull
     chmod +x install.sh
     ./install.sh
 else

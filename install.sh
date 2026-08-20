@@ -111,7 +111,7 @@ execute_script() {
     if [ -f "$script_path" ]; then
         chmod +x "$script_path"
         if [ -x "$script_path" ]; then
-            env "$script_path"
+            bash "$script_path"
         else
             echo "Failed to make script '$script' executable."
         fi
@@ -268,6 +268,7 @@ options_command+=(
     "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
     "rog" "Are you installing on Asus ROG laptops?" "OFF"
     "dots" "Download and install pre-configured KooL Hyprland dotfiles?" "OFF"
+    "ai_sidebar" "Install KiloCode AI Sidebar (system-wide AI assistant)?" "OFF"
 )
 
 # Capture the selected options before the while loop starts
@@ -440,6 +441,10 @@ for option in "${options[@]}"; do
         dots)
             echo "${INFO} Installing pre-configured ${SKY_BLUE}KooL Hyprland dotfiles...${RESET}" | tee -a "$LOG"
             execute_script "dotfiles-main.sh"
+            ;;
+        ai_sidebar)
+            echo "${INFO} Installing ${SKY_BLUE}KiloCode AI Sidebar...${RESET}" | tee -a "$LOG"
+            execute_script "ai-sidebar.sh"
             ;;
         *)
             echo "Unknown option: $option" | tee -a "$LOG"

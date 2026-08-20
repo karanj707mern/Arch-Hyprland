@@ -21,7 +21,8 @@ printf "${NOTE} Cloning and Installing ${SKY_BLUE}KooL's Hyprland Dots${RESET}..
 
 if [ -d Hyprland-Dots ]; then
   cd Hyprland-Dots
-  git stash && git pull
+  git stash push -u || echo "Warning: git stash failed, proceeding with pull"
+  git pull
   chmod +x copy.sh
   ./copy.sh 
 else

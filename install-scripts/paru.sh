@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # 💫 https://github.com/JaKooLit 💫 #
 # Paru AUR Helper #
 # NOTE: If yay is already installed, paru will not be installed #
@@ -42,7 +43,7 @@ if [ -d "$pkg" ]; then
     rm -rf "$pkg"
 fi
   git clone https://aur.archlinux.org/$pkg.git || { printf "%s - Failed to clone ${YELLOW}$pkg${RESET} from AUR\n" "${ERROR}"; exit 1; }
-  cd $pkg || { printf "%s - Failed to enter $pkg directory\n" "${ERROR}"; exit 1; }
+  cd "$pkg" || { printf "%s - Failed to enter $pkg directory\n" "${ERROR}"; exit 1; }
   makepkg -si --noconfirm 2>&1 | tee -a "$LOG" || { printf "%s - Failed to install ${YELLOW}$pkg${RESET} from AUR\n" "${ERROR}"; exit 1; }
 
   # moving install logs in to Install-Logs directory

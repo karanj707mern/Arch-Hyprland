@@ -1,0 +1,23 @@
+# Install and copy logs
+Install-Logs/
+Copy-Logs/
+Upgrade-Logs/
+
+# Runtime caches and generated files
+.cache/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp

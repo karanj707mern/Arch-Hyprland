@@ -39,7 +39,7 @@ WARNING: After uninstallation, your system may become unstable.
 
 Shall we Proceed?" 20 80
 
-if [ $? -eq 1 ]; then
+if [ $? -ne 0 ]; then
     echo "$INFO uninstall process canceled."
     exit 0
 fi
@@ -160,7 +160,7 @@ while true; do
     "${packages[@]}" 3>&1 1>&2 2>&3)
 
     # Check if the user canceled the operation
-    if [ $? -eq 1 ]; then
+    if [ $? -ne 0 ]; then
         echo "$INFO uninstall process canceled."
         exit 0
     fi
@@ -182,7 +182,7 @@ while true; do
     "${directories[@]}" 3>&1 1>&2 2>&3)
 
     # Check if the user canceled the operation
-    if [ $? -eq 1 ]; then
+    if [ $? -ne 0 ]; then
         echo "$INFO uninstall process canceled."
         exit 0
     fi
