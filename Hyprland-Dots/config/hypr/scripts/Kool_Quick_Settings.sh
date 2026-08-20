@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Rofi menu for KooL Hyprland Quick Settings (SUPER SHIFT E)
 # Updated for UserConfigs/configs separation and Lua configs
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Game Mode. Turning off all animations
 
 notif="$HOME/.config/swaync/images/ja.png"

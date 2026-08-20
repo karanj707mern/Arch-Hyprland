@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Kitty Themes Source https://github.com/dexpota/kitty-themes #
 
 # Define directories and variables

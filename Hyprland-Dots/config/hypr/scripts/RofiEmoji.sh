@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # Variables
 rofi_theme="$HOME/.config/rofi/config-emoji.rasi"

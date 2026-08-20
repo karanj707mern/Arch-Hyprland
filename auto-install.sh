@@ -1,5 +1,6 @@
 #!/bin/bash
-# https://github.com/JaKooLit
+# https://github.com/Karran-JaKooLit
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
@@ -19,7 +20,8 @@ RESET="$(tput sgr0)"
 
 # Variables
 Distro="Arch-Hyprland"
-Github_URL="https://github.com/JaKooLit/$Distro.git"
+Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 Distro_DIR="$HOME/$Distro"
 
 printf "\n%.0s" {1..1}

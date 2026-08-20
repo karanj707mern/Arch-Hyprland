@@ -1,4 +1,5 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- as per Hyprland wiki: hyprland-qt-support provides a QML style for hypr* qt6 apps
 
 hl.config({

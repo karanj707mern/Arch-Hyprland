@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # RainbowBorders - Snake animation with wallust or rainbow colors
 # Modes: snake | rainbow | wallust_random | gradient_flow
 

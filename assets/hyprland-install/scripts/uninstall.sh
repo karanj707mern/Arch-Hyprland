@@ -1,5 +1,6 @@
 #!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # uninstalling hyprland packages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"

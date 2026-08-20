@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Overview toggle wrapper - tries Quickshell first, falls back to AGS
 
 set -euo pipefail

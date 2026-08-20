@@ -1,4 +1,5 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Hyprland Lua Configuration
 -- Refer to the wiki for more information: https://wiki.hypr.land/Configuring/Start/
 
@@ -63,7 +64,6 @@ require("configs.SystemSettings")
 require("application-style")
 require("UserConfigs.UserDecorations")
 require("UserConfigs.UserAnimations")
-require("animations.00-default")
 require("UserConfigs.UserKeybinds")
 require("UserConfigs.UserSettings")
 require("UserConfigs.01-UserDefaults")
@@ -74,6 +74,3 @@ require("UserConfigs.LaptopDisplay")
 require("UserConfigs.WindowRules")
 require("monitors")
 require("workspaces")
-
--- Load user animation preset if present (written by Animations.sh)
-hl.exec_cmd("source = " .. UserConfigs .. "/UserAnimations.conf")

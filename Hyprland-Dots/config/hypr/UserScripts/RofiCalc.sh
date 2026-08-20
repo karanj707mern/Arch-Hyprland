@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # /* Calculator (using qalculate) and rofi */
 # /* Submitted by: https://github.com/JosephArmas */
 

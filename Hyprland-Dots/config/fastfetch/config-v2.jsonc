@@ -1,4 +1,5 @@
-/* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
+/* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 {
 "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
@@ -30,7 +31,8 @@
   {
     "type": "command",
     "key": " ├  ",
-    "format": "echo JaKooLit Version: ${DOTS_VERSION}",
+    "format": "echo Karran-JaKooLit Version: ${DOTS_VERSION}",
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     "keyColor": "31"
   },
   {

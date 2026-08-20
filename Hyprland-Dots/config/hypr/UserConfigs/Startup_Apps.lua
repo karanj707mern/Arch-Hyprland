@@ -1,2 +1,3 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Commands and Apps to be executed at launch

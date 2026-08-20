@@ -1,4 +1,5 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Environment variables. See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 -- Set your defaults editor through ENV in ~/.config/hypr/UserConfigs/01-UserDefaults.lua

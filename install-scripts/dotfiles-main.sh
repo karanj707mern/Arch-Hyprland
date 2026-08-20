@@ -1,5 +1,6 @@
 #!/bin/bash
-# 💫 https://github.com/JaKooLit 💫 #
+# 💫 https://github.com/Karran-JaKooLit 💫 #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Hyprland-Dots to download from main #
 
 
@@ -26,7 +27,8 @@ if [ -d Hyprland-Dots ]; then
   chmod +x copy.sh
   ./copy.sh 
 else
-  if git clone --depth=1 https://github.com/JaKooLit/Hyprland-Dots; then
+  if git clone --depth=1 https://github.com/Karran-JaKooLit/Hyprland-Dots; then
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     cd Hyprland-Dots || exit 1
     chmod +x copy.sh
     ./copy.sh 

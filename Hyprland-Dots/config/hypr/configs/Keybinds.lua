@@ -1,4 +1,5 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Default Keybinds
 -- visit https://wiki.hypr.land/Configuring/Basics/Binds/ for more info
 

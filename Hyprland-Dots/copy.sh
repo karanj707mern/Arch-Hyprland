@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Purpose:
-#   Orchestrates copying/upgrading JaKooLit's Hyprland dotfiles into ~/.config.
+#   Orchestrates copying/upgrading Karran-JaKooLit's Hyprland dotfiles into ~/.config.
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 #   Handles interactive prompts, backups/restores, per-app tweaks, and express mode.
 #
 # Layout (high-level; future modularization targets):
@@ -598,7 +600,8 @@ else
     case $WALL in
     [Yy])
       echo "${NOTE} Downloading additional wallpapers..."
-      if git clone "https://github.com/JaKooLit/Wallpaper-Bank.git"; then
+      if git clone "https://github.com/Karran-JaKooLit/Wallpaper-Bank.git"; then
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
         echo "${OK} Wallpapers downloaded successfully." 2>&1 | tee -a "$LOG"
 
         # Check if wallpapers directory exists and create it if not

@@ -1,5 +1,6 @@
 #!/bin/bash
-# 💫 https://github.com/JaKooLit 💫 #
+# 💫 https://github.com/Karran-JaKooLit 💫 #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Fonts #
 
 # These fonts are minimun required for pre-configured dots to work. You can add here as required

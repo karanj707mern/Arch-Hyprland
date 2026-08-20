@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # GDK BACKEND. Change to either wayland or x11 if having issues
 BACKEND=wayland
@@ -70,4 +71,5 @@ GDK_BACKEND=$BACKEND yad \
 " ALT E" "Rofi Emoticons" "Emoticon" \
 " H" "Launch this Quick Cheat Sheet" "" \
 "" "" "" \
-"More tips:" "https://github.com/JaKooLit/Hyprland-Dots/wiki" ""\
+"More tips:" "https://github.com/Karran-JaKooLit/Hyprland-Dots/wiki" ""\
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel

@@ -1,4 +1,5 @@
--- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 -- Default curves and animations
 hl.curve("wind", { type = "bezier", points = { {0.05, 0.9}, {0.1, 1.05} } })

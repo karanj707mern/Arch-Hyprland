@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
-# 💫 https://github.com/JaKooLit 💫 #
+# 💫 https://github.com/Karran-JaKooLit 💫 #
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Yay AUR Helper #
 # NOTE: If paru is already installed, yay will not be installed #
 

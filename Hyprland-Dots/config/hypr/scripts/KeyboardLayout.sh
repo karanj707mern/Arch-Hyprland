@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # This is for changing kb_layouts. Set kb_layouts in "$HOME/.config/hypr/CONF FILES/UserConfigs/UserSettings.conf"
 
 notif_icon="$HOME/.config/swaync/images/ja.png"

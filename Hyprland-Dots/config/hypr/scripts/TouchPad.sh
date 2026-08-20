@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # For disabling touchpad.
 # Edit the Touchpad_Device on ~/.config/hypr/CONF FILES/UserConfigs/Laptops.conf according to your system
 # use hyprctl devices to get your system touchpad device name
