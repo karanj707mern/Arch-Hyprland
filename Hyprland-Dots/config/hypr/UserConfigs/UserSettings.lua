@@ -1,4 +1,4 @@
--- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- User Settings
 -- This is where you put your own settings as this will not be touched during update

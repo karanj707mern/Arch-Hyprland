@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Nvidia Stuffs #
 
@@ -49,7 +49,10 @@ for krnl in $(cat /usr/lib/modules/*/pkgbase); do
 done
 
 # Check if the Nvidia modules are already added in mkinitcpio.conf and add if not
-if grep -qE '^MODULES=.*nvidia. *nvidia_modeset.*nvidia_uvm.*nvidia_drm' /etc/mkinitcpio.conf; then
+if grep -qE '^MODULES=.*\bnvidia(_modeset|_uvm|_drm)?\b' /etc/mkinitcpio.conf && \
+   grep -qE '^MODULES=.*\bnvidia_modeset\b' /etc/mkinitcpio.conf && \
+   grep -qE '^MODULES=.*\bnvidia_uvm\b' /etc/mkinitcpio.conf && \
+   grep -qE '^MODULES=.*\bnvidia_drm\b' /etc/mkinitcpio.conf; then
   echo "Nvidia modules already included in /etc/mkinitcpio.conf" 2>&1 | tee -a "$LOG"
 else
   sudo sed -Ei 's/^(MODULES=\([^\)]*)\)/\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf 2>&1 | tee -a "$LOG"

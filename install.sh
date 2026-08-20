@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/Karran-JaKooLit
+# https://github.com/karanj707mern
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 clear
@@ -112,12 +112,17 @@ execute_script() {
     if [ -f "$script_path" ]; then
         chmod +x "$script_path"
         if [ -x "$script_path" ]; then
-            bash "$script_path"
+            if ! bash "$script_path"; then
+                echo "${ERROR} Script '$script' failed with exit code $?" | tee -a "$LOG"
+                return 1
+            fi
         else
-            echo "Failed to make script '$script' executable."
+            echo "${ERROR} Failed to make script '$script' executable." | tee -a "$LOG"
+            return 1
         fi
     else
-        echo "Script '$script' not found in '$script_directory'."
+        echo "${ERROR} Script '$script' not found in '$script_directory'." | tee -a "$LOG"
+        return 1
     fi
 }
 

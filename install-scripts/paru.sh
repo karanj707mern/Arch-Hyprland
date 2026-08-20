@@ -1,6 +1,5 @@
 #!/bin/bash
-set -e
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Paru AUR Helper #
 # NOTE: If yay is already installed, paru will not be installed #
@@ -8,24 +7,20 @@ set -e
 pkg="paru-bin"
 
 ## WARNING: DO NOT EDIT BEYOND THIS LINE IF YOU DON'T KNOW WHAT YOU ARE DOING! ##
-# Set the name of the log file to include the current date and time
-LOG="install-$(date +%d-%H%M%S)_yay.log"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Set some colors for output messages
-OK="$(tput setaf 2)[OK]$(tput sgr0)"
-ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
-NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
-INFO="$(tput setaf 4)[INFO]$(tput sgr0)"
-WARN="$(tput setaf 1)[WARN]$(tput sgr0)"
-CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
-MAGENTA="$(tput setaf 5)"
-ORANGE="$(tput setaf 214)"
-WARNING="$(tput setaf 1)"
-YELLOW="$(tput setaf 3)"
-GREEN="$(tput setaf 2)"
-BLUE="$(tput setaf 4)"
-SKY_BLUE="$(tput setaf 6)"
-RESET="$(tput sgr0)"
+# Change the working directory to the parent directory of the script
+PARENT_DIR="$SCRIPT_DIR/.."
+cd "$PARENT_DIR" || { echo "${ERROR} Failed to change directory to $PARENT_DIR"; exit 1; }
+
+# Source the global functions script
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+  echo "Failed to source Global_functions.sh"
+  exit 1
+fi
+
+# Set the name of the log file to include the current date and time
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_paru.log"
 
 # Create Directory for Install Logs
 if [ ! -d Install-Logs ]; then

@@ -1,4 +1,4 @@
--- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Environment variables
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/

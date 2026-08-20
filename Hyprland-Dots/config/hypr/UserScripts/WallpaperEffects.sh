@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Wallpaper Effects using ImageMagick (SUPER SHIFT W)
 

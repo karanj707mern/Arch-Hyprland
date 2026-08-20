@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-## /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+## /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # For Dark and Light switching
 # Note: Scripts are looking for keywords Light or Dark except for wallpapers as the are in a separate directories

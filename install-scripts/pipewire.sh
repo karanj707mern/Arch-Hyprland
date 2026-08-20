@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Pipewire and Pipewire Audio Stuff #
 
@@ -45,7 +45,7 @@ for PIPEWIRE in "${pipewire[@]}"; do
 done
 
 for PIPEWIRE2 in "${pipewire_2[@]}"; do
-    install_package_pacman "$PIPEWIRE" "$LOG"
+    install_package_pacman "$PIPEWIRE2" "$LOG"
 done
 
 echo -e "${NOTE} Activating Pipewire Services..."

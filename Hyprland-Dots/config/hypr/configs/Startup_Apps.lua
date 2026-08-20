@@ -1,4 +1,4 @@
--- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- Commands and Apps to be executed at launch (vendor defaults)
 

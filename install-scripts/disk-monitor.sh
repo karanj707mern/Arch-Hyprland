@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Disk Space Monitor #
 
@@ -35,6 +35,12 @@ printf "${NOTE} Creating ${YELLOW}disk space monitoring${RESET} script...\n"
 
 DISK_SCRIPT="$HOME/.config/hypr/scripts/disk-monitor.sh"
 mkdir -p "$HOME/.config/hypr/scripts"
+
+if [ -f "$DISK_SCRIPT" ]; then
+  BACKUP_PATH="${DISK_SCRIPT%.sh}-backup-$(date +%Y%m%d_%H%M%S).sh"
+  cp -a "$DISK_SCRIPT" "$BACKUP_PATH" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing disk-monitor.sh to $BACKUP_PATH" 2>&1 | tee -a "$LOG"
+fi
 
 cat > "$DISK_SCRIPT" << 'EOF'
 #!/bin/bash
@@ -117,6 +123,11 @@ printf "${OK} Systemd service created\n"
 # Enable and start the service
 printf "${NOTE} Enabling and starting ${YELLOW}disk-monitor${RESET} service...\n"
 systemctl --user daemon-reload
+if [ -f "$SYSTEMD_DIR/disk-monitor.service" ]; then
+  BACKUP_SERVICE="${SYSTEMD_DIR}/disk-monitor.service-backup-$(date +%Y%m%d_%H%M%S)"
+  cp -a "$SYSTEMD_DIR/disk-monitor.service" "$BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing disk-monitor.service to $BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+fi
 systemctl --user enable disk-monitor.service 2>&1 | tee -a "$LOG"
 systemctl --user start disk-monitor.service 2>&1 | tee -a "$LOG"
 

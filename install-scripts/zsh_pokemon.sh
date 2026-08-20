@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # pokemon-color-scripts#
 
@@ -25,9 +25,11 @@ printf "${NOTE} Removing any traces of ${SKY_BLUE}Pokemon Color Scripts${RESET}\
 
 # Install Pokemon Color Scripts
 printf "${NOTE} Installing ${SKY_BLUE}Pokemon Color Scripts${RESET}\n"
-for pok in "pokemon-colorscripts-git"; do
-  install_package_f "$pok" "$LOG"
-done
+if ! "$ISAUR" -Q pokemon-colorscripts-git &>/dev/null; then
+  install_package_f "pokemon-colorscripts-git" "$LOG"
+else
+  echo "${NOTE} pokemon-colorscripts-git is already installed, skipping." | tee -a "$LOG"
+fi
 
 printf "\n%.0s" {1..1}
 # Check if ~/.zshrc exists

@@ -146,19 +146,27 @@ restore_hypr_assets() {
 
     echo -e "\n${NOTE:-[NOTE]} Restoring ${SKY_BLUE:-}Animations & Monitor Profiles${RESET:-} into ${YELLOW:-}$HYPR_DIR${RESET:-}..."
 
-    local DIR_B=("Monitor_Profiles" "animations" "wallpaper_effects")
+    # Merge directories: copy only missing files from backup so we don't
+    # overwrite freshly installed presets.
     for DIR_RESTORE in "${DIR_B[@]}"; do
       local BACKUP_SUBDIR="$BACKUP_HYPR_PATH/$DIR_RESTORE"
       if [ -d "$BACKUP_SUBDIR" ]; then
-        cp -r "$BACKUP_SUBDIR" "$HYPR_DIR/" 2>&1 | tee -a "$log"
-        echo "${OK:-[OK]} - Restored directory: ${MAGENTA:-}$DIR_RESTORE${RESET:-}" 2>&1 | tee -a "$log"
+        mkdir -p "$HYPR_DIR/$DIR_RESTORE"
+        for item in "$BACKUP_SUBDIR"/*; do
+          [ -e "$item" ] || continue
+          local dest="$HYPR_DIR/$DIR_RESTORE/$(basename "$item")"
+          if [ ! -e "$dest" ]; then
+            cp -r "$item" "$dest" 2>&1 | tee -a "$log"
+            echo "${OK:-[OK]} - Restored: ${MAGENTA:-}$DIR_RESTORE/$(basename "$item")${RESET:-}" 2>&1 | tee -a "$log"
+          fi
+        done
       fi
     done
 
     local FILE_B=("monitors.conf" "workspaces.conf")
     for FILE_RESTORE in "${FILE_B[@]}"; do
       local BACKUP_FILE="$BACKUP_HYPR_PATH/$FILE_RESTORE"
-      if [ -f "$BACKUP_FILE" ]; then
+      if [ -f "$BACKUP_FILE" ] && [ ! -f "$HYPR_DIR/$FILE_RESTORE" ]; then
         cp "$BACKUP_FILE" "$HYPR_DIR/$FILE_RESTORE" 2>&1 | tee -a "$log"
         echo "${OK:-[OK]} - Restored file: ${MAGENTA:-}$FILE_RESTORE${RESET:-}" 2>&1 | tee -a "$log"
       fi

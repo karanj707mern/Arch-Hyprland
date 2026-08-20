@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/Karran-JaKooLit
+# https://github.com/karanj707mern
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # Set some colors for output messages
@@ -20,7 +20,7 @@ RESET="$(tput sgr0)"
 
 # Variables
 Distro="Arch-Hyprland"
-Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 Distro_DIR="$HOME/$Distro"
 
@@ -39,15 +39,29 @@ printf "\n%.0s" {1..1}
 
 if [ -d "$Distro_DIR" ]; then
     echo "${YELLOW}$Distro_DIR exists. Updating the repository... ${RESET}"
-    cd "$Distro_DIR"
+    cd "$Distro_DIR" || { echo "${ERROR} Failed to enter $Distro_DIR"; exit 1; }
     git stash push -u || echo "Warning: git stash failed, proceeding with pull"
-    git pull
-    chmod +x install.sh
+    if ! git pull; then
+        echo "${ERROR} git pull failed. Please check your network or repository state."
+        exit 1
+    fi
+    if [ ! -f "./install.sh" ]; then
+        echo "${ERROR} install.sh not found after pull."
+        exit 1
+    fi
+    chmod +x ./install.sh
     ./install.sh
 else
     echo "${MAGENTA}$Distro_DIR does not exist. Cloning the repository...${RESET}"
-    git clone --depth=1 "$Github_URL" "$Distro_DIR"
-    cd "$Distro_DIR"
-    chmod +x install.sh
+    if ! git clone --depth=1 "$Github_URL" "$Distro_DIR"; then
+        echo "${ERROR} git clone failed. Please check the URL and your network connection."
+        exit 1
+    fi
+    cd "$Distro_DIR" || { echo "${ERROR} Failed to enter $Distro_DIR"; exit 1; }
+    if [ ! -f "./install.sh" ]; then
+        echo "${ERROR} install.sh not found after clone."
+        exit 1
+    fi
+    chmod +x ./install.sh
     ./install.sh
 fi

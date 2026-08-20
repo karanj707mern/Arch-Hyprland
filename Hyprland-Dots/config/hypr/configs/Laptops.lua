@@ -1,4 +1,4 @@
--- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
+-- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/ for more variable settings
 -- These configs are mostly for laptops. This is addemdum to Keybinds.lua

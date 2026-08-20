@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Battery Monitor and Low Battery Notification #
 
@@ -36,6 +36,12 @@ printf "${NOTE} Creating ${YELLOW}battery monitoring${RESET} script...\n"
 
 BATTERY_SCRIPT="$HOME/.config/hypr/scripts/battery-monitor.sh"
 mkdir -p "$HOME/.config/hypr/scripts"
+
+if [ -f "$BATTERY_SCRIPT" ]; then
+  BACKUP_PATH="${BATTERY_SCRIPT%.sh}-backup-$(date +%Y%m%d_%H%M%S).sh"
+  cp -a "$BATTERY_SCRIPT" "$BACKUP_PATH" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing battery-monitor.sh to $BACKUP_PATH" 2>&1 | tee -a "$LOG"
+fi
 
 cat > "$BATTERY_SCRIPT" << 'EOF'
 #!/bin/bash
@@ -106,6 +112,11 @@ printf "${OK} Systemd service created\n"
 # Enable and start the service
 printf "${NOTE} Enabling and starting ${YELLOW}battery-monitor${RESET} service...\n"
 systemctl --user daemon-reload
+if [ -f "$SYSTEMD_DIR/battery-monitor.service" ]; then
+  BACKUP_SERVICE="${SYSTEMD_DIR}/battery-monitor.service-backup-$(date +%Y%m%d_%H%M%S)"
+  cp -a "$SYSTEMD_DIR/battery-monitor.service" "$BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing battery-monitor.service to $BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+fi
 systemctl --user enable battery-monitor.service 2>&1 | tee -a "$LOG"
 systemctl --user start battery-monitor.service 2>&1 | tee -a "$LOG"
 

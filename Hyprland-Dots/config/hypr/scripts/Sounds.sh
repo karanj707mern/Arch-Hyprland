@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # This script is used to play system sounds.
 # Script is used by Volume.Sh and ScreenShots.sh 

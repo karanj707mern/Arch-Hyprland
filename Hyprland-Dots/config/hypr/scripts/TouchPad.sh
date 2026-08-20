@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # For disabling touchpad.
 # Edit the Touchpad_Device on ~/.config/hypr/CONF FILES/UserConfigs/Laptops.conf according to your system

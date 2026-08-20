@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Purpose:
-#   Orchestrates copying/upgrading Karran-JaKooLit's Hyprland dotfiles into ~/.config.
+#   Orchestrates copying/upgrading karanj707mern's Hyprland dotfiles into ~/.config.
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 #   Handles interactive prompts, backups/restores, per-app tweaks, and express mode.
 #
@@ -363,6 +363,11 @@ prompt_express_upgrade "$EXPRESS_SUPPORTED" "$LOG"
 
 set -e
 
+# Capture installed dotfiles version at the start of the workflow so we
+# can apply cleanup rules based on the pre-upgrade state, even if a newer
+# version marker is copied in later.
+INSTALLED_VERSION_AT_START="$(get_installed_dotfiles_version || true)"
+
 # Check if the ~/.config/ directory exists
 if [ ! -d "$HOME/.config" ]; then
   echo "${ERROR} - $HOME/.config directory does not exist. Creating it now."
@@ -413,11 +418,6 @@ if command -v ags >/dev/null 2>&1; then
 fi
 
 printf "\\n%.0s" {1..1}
-
-# Capture installed dotfiles version at the start of the workflow so we
-# can apply cleanup rules based on the pre-upgrade state, even if a newer
-# version marker is copied in later.
-INSTALLED_VERSION_AT_START="$(get_installed_dotfiles_version || true)"
 
 # quickshell (ags alternative)
 # Check if quickshell is installed
@@ -473,11 +473,10 @@ if command -v qs >/dev/null 2>&1; then
   # Check for old quickshell startup commands and update them
   HYPR_STARTUP="$HOME/.config/hypr/CONF FILES/configs/Startup_Apps.conf"
   if [ -f "$HYPR_STARTUP" ]; then
-    if grep -q '^exec-once = qs\s*$\|^exec-once = qs &' "$HYPR_STARTUP"; then
+    if grep -qE '^exec-once = qs([[:space:]]*&[[:space:]]*)?$' "$HYPR_STARTUP"; then
       echo "${NOTE} - Found old Quickshell startup command, updating to new overview config..." 2>&1 | tee -a "$LOG"
       # Replace old 'qs' or 'qs &' with new 'qs -c overview'
-      sed -i 's/^\(\s*\)exec-once = qs\s*$/\1exec-once = qs -c overview  # Quickshell Overview/' "$HYPR_STARTUP" 2>&1 | tee -a "$LOG"
-      sed -i 's/^\(\s*\)exec-once = qs &$/\1exec-once = qs -c overview  # Quickshell Overview/' "$HYPR_STARTUP" 2>&1 | tee -a "$LOG"
+      sed -i -E 's/^([[:space:]]*)exec-once = qs([[:space:]]*&[[:space:]]*)?$/\1exec-once = qs -c overview  # Quickshell Overview/' "$HYPR_STARTUP" 2>&1 | tee -a "$LOG"
       echo "${OK} - Updated Quickshell startup command to use overview config" 2>&1 | tee -a "$LOG"
     fi
   fi
@@ -507,7 +506,8 @@ if [ -d "$HOME/.config/rofi/themes" ]; then
   if [ -z "$(ls -A "$HOME/.config/rofi/themes")" ]; then
     echo '/* Dummy Rofi theme */' >"$HOME/.config/rofi/themes/dummy.rasi"
   fi
-  ln -snf "$HOME/.config/rofi/themes/"* "$HOME/.local/share/rofi/themes/"
+  mkdir -p "$rofi_DIR"
+  ln -snf "$HOME/.config/rofi/themes/"* "$rofi_DIR/"
   # Delete the dummy file if it was created
   if [ -f "$HOME/.config/rofi/themes/dummy.rasi" ]; then
     rm "$HOME/.config/rofi/themes/dummy.rasi"
@@ -519,10 +519,14 @@ printf "\n%.0s" {1..1}
 # wallpaper stuff
 PICTURES_DIR="$(xdg-user-dir PICTURES 2>/dev/null || echo "$HOME/Pictures")"
 mkdir -p "$PICTURES_DIR/wallpapers"
-if cp -r wallpapers "$PICTURES_DIR/"; then
-  echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
+if [ -d "wallpapers" ]; then
+  if cp -r wallpapers "$PICTURES_DIR/"; then
+    echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
+  else
+    echo "${ERROR} Failed to copy ${YELLOW}wallpapers${RESET} from repo to $PICTURES_DIR/wallpapers" | tee -a "$LOG"
+  fi
 else
-  echo "${ERROR} Failed to copy some ${YELLOW}wallpapers${RESET}" | tee -a "$LOG"
+  echo "${WARN} wallpapers directory not found in repo; skipping wallpaper copy." | tee -a "$LOG"
 fi
 
 # Set some files as executable
@@ -600,7 +604,7 @@ else
     case $WALL in
     [Yy])
       echo "${NOTE} Downloading additional wallpapers..."
-      if git clone "https://github.com/Karran-JaKooLit/Wallpaper-Bank.git"; then
+      if git clone "https://github.com/karanj707mern/Wallpaper-Bank.git"; then
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
         echo "${OK} Wallpapers downloaded successfully." 2>&1 | tee -a "$LOG"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# https://github.com/Karran-JaKooLit
+# https://github.com/karanj707mern
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 # Script design to clone the Distro-Hyprland install scripts
@@ -36,7 +36,7 @@ if [ "$distro_name" = "Debian GNU/Linux" ]; then
     INSTALL_CMD="sudo apt install -y"
     GIT_INSTALL_CMD="sudo apt install -y git"
     Distro="Debian-Hyprland"
-    Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+    Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     Distro_DIR="$HOME/$Distro"
 elif [ "$distro_name" = "Ubuntu" ]; then
@@ -47,7 +47,7 @@ elif [ "$distro_name" = "Ubuntu" ]; then
     case "$distro_version" in
         "24.04")
             Distro="Ubuntu-Hyprland"
-            Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+            Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
             Github_URL_branch="24.04"
             Distro_DIR="$HOME/$Distro-$Github_URL_branch"
@@ -55,7 +55,7 @@ elif [ "$distro_name" = "Ubuntu" ]; then
             ;;
         "24.10")
             Distro="Ubuntu-Hyprland"
-            Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+            Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
             Github_URL_branch="24.10"
             Distro_DIR="$HOME/$Distro-$Github_URL_branch"
@@ -63,7 +63,7 @@ elif [ "$distro_name" = "Ubuntu" ]; then
             ;;
         "25.04")
             Distro="Ubuntu-Hyprland"
-            Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+            Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
             Github_URL_branch="25.04"
             Distro_DIR="$HOME/$Distro-$Github_URL_branch"
@@ -71,7 +71,7 @@ elif [ "$distro_name" = "Ubuntu" ]; then
             ;;
         "25.10")
             Distro="Ubuntu-Hyprland"
-            Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+            Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
             Github_URL_branch="25.10"
             Distro_DIR="$HOME/$Distro-$Github_URL_branch"
@@ -79,7 +79,7 @@ elif [ "$distro_name" = "Ubuntu" ]; then
             ;;
         "26.04-development")
             Distro="Ubuntu-Hyprland"
-            Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+            Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
             Github_URL_branch="26.04-development"
             Distro_DIR="$HOME/$Distro-$Github_URL_branch"
@@ -97,7 +97,7 @@ elif command -v pacman &> /dev/null; then
     INSTALL_CMD="sudo pacman -S --noconfirm"
     GIT_INSTALL_CMD="sudo pacman -S git --noconfirm"
     Distro="Arch-Hyprland"
-    Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+    Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     Distro_DIR="$HOME/$Distro"
 elif command -v dnf &> /dev/null; then
@@ -105,7 +105,7 @@ elif command -v dnf &> /dev/null; then
     INSTALL_CMD="sudo dnf install -y"
     GIT_INSTALL_CMD="sudo dnf install -y git"
     Distro="Fedora-Hyprland"
-    Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+    Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     Distro_DIR="$HOME/$Distro"
 elif command -v zypper &> /dev/null; then
@@ -113,7 +113,7 @@ elif command -v zypper &> /dev/null; then
     INSTALL_CMD="sudo zypper install -y"
     GIT_INSTALL_CMD="sudo zypper install -y git"
     Distro="OpenSUSE-Hyprland"
-    Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+    Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     Distro_DIR="$HOME/$Distro"
 elif [ "$distro_name" = "NixOS" ]; then
@@ -121,7 +121,7 @@ elif [ "$distro_name" = "NixOS" ]; then
     INSTALL_CMD="nix-shell"
     GIT_INSTALL_CMD="nix-shell -p git curl pciutils"
     Distro="NixOS-Hyprland"
-    Github_URL="https://github.com/Karran-JaKooLit/$Distro.git"
+    Github_URL="https://github.com/karanj707mern/$Distro.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     Distro_DIR="$HOME/$Distro"
 else

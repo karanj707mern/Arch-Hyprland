@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # GTK Themes & ICONS and  Sourcing from a different Repo #
 
@@ -38,7 +38,7 @@ if [ -d "GTK-themes-icons" ]; then
 fi
 
 echo "$NOTE Cloning ${SKY_BLUE}GTK themes and Icons${RESET} repository..." 2>&1 | tee -a "$LOG"
-if git clone --depth=1 https://github.com/Karran-JaKooLit/GTK-themes-icons.git ; then
+if git clone --depth=1 https://github.com/karanj707mern/GTK-themes-icons.git ; then
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
     cd GTK-themes-icons
     chmod +x auto-extract.sh

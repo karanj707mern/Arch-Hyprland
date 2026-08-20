@@ -1,9 +1,9 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # SDDM themes #
 
-source_theme="https://github.com/Karran-JaKooLit/simple-sddm-2.git"
+source_theme="https://github.com/karanj707mern/simple-sddm-2.git"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 theme_name="simple_sddm_2"
 

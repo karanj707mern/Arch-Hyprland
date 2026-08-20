@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  #
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # This file used on waybar modules sourcing defaults set in $HOME/.config/hypr/CONF FILES/UserConfigs/01-UserDefaults.conf
 

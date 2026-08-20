@@ -41,7 +41,7 @@ enable_quickshell() {
     local OVERLAY_SA="config/hypr/CONF FILES/configs/Startup_Apps.conf"
     mkdir -p "$(dirname "$OVERLAY_SA")"
     touch "$OVERLAY_SA"
-    grep -qx 'exec-once = qs' "$OVERLAY_SA" || echo 'exec-once = qs' >>"$OVERLAY_SA"
+    grep -qx 'exec-once = qs -c overview  # Quickshell Overview' "$OVERLAY_SA" || echo 'exec-once = qs -c overview  # Quickshell Overview' >>"$OVERLAY_SA"
     sed -i '/#pkill qs && qs &/s/^#//' config/hypr/scripts/RefreshNoWaybar.sh
     sed -i '/#pkill qs && qs &/s/^#//' config/hypr/scripts/Refresh.sh
   fi
@@ -49,9 +49,9 @@ enable_quickshell() {
 
 ensure_keybinds_init() {
   local log="$1"
-  local OVERLAY_SA="config/hypr/configs/Startup_Apps.conf"
+  local OVERLAY_SA="config/hypr/CONF FILES/configs/Startup_Apps.conf"
   mkdir -p "$(dirname "$OVERLAY_SA")"
-  if ! grep -qx 'exec-once = \$scriptsDir/KeybindsLayoutInit.sh' "$OVERLAY_SA"; then
+  if ! grep -qxF 'exec-once = $scriptsDir/KeybindsLayoutInit.sh' "$OVERLAY_SA"; then
     echo 'exec-once = $scriptsDir/KeybindsLayoutInit.sh' >>"$OVERLAY_SA"
     echo "${INFO:-[INFO]} Added KeybindsLayoutInit.sh to user Startup_Apps overlay" 2>&1 | tee -a "$log"
   fi

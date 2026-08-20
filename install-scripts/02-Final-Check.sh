@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Final checking if packages are installed
 # NOTE: These package check are only the essentials
@@ -83,7 +83,7 @@ else
     if [ ${#local_missing[@]} -ne 0 ]; then
         echo "${WARN} The following local packages are missing from /usr/local/bin/ and will be logged:"
         for pkg1 in "${local_missing[@]}"; do
-            echo "${WARNING}$pkg1${REST} is not installed. Can't find it in /usr/local/bin/"
+            echo "${WARNING}$pkg1${RESET} is not installed. Can't find it in /usr/local/bin/"
             echo "$pkg1" >> "$LOG" 
         done
     fi

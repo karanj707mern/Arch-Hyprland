@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o pipefail
 # User interaction helpers extracted from copy.sh. Each helper echoes state or sets
 # globals deliberately to minimize side effects.
 

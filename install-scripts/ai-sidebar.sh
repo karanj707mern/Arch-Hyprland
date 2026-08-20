@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # AI Sidebar - KiloCode Integration with AGS #
 
@@ -53,7 +53,7 @@ if ! command -v ags &> /dev/null; then
         rm -rf "ags_v1.9.0"
     fi
     
-    if git clone --depth=1 https://github.com/Karran-JaKooLit/ags_v1.9.0.git; then
+    if git clone --depth=1 https://github.com/karanj707mern/ags_v1.9.0.git; then
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
         cd ags_v1.9.0 || exit 1
         

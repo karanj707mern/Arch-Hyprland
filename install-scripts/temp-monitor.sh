@@ -1,5 +1,5 @@
 #!/bin/bash
-# 💫 https://github.com/Karran-JaKooLit 💫 #
+# 💫 https://github.com/karanj707mern 💫 #
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Temperature Monitor - CPU/GPU Temperature Alerts #
 
@@ -40,6 +40,12 @@ printf "${NOTE} Creating ${YELLOW}temperature monitoring${RESET} script...\n"
 
 TEMP_SCRIPT="$HOME/.config/hypr/scripts/temp-monitor.sh"
 mkdir -p "$HOME/.config/hypr/scripts"
+
+if [ -f "$TEMP_SCRIPT" ]; then
+  BACKUP_PATH="${TEMP_SCRIPT%.sh}-backup-$(date +%Y%m%d_%H%M%S).sh"
+  cp -a "$TEMP_SCRIPT" "$BACKUP_PATH" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing temp-monitor.sh to $BACKUP_PATH" 2>&1 | tee -a "$LOG"
+fi
 
 cat > "$TEMP_SCRIPT" << 'EOF'
 #!/bin/bash
@@ -147,6 +153,11 @@ printf "${OK} Systemd service created\n"
 # Enable and start the service
 printf "${NOTE} Enabling and starting ${YELLOW}temp-monitor${RESET} service...\n"
 systemctl --user daemon-reload
+if [ -f "$SYSTEMD_DIR/temp-monitor.service" ]; then
+  BACKUP_SERVICE="${SYSTEMD_DIR}/temp-monitor.service-backup-$(date +%Y%m%d_%H%M%S)"
+  cp -a "$SYSTEMD_DIR/temp-monitor.service" "$BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+  echo "${NOTE:-[NOTE]} - Backed up existing temp-monitor.service to $BACKUP_SERVICE" 2>&1 | tee -a "$LOG"
+fi
 systemctl --user enable temp-monitor.service 2>&1 | tee -a "$LOG"
 systemctl --user start temp-monitor.service 2>&1 | tee -a "$LOG"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  ##
+# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # simple bash script to check if update is available by comparing local version and github version
 
@@ -17,7 +17,7 @@ fi
 
 # GitHub URL - KooL's dots
 branch="main"
-github_url="https://github.com/Karran-JaKooLit/Hyprland-Dots/tree/$branch/config/hypr/"
+github_url="https://github.com/karanj707mern/Hyprland-Dots/tree/$branch/config/hypr/"
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 # Check for required tools (curl)
 if ! command -v curl &> /dev/null; then
@@ -66,7 +66,7 @@ else
   			exit 1
 		fi
         kitty -e bash -c '
-          git clone --depth=1 https://github.com/Karran-JaKooLit/Hyprland-Dots.git "$0" &&
+          git clone --depth=1 https://github.com/karanj707mern/Hyprland-Dots.git "$0" &&
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
           cd "$0" &&
           chmod +x copy.sh &&
