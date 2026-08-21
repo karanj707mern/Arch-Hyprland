@@ -1,23 +1,23 @@
 /* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* .....[Extra] Arrow Best to combine with [TOP] Arrow.... */
 /* --- 👍 taken from https://github.com/mxkrsv  👍 --- */
 
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-	min-height: 0;  
+font-weight: bold;
+min-height: 0;  
     /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
     font-size: 97%;
-    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-    border: none;
-	border-radius: 0;
-	min-height: 0;
-	margin: 0;
-	padding: 0;
-	box-shadow: none;
-	text-shadow: none;
-	icon-shadow: none;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+border: none;
+border-radius: 0;
+min-height: 0;
+margin: 0;
+padding: 0;
+box-shadow: none;
+text-shadow: none;
+icon-shadow: none;
 }
 
 /* Colors (gruvbox) */
@@ -123,7 +123,7 @@
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-left: 8pt;
-	padding-right: 8pt;
+padding-right: 8pt;
 }
 
 /* Each critical module */
@@ -133,19 +133,19 @@
 #temperature.critical,
 #battery.critical.discharging {
 	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-name: blink-critical;
-	animation-duration: 1s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-name: blink-critical;
+animation-duration: 1s;
 }
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -158,7 +158,7 @@
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
+font-weight: bold;
 }
 
 /* Each warning */
@@ -182,80 +182,80 @@
 /* Current sway mode (resize etc) */
 #mode {
 	color: @white;
-	background: @mode;
+background: @mode;
 }
 
 /* Workspaces stuff */
 #workspaces button {
 	/*font-weight: bold;*/
 	padding-left: 2pt;
-	padding-right: 2pt;
-	color: @white;
-	background: @unfocused;
+padding-right: 2pt;
+color: @white;
+background: @unfocused;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
 	color: @white;
-	background: @inactive;
+background: @inactive;
 }
 
 /* Active (on focused output) */
 #workspaces button.focused {
 	color: @black;
-	background: @focused;
+background: @focused;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
 	color: @black;
-	background: @warning;
+background: @warning;
 }
 
 /* Style when cursor is on the button */
 #workspaces button:hover {
 	background: @black;
-	color: @white;
+color: @white;
 }
 
 #window {
 	margin-right: 35pt;
-	margin-left: 35pt;
+margin-left: 35pt;
 }
 
 #pulseaudio {
 	background: @sound;
-	color: @black;
+color: @black;
 }
 
 #network {
 	background: @network;
-	color: @white;
+color: @white;
 }
 
 #memory {
 	background: @memory;
-	color: @black;
+color: @black;
 }
 
 #cpu {
 	background: @cpu;
-	color: @white;
+color: @white;
 }
 
 #temperature {
 	background: @temp;
-	color: @black;
+color: @black;
 }
 
 #language {
 	background: @layout;
-	color: @black;
+color: @black;
 }
 
 #battery {
 	background: @battery;
-	color: @white;
+color: @white;
 }
 
 #tray {
@@ -264,55 +264,55 @@
 
 #clock {
 	background: @time;
-	color: @black;
+color: @black;
 }
 
 #custom-arrow1 {
 	color: @time;
-	background: @date;
+background: @date;
 }
 
 #custom-arrow2 {
 	color: @date;
-	background: @layout;
+background: @layout;
 }
 
 #custom-arrow3 {
 	color: @layout;
-	background: @battery;
+background: @battery;
 }
 
 #custom-arrow4 {
 	color: @battery;
-	background: @temp;
+background: @temp;
 }
 
 #custom-arrow5 {
 	color: @temp;
-	background: @cpu;
+background: @cpu;
 }
 
 #custom-arrow6 {
 	color: @cpu;
-	background: @memory;
+background: @memory;
 }
 
 #custom-arrow7 {
 	color: @memory;
-	background: @network;
+background: @network;
 }
 
 #custom-arrow8 {
 	color: @network;
-	background: @sound;
+background: @sound;
 }
 
 #custom-arrow9 {
 	color: @sound;
-	background: transparent;
+background: transparent;
 }
 
 #custom-arrow10 {
 	color: @unfocused;
-	background: transparent;
+background: transparent;
 }

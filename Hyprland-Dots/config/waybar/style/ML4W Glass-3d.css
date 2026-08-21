@@ -11,21 +11,21 @@ General
 
 * {
   background-color: transparent;
-  font-family: "JetBrainsMono Nerd Font";
-  border: none;
-  font-weight: bolder;
-  border-radius: 0px;
+font-family: "JetBrainsMono Nerd Font";
+border: none;
+font-weight: bolder;
+border-radius: 0px;
 
   /* Extra tweaks */
   min-height: 0;
   /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
   font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-  margin-top: 3px;
-  padding-bottom: 2px;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+margin-top: 3px;
+padding-bottom: 2px;
 }
 
-@import "style/ML4W/glass.css";
+@import "ML4W/glass.css";
 /* Soft-neutral override: keeps glass gradients but avoids red-dominant palettes */
 @define-color surface       @background-alt;
 @define-color surface_dim   @background;
@@ -43,16 +43,16 @@ General
 
 window#waybar {
   background: transparent;
-  border: 0;
-  outline: none;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+border: 0;
+outline: none;
+text-shadow: 0 0 3px rgba(0,0,0,0.8);
 
-}
 }
 
 .modules-left {
   background-color: @surface;
-  border-radius: 12px;
-  background:
+border-radius: 12px;
+background:
     radial-gradient(
         circle at 50% 250%,
         alpha(darker(@surface), 0.9),
@@ -60,19 +60,19 @@ window#waybar {
       )
       padding-box,
     linear-gradient(@primary, @on_primary) border-box;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  padding-right: 15px;
-  margin: 10px;
-  box-shadow:
+border: 1px solid transparent;
+opacity: 0.8;
+padding-right: 15px;
+margin: 10px;
+box-shadow:
     inset 0 -2px 0 alpha(@accent, 0.45),
     inset 1px 2px 2px rgba(255, 255, 255, 0.2);
 }
 
 .modules-right {
   background-color: @surface;
-  border-radius: 12px;
-  background:
+border-radius: 12px;
+background:
     radial-gradient(
         circle at 50% 250%,
         alpha(darker(@surface), 0.9),
@@ -80,19 +80,19 @@ window#waybar {
       )
       padding-box,
     linear-gradient(@primary, @on_primary) border-box;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  padding-left: 15px;
-  margin: 10px;
-  box-shadow:
+border: 1px solid transparent;
+opacity: 0.8;
+padding-left: 15px;
+margin: 10px;
+box-shadow:
     inset 0 -2px 0 alpha(@accent, 0.45),
     inset 1px 2px 2px rgba(255, 255, 255, 0.3);
 }
 
 .modules-center {
   background-color: @surface;
-  border-radius: 12px;
-  background:
+border-radius: 12px;
+background:
     radial-gradient(
         circle at 50% 250%,
         alpha(darker(@surface), 0.9),
@@ -100,27 +100,27 @@ window#waybar {
       )
       padding-box,
     linear-gradient(@primary, @on_primary) border-box;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  margin: 10px;
-  box-shadow:
+border: 1px solid transparent;
+opacity: 0.8;
+margin: 10px;
+box-shadow:
     inset 0 -2px 0 alpha(@accent, 0.45),
     inset 0px 2px 2px rgba(255, 255, 255, 0.2);
 }
 
 label.module {
   font-size: 14px;
-  margin-left: 8px;
-  margin-right: 8px;
-  border-radius: 5px;
+margin-left: 8px;
+margin-right: 8px;
+border-radius: 5px;
 }
 
 label.module {
   font-size: 14px;
-  color: @on_surface;
-  padding: 3px 10px;
-  transition: all 0.3s ease-out;
-  background:
+color: @on_surface;
+padding: 3px 10px;
+transition: all 0.3s ease-out;
+background:
     radial-gradient(
         circle at 50% 250%,
         @on_tertiary_fixed_variant,
@@ -128,8 +128,8 @@ label.module {
       )
       padding-box,
     linear-gradient(@on_primary_fixed_variant, @on_primary_fixed) border-box;
-  border-radius: 10px;
-  border: 0px solid transparent;
+border-radius: 10px;
+border: 0px solid transparent;
 }
 
 label.module:hover {
@@ -141,26 +141,26 @@ label.module:hover {
 
 #workspaces {
   padding: 5px 3px 5px 3px;
-  min-width: 176px;
-  font-weight: 600;
+min-width: 176px;
+font-weight: 600;
 }
 
 #workspaces button {
   color: @on_surface;
-  border-radius: 3px;
-  padding: 0px 5px 0px 5px;
-  margin: 0px 2px 0px 2px;
-  transition: all 0.3s ease-in-out;
-  border: 1px solid transparent;
+border-radius: 3px;
+padding: 0px 5px 0px 5px;
+margin: 0px 2px 0px 2px;
+transition: all 0.3s ease-in-out;
+border: 1px solid transparent;
 }
 
 #workspaces button.active {
   background: alpha(@accent, 0.2);
-  border: 1px solid transparent;
-  transition: all 0.3s ease-in-out;
-  min-width: 30px;
-  border-radius: 8px;
-  box-shadow:
+border: 1px solid transparent;
+transition: all 0.3s ease-in-out;
+min-width: 30px;
+border-radius: 8px;
+box-shadow:
     inset 0 -3px 0 alpha(@accent, 0.8),
     inset 1px 2px 2px rgba(255, 255, 255, 0.45),
     inset 0 1px 1px rgba(255, 255, 255, 0.7);
@@ -168,7 +168,7 @@ label.module:hover {
 
 #workspaces button:hover {
   background: alpha(@secondary, 0.2);
-  border-radius: 15px;
+border-radius: 15px;
 }
 
 /* -----------------------------------------------------
@@ -177,13 +177,13 @@ label.module:hover {
 
 tooltip {
   background-color: @surface;
-  border-radius: 12px;
-  background:
+border-radius: 12px;
+background:
     radial-gradient(circle at 50% 250%, @surface, @surface_dim) padding-box,
     linear-gradient(#ffffff, @on_primary) border-box;
-  border: 1px solid transparent;
-  opacity: 0.7;
-  margin: 10px;
+border: 1px solid transparent;
+opacity: 0.7;
+margin: 10px;
 }
 
 tooltip label {
@@ -198,7 +198,7 @@ tooltip label {
   background-color: transparent;
   /* Override global margin/padding so the window pill hugs the bar edges */
   margin: 0;
-  padding: 0;
+padding: 0;
 }
 
 window#waybar.empty #window {
@@ -208,7 +208,7 @@ window#waybar.empty #window {
 /* Tighter content padding specifically for the window title */
 #window label {
   margin: 0;
-  padding: 4px 10px;
+padding: 4px 10px;
 }
 
 /* -----------------------------------------------------
@@ -221,28 +221,28 @@ window#waybar.empty #window {
 
 #taskbar button {
   border-radius: 6px;
-  padding: 0px 5px 0px 5px;
+padding: 0px 5px 0px 5px;
 }
 
 #taskbar button:hover {
   background: @primary;
-  color: @on_primary;
+color: @on_primary;
 }
 
 #custom-updates.yellow {
   border-radius: 8px;
-  margin: 5px 0px 5px 5px;
-  padding: 0px 6px 0px 6px;
-  background-color: @secondary;
-  color: @on_secondary;
+margin: 5px 0px 5px 5px;
+padding: 0px 6px 0px 6px;
+background-color: @secondary;
+color: @on_secondary;
 }
 
 #custom-updates.red {
   border-radius: 8px;
-  margin: 6px 0px 6px 7px;
-  padding: 0px 6px 0px 6px;
-  background-color: @error;
-  color: @on_error;
+margin: 6px 0px 6px 7px;
+padding: 0px 6px 0px 6px;
+background-color: @error;
+color: @on_error;
 }
 
 /* -----------------------------------------------------
@@ -251,16 +251,16 @@ window#waybar.empty #window {
 
 #clock {
   margin-left: 12px;
-  margin-right: 12px;
+margin-right: 12px;
 }
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -273,13 +273,13 @@ window#waybar.empty #window {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
+font-weight: bold;
 }
 
 @keyframes blink {
   to {
     background-color: @background;
-    color: @on_surface;
+color: @on_surface;
   }
 }
 

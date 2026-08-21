@@ -1,30 +1,30 @@
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /*  AI Sidebar - Vertical Left Panel */
 /*  Styling for KiloCode AI Assistant Sidebar */
 
 * {
 	font-family: "JetBrainsMono Nerd Font";
-	font-weight: bold;
-	min-height: 0;
-	font-size: 97%;
-	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+font-weight: bold;
+min-height: 0;
+font-size: 97%;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
-@import "../waybar/style/catppuccin-themes/mocha.css";
+@import "./catppuccin-themes/mocha.css";
 
 window#waybar {
   background-color: @base;
-  border-radius: 5px;
+border-radius: 5px;
 }
 
 tooltip {
   background: @base;
-  opacity: 1;
-  border-radius: 10px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: @sapphire;
+opacity: 1;
+border-radius: 10px;
+border-width: 2px;
+border-style: solid;
+border-color: @sapphire;
 }
 
 tooltip label {
@@ -34,11 +34,11 @@ tooltip label {
 #taskbar button,
 #workspaces button {
   color: @surface2;
-  background-color: transparent;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 4px;
+background-color: transparent;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 4px;
 }
 
 #taskbar button.active,
@@ -49,21 +49,21 @@ tooltip label {
 #taskbar button.focused,
 #workspaces button.focused {
   color: @rosewater;
-  background: transparent;
-  border-radius: 15px;
+background: transparent;
+border-radius: 15px;
 }
 
 #workspaces button.urgent {
   color: #11111b;
-  background: transparent;
-  border-radius: 15px;
+background: transparent;
+border-radius: 15px;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
   background: transparent;
-  color: @flamingo;
-  border-radius: 15px;
+color: @flamingo;
+border-radius: 15px;
 }
 
 #backlight,
@@ -129,28 +129,28 @@ tooltip label {
 #custom-weather.sunnyDay,
 #custom-ai_assistant {
   opacity: 1;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-ai_assistant {
   color: @green;
-  border-radius: 15px;
-  background-color: transparent;
-  font-size: 110%;
+border-radius: 15px;
+background-color: transparent;
+font-size: 110%;
 }
 
 #custom-ai_assistant:hover {
   color: @flamingo;
-  background-color: @surface0;
-  border-radius: 15px;
+background-color: @surface0;
+border-radius: 15px;
 }
 
 #idle_inhibitor {
   color: @pink;
-  border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+border-bottom: 8px solid rgba(0, 0, 0, 0.2);
 }
 
 #mpris {
@@ -159,8 +159,8 @@ tooltip label {
 
 #battery {
   color: #a6e3a1;
-  padding-left: 15px;
-  border-radius: 15px 0 0 15px;
+padding-left: 15px;
+border-radius: 15px 0 0 15px;
 }
 
 #custom-tempfan.temp-cool {
@@ -178,30 +178,30 @@ tooltip label {
 @keyframes blink {
   to {
     background-color: #ffffff;
-    color: #333333;
+color: #333333;
   }
 }
 
 #battery.critical:not(.charging) {
   color: #f53c3c;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+animation-name: blink;
+animation-duration: 0.5s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
 }
 
 #custom-lock,
 #custom-power {
   color: @red;
-  border-radius: 15px;
-  font-weight: bolder;
-  padding-left: 1px;
+border-radius: 15px;
+font-weight: bolder;
+padding-left: 1px;
 }
 
 #network {
   background-color: transparent;
-  color: @mauve;
+color: @mauve;
 }
 
 #backlight {
@@ -210,8 +210,8 @@ tooltip label {
 
 #custom-weather {
   color: @green;
-  border-radius: 15px;
-  background-color: transparent;
+border-radius: 15px;
+background-color: transparent;
 }
 
 #custom-menu {
@@ -220,7 +220,7 @@ tooltip label {
 
 #pulseaudio {
   background-color: transparent;
-  color: @blue;
+color: @blue;
 }
 
 #clock,
@@ -231,24 +231,24 @@ tooltip label {
 #backlight-slider slider,
 #pulseaudio-slider slider {
   min-height: 7px;
-  min-width: 15px;
-  opacity: 0;
-  background-color: @text;
-  border-radius: 3px;
-  box-shadow: 1px 5px 6px 1px #272727;
+min-width: 15px;
+opacity: 0;
+background-color: @text;
+border-radius: 3px;
+box-shadow: 1px 5px 6px 1px #272727;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
   min-height: 100px;
-  min-width: 7px;
-  border-radius: 5px;
-  background-color: @surface0;
+min-width: 7px;
+border-radius: 5px;
+background-color: @surface0;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
   min-width: 5px;
-  border-radius: 5px;
-  background-color: @blue;
+border-radius: 5px;
+background-color: @blue;
 }

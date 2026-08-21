@@ -1,5 +1,5 @@
 /* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* --- Designed by https://github.com/DevNChill --- */
 /* Extra - EverForest*/
 
@@ -31,23 +31,23 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
-  min-height: 0;
+font-weight: bold;
+min-height: 0;
   /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
   font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-  border: 1px solid transparent;
-  border-radius: 0px;
-  margin: 0px 1px;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+border: 1px solid transparent;
+border-radius: 0px;
+margin: 0px 1px;
 }
 
 window#waybar {
   border: none;
   /*background-color: @bg_green;*/
   background-color: @bg_green;
-  color: @fg;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+color: @fg;
+transition-property: background-color;
+transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
@@ -56,27 +56,27 @@ window#waybar.hidden {
 
 #window {
   padding: 0px 10px;
-  margin: 0px 10px;
-  border-radius: 5px;
-  background-color: @bg0;
+margin: 0px 10px;
+border-radius: 5px;
+background-color: @bg0;
 }
 
 .modules-left button:first-child {
   border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  margin-left: 5px;
+border-bottom-left-radius: 5px;
+margin-left: 5px;
 }
 
 .modules-left button:last-child {
   border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin-right: 5px;
+border-bottom-right-radius: 5px;
+margin-right: 5px;
 }
 
 #custom-menu,
 #custom-arch {
   background-color: @bg;
-  color: @red;
+color: @red;
 }
 
 #custom-swaync {
@@ -86,27 +86,27 @@ window#waybar.hidden {
 #taskbar button,
 #workspaces button {
   padding: 0px 5px;
-  background-color: @orange;
-  color: @black;
+background-color: @orange;
+color: @black;
 }
 
 #taskbar button.active,
 #workspaces button.active {
   background-color: @grey0;
-  color: @black;
-  animation: gradient_f 20s ease-in infinite;
+color: @black;
+animation: gradient_f 20s ease-in infinite;
   /*transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);*/
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
   background-color: @purple;
-  color: @black;
+color: @black;
 }
 
 #workspaces button.focused {
   background-color: @green;
-  color: @bg0;
+color: @bg0;
 }
 
 #workspaces button.urgent {
@@ -122,31 +122,29 @@ window#waybar.hidden {
 
 #cpu {
   border-radius: 5px 0px 0px 5px;
-  padding: 0px 5px;
-  background-color: @yellow;
-  color: @bg_yellow;
+padding: 0px 5px;
+background-color: @yellow;
+color: @bg_yellow;
 }
 
 #memory {
   padding: 0px 5px;
-  background-color: @yellow;
-  color: @bg_yellow;
+background-color: @yellow;
+color: @bg_yellow;
 }
 
 #temperature {
   padding: 0px 5px;
-  background-color: @green;
-  color: @bg_yellow;
+background-color: @green;
+color: @bg_yellow;
 }
-#temperature.critical {
-
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -159,17 +157,15 @@ window#waybar.hidden {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
-}
-  background-color: @red;
+font-weight: bold;
 }
 
 #disk {
   border-radius: 0px 5px 5px 0px;
-  padding: 0px 5px;
-  margin-right: 5px;
-  background-color: @green;
-  color: @bg_yellow;
+padding: 0px 5px;
+margin-right: 5px;
+background-color: @green;
+color: @bg_yellow;
 }
 
 #battery.bat2 {
@@ -181,111 +177,111 @@ window#waybar.hidden {
 }
 #battery {
   border-radius: 5px 0px 0px 5px;
-  padding: 0px 5px;
-  background-color: @aqua;
-  color: @bg_yellow;
+padding: 0px 5px;
+background-color: @aqua;
+color: @bg_yellow;
 }
 #battery.plugged {
   color: @fg;
-  background-color: @bg_green;
+background-color: @bg_green;
 }
 #battery.charging {
   color: @fg;
-  background-color: @bg_green;
+background-color: @bg_green;
 }
 #battery.critical:not(.charging) {
   background-color: @red;
-  color: @fg;
-  animation-name: blink;
-  animation-duration: 3.0s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+color: @fg;
+animation-name: blink;
+animation-duration: 3.0s;
+animation-timing-function: steps(12);
+animation-iteration-count: infinite;
+animation-direction: alternate;
 }
 @keyframes blink {
   to {
     background-color: @fg;
-    color: @bg_dim;
+color: @bg_dim;
   }
 }
 
 #backlight {
   border-radius: 5px 0px 0px 5px;
-  padding: 0px 5px;
-  margin-left: 5px;
-  background-color: @red;
-  color: @black;
+padding: 0px 5px;
+margin-left: 5px;
+background-color: @red;
+color: @black;
 }
 
 #network,
 #pulseaudio {
   padding: 0px 5px;
-  border-radius: 0px 5px 5px 0px;
-  background-color: @blue;
-  color: @bg_yellow;
+border-radius: 0px 5px 5px 0px;
+background-color: @blue;
+color: @bg_yellow;
 }
 
 #pulseaudio.muted {
   background-color: @grey1;
-  color: @bg_yellow;
+color: @bg_yellow;
 }
 
 #tray {
   padding: 0px 5px;
-  border-radius: 5px;
-  margin-left: 5px;
-  color: @fg;
-  background-color: @bg0;
+border-radius: 5px;
+margin-left: 5px;
+color: @fg;
+background-color: @bg0;
 }
 
 #custom-hypridle,
 #idle_inhibitor {
   padding: 0px 5px;
-  border-radius: 5px;
-  margin-left: 5px;
-  background-color: @blue;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.2);
-  color: @black;
+border-radius: 5px;
+margin-left: 5px;
+background-color: @blue;
+border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+color: @black;
 }
 /*-----Indicators----*/
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
   background-color: @fg;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.2);
-  color: @bg0;
+border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+color: @bg0;
 }
 
 #clock {
   padding: 0px 5px;
-  border-radius: 5px;
-  margin: 0px 5px;
-  color: @bg_yellow;
-  background-color: @aqua;
+border-radius: 5px;
+margin: 0px 5px;
+color: @bg_yellow;
+background-color: @aqua;
 }
 
 #backlight-slider slider,
 #pulseaudio-slider slider {
     min-width: 0px;
-    min-height: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
+min-height: 0px;
+opacity: 0;
+background-image: none;
+border: none;
+box-shadow: none;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
     min-width: 80px;
-    min-height: 5px;
-    border-radius: 5px;
-    background-color: #22252a;
+min-height: 5px;
+border-radius: 5px;
+background-color: #22252a;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
     min-height: 10px;
-    border-radius: 5px;
-    background-color: #ba5663;
+border-radius: 5px;
+background-color: #ba5663;
 }
 
 #backlight,
@@ -349,5 +345,5 @@ window#waybar.hidden {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-right: 5px;
-	padding-left: 5px;
+padding-left: 5px;
 }

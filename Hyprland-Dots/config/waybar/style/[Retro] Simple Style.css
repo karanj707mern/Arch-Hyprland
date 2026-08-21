@@ -1,5 +1,5 @@
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Simple Style */
 
 @define-color background #1d2021;
@@ -11,19 +11,19 @@
 
 * {
 	font-family: "JetBrainsMono Nerd Font";
-	font-weight: bold;
-	min-height: 0;	
+font-weight: bold;
+min-height: 0;	
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
 	font-size: 97%;
-	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 
 }
 
 window#waybar {
   background: @background;
-  color: @foreground;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+color: @foreground;
+transition-property: background-color;
+transition-duration: 0.5s;
 }
 
 #taskbar button,
@@ -107,7 +107,7 @@ window#waybar {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   padding: 6px;
-  color: @foreground;
+color: @foreground;
 }
 
 #battery.warning,
@@ -115,7 +115,7 @@ window#waybar {
 #memory.warning,
 #cpu.warning {
   border-top: 3px solid @background;
-  border-bottom: 3px solid yellow;
+border-bottom: 3px solid yellow;
 }
 
 @keyframes blink {
@@ -126,20 +126,20 @@ window#waybar {
 
 #battery.critical:not(.charging) {
   background-color: @red;
-  color: white;
-  animation-name: blink;
-  animation-duration: 3.0s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  box-shadow: inset 0 -3px transparent;
+color: white;
+animation-name: blink;
+animation-duration: 3.0s;
+animation-timing-function: steps(12);
+animation-iteration-count: infinite;
+animation-direction: alternate;
+box-shadow: inset 0 -3px transparent;
 }
 
 /*-----Indicators----*/
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
 	color: #39FF14;
-    border-bottom: 3px solid yellow;
+border-bottom: 3px solid yellow;
 }
 
 #battery.critical,
@@ -147,18 +147,16 @@ window#waybar {
 #memory.critical,
 #cpu.critical {
   border-top: 3px solid @background;
-  border-bottom: 3px solid red;
+border-bottom: 3px solid red;
 }
-
-#temperature.critical {
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -171,37 +169,35 @@ window#waybar {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
-}
-	background-color: red;
+font-weight: bold;
 }
 
 #battery.charging {
   border-top: 3px solid @background;
-  border-bottom: 3px solid green;
+border-bottom: 3px solid green;
 }
 
 #backlight-slider slider,
 #pulseaudio-slider slider {
 	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+min-height: 0px;
+opacity: 0;
+background-image: none;
+border: none;
+box-shadow: none;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
-	min-width: 80px;  
-	min-height: 5px; 
-	border-radius: 5px;
-	background-color: @dim;
+	min-width: 80px;
+min-height: 5px;
+border-radius: 5px;
+background-color: @dim;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
-	min-height: 10px; 
-	border-radius: 5px;
-	background-color: @green;
+	min-height: 10px;
+border-radius: 5px;
+background-color: @green;
 }

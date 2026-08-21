@@ -11,69 +11,69 @@ General
 
 * {
   background-color: transparent;
-  font-family: "JetBrainsMono Nerd Font";
-  border: none;
-  font-weight: bolder;
-  border-radius: 0px;
+font-family: "JetBrainsMono Nerd Font";
+border: none;
+font-weight: bolder;
+border-radius: 0px;
 
   /* Extra tweaks */
   min-height: 0;
   /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
   font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-  margin-top: 3px;
-  padding-bottom: 2px;
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+margin-top: 3px;
+padding-bottom: 2px;
 }
 
 window#waybar {
-  background: transparent;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+  background: transparent;
+text-shadow: 0 0 3px rgba(0,0,0,0.8);
 
-}
 }
 
 .modules-left {
   border-radius: 12px;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  padding-left: 5px;
-  padding-right: 15px;
-  margin: 10px;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: inset 1px 2px 2px rgba(255, 255, 255, 0.2);
+border: 1px solid transparent;
+opacity: 0.8;
+padding-left: 5px;
+padding-right: 15px;
+margin: 10px;
+background-color: rgba(255, 255, 255, 0.25);
+box-shadow: inset 1px 2px 2px rgba(255, 255, 255, 0.2);
 }
 
 .modules-right {
   border-radius: 12px;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  padding-left: 15px;
-  margin: 10px;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: inset 1px 2px 2px rgba(255, 255, 255, 0.3);
+border: 1px solid transparent;
+opacity: 0.8;
+padding-left: 15px;
+margin: 10px;
+background-color: rgba(255, 255, 255, 0.25);
+box-shadow: inset 1px 2px 2px rgba(255, 255, 255, 0.3);
 }
 
 .modules-center {
   border-radius: 12px;
-  border: 1px solid transparent;
-  opacity: 0.8;
-  margin: 10px;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 0.2);
+border: 1px solid transparent;
+opacity: 0.8;
+margin: 10px;
+background-color: rgba(255, 255, 255, 0.25);
+box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 0.2);
 }
 
 label.module {
   font-size: 14px;
-  margin-left: 8px;
-  margin-right: 8px;
-  border-radius: 5px;
+margin-left: 8px;
+margin-right: 8px;
+border-radius: 5px;
 }
 
 label.module {
   font-size: 14px;
-  padding: 3px 10px;
-  transition: all 0.3s ease-out;
-  border-radius: 10px;
-  border: 0px solid transparent;
+padding: 3px 10px;
+transition: all 0.3s ease-out;
+border-radius: 10px;
+border: 0px solid transparent;
 }
 
 label.module:hover {
@@ -85,33 +85,32 @@ label.module:hover {
 
 #workspaces {
   padding: 5px 3px 5px 3px;
-  min-width: 176px;
-  font-weight: 600;
+min-width: 176px;
+font-weight: 600;
 }
 
 #workspaces button {
   border-radius: 3px;
-  padding: 0px 5px 0px 5px;
-  margin: 0px 2px 0px 2px;
-  transition: all 0.3s ease-in-out;
-  border: 1px solid transparent;
+padding: 0px 5px 0px 5px;
+margin: 0px 2px 0px 2px;
+transition: all 0.3s ease-in-out;
+border: 1px solid transparent;
 }
 
 #workspaces button.active {
   background-color: rgba(255, 255, 255, 0.35);
-
-  border: 1px solid transparent;
-  transition: all 0.3s ease-in-out;
-  min-width: 30px;
-  border-radius: 8px;
-  box-shadow:
+border: 1px solid transparent;
+transition: all 0.3s ease-in-out;
+min-width: 30px;
+border-radius: 8px;
+box-shadow:
     inset 1px 2px 2px rgba(255, 255, 255, 0.5),
     inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 #workspaces button:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+border-radius: 15px;
 }
 
 /* -----------------------------------------------------
@@ -120,9 +119,9 @@ label.module:hover {
 
 tooltip {
   border-radius: 12px;
-  border: 1px solid transparent;
-  opacity: 0.7;
-  margin: 10px;
+border: 1px solid transparent;
+opacity: 0.7;
+margin: 10px;
 }
 
 /* -----------------------------------------------------
@@ -131,7 +130,7 @@ tooltip {
 
 #window {
   background-color: transparent;
-  padding-right: 12px;
+padding-right: 12px;
 }
 
 window#waybar.empty #window {
@@ -148,19 +147,19 @@ window#waybar.empty #window {
 
 #taskbar button {
   border-radius: 6px;
-  padding: 0px 5px 0px 5px;
+padding: 0px 5px 0px 5px;
 }
 
 #custom-updates.yellow {
   border-radius: 8px;
-  margin: 5px 0px 5px 5px;
-  padding: 0px 6px 0px 6px;
+margin: 5px 0px 5px 5px;
+padding: 0px 6px 0px 6px;
 }
 
 #custom-updates.red {
   border-radius: 8px;
-  margin: 6px 0px 6px 7px;
-  padding: 0px 6px 0px 6px;
+margin: 6px 0px 6px 7px;
+padding: 0px 6px 0px 6px;
 }
 
 /* -----------------------------------------------------
@@ -169,16 +168,16 @@ window#waybar.empty #window {
 
 #clock {
   margin-left: 12px;
-  margin-right: 12px;
+margin-right: 12px;
 }
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -191,13 +190,13 @@ window#waybar.empty #window {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
+font-weight: bold;
 }
 
 @keyframes blink {
   to {
     background-color: #ffffff;
-    color: #ffffff;
+color: #ffffff;
   }
 }
 

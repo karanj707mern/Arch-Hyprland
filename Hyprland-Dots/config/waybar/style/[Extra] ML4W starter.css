@@ -1,5 +1,5 @@
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /*  ML4W - Waybar Style */
 /* Original design from ML4W - Hyprland Starter Waybar */
 
@@ -19,22 +19,22 @@
 
 * {
     font-family: "JetBrainsMono Nerd Font";
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
+border: none;
+border-radius: 4px;
+font-weight: bold;
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
 	font-size: 97%;
-	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
 window#waybar {
     background-color: rgba(0,0,0,0.2);
-    border-bottom: 0px solid #ffffff;
+border-bottom: 0px solid #ffffff;
     /* color: #FFFFFF; */
     transition-property: background-color;
-    transition-duration: .5s;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+transition-duration: .5s;
+text-shadow: 0 0 3px rgba(0,0,0,0.8);
 
-}
 }
 
 /* -----------------------------------------------------
@@ -44,37 +44,37 @@ window#waybar {
 #taskbar,
 #workspaces {
     margin: 5px 1px 6px 1px;
-    padding: 0px 1px;
-    border-radius: 15px;
-    border: 0px;
-    font-weight: bold;
-    font-style: normal;
-    color: @textcolor1;
+padding: 0px 1px;
+border-radius: 15px;
+border: 0px;
+font-weight: bold;
+font-style: normal;
+color: @textcolor1;
 }
 
 #taskbar button,
 #workspaces button {
     padding: 0px 5px;
-    margin: 4px 3px;
-    border-radius: 12px;
-    border: 0px;
-    color: @textcolor3;
-    transition: all 0.3s ease-in-out;
+margin: 4px 3px;
+border-radius: 12px;
+border: 0px;
+color: @textcolor3;
+transition: all 0.3s ease-in-out;
 }
 
 #taskbar button.active,
 #workspaces button.active {
     color: @textcolor1;
-    background: @workspacesbackground2;
-    border-radius: 8px;
-    min-width: 40px;
-    transition: all 0.3s ease-in-out;
+background: @workspacesbackground2;
+border-radius: 8px;
+min-width: 40px;
+transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
     color: @textcolor1;
-    background: @workspacesbackground2;
-    border-radius: 15px;
+background: @workspacesbackground2;
+border-radius: 15px;
 }
 
 /* -----------------------------------------------------
@@ -83,10 +83,10 @@ window#waybar {
 
 tooltip {
     border-radius: 10px;
-    background-color: @backgroundlight;
-    opacity:0.8;
-    padding:20px;
-    margin:0px;
+background-color: @backgroundlight;
+opacity:0.8;
+padding:20px;
+margin:0px;
 }
 
 tooltip label {
@@ -99,11 +99,11 @@ tooltip label {
 
 #window {
     background: @backgroundlight;
-    margin: 10px 15px 10px 0px;
-    padding: 2px 10px 0px 10px;
-    border-radius: 8px;
-    color:@textcolor2;
-    font-weight:normal;
+margin: 10px 15px 10px 0px;
+padding: 2px 10px 0px 10px;
+border-radius: 8px;
+color:@textcolor2;
+font-weight:normal;
 }
 
 window#waybar.empty #window {
@@ -131,9 +131,9 @@ window#waybar.empty #window {
 #battery,
 #clock {
     margin-right: 20px;
-    font-weight: bold;
-    color: @iconcolor;
-    padding: 4px 10px 2px 10px;
+font-weight: bold;
+color: @iconcolor;
+padding: 4px 10px 2px 10px;
 }
 
 #backlight,
@@ -196,8 +196,8 @@ window#waybar.empty #window {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   padding-right: 6px;
-  padding-left: 6px;
-    color: @iconcolor;
+padding-left: 6px;
+color: @iconcolor;
 }
 
 /* -----------------------------------------------------
@@ -206,17 +206,17 @@ window#waybar.empty #window {
 
 #custom-menu {
     background-color: @backgrounddark;
-    color: @textcolor1;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding-right: 6px;
-  	padding-left: 4px;
+color: @textcolor1;
+border-radius: 10px;
+margin: 10px 10px 10px 10px;
+padding-right: 6px;
+padding-left: 4px;
 }
 
 #custom-power {
     margin: 2px 10px 0px 0px;
-    padding:0px;
-    color: @iconcolor;
+padding:0px;
+color: @iconcolor;
 }
 
 /* -----------------------------------------------------
@@ -225,8 +225,8 @@ window#waybar.empty #window {
 
  #disk,#memory,#cpu,#language {
     margin:0px;
-    padding:0px;
-    color:@iconcolor;
+padding:0px;
+color:@iconcolor;
 }
 
 #language {
@@ -239,9 +239,9 @@ window#waybar.empty #window {
 
 #clock {
     background-color: @backgrounddark;
-    color: @textcolor1;
-    border-radius: 15px;
-    margin: 10px 2px 10px 0px;
+color: @textcolor1;
+border-radius: 15px;
+margin: 10px 2px 10px 0px;
 }
 
 /* -----------------------------------------------------
@@ -250,14 +250,14 @@ window#waybar.empty #window {
 
 #pulseaudio {
     background-color: @backgroundlight;
-    color: @textcolor2;
-    border-radius: 12px;
-    margin: 10px 10px 10px 0px;
+color: @textcolor2;
+border-radius: 12px;
+margin: 10px 10px 10px 0px;
 }
 
 #pulseaudio.muted {
     background-color: @backgrounddark;
-    color: @textcolor1;
+color: @textcolor1;
 }
 
 /* -----------------------------------------------------
@@ -266,19 +266,19 @@ window#waybar.empty #window {
 
 #network {
     background-color: @backgroundlight;
-    color: @textcolor2;
-    border-radius: 15px;
-    margin: 10px 10px 10px 0px;
+color: @textcolor2;
+border-radius: 15px;
+margin: 10px 10px 10px 0px;
 }
 
 #network.ethernet {
     background-color: @backgroundlight;
-    color: @textcolor2;
+color: @textcolor2;
 }
 
 #network.wifi {
     background-color: @backgroundlight;
-    color: @textcolor2;
+color: @textcolor2;
 }
 
 /* -----------------------------------------------------
@@ -287,15 +287,15 @@ window#waybar.empty #window {
 
  #bluetooth, #bluetooth.on, #bluetooth.connected {
     background-color: @backgroundlight;
-    color: @textcolor2;
-    border-radius: 15px;
-    margin: 10px 15px 10px 0px;
+color: @textcolor2;
+border-radius: 15px;
+margin: 10px 15px 10px 0px;
 }
 
 #bluetooth.off {
     background-color: transparent;
-    padding: 0px;
-    margin: 0px;
+padding: 0px;
+margin: 0px;
 }
 
 /* -----------------------------------------------------
@@ -304,23 +304,23 @@ window#waybar.empty #window {
 
 #battery {
     background-color: @backgroundlight;
-    color: @textcolor2;
-    border-radius: 15px;
-    margin: 10px 15px 10px 0px;
+color: @textcolor2;
+border-radius: 15px;
+margin: 10px 15px 10px 0px;
 }
 
 #battery.charging, #battery.plugged {
     color: @textcolor2;
-    background-color: @backgroundlight;
+background-color: @backgroundlight;
 }
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -333,24 +333,24 @@ window#waybar.empty #window {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
+font-weight: bold;
 }
 
 @keyframes blink {
     to {
         background-color: @backgroundlight;
-        color: @textcolor2;
+color: @textcolor2;
     }
 }
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: @textcolor3;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+color: @textcolor3;
+animation-name: blink;
+animation-duration: 0.5s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
 }
 
 /* -----------------------------------------------------
@@ -367,7 +367,7 @@ window#waybar.empty #window {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+background-color: #eb4d4b;
 }
 
 /* -----------------------------------------------------

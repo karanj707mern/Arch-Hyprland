@@ -1,8 +1,8 @@
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Dark - Obsidian Edge */
 
-@import '../../.config/waybar/wallust/colors-waybar.css';
+@import '../../wallust/colors-waybar.css';
 
 * {
 font-family: "JetBrainsMono Nerd Font";
@@ -15,7 +15,7 @@ font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 
 window#waybar {
     background: black;
-	border-radius: 12px;
+border-radius: 12px;
 }
 
 window#waybar.hidden {
@@ -24,14 +24,14 @@ window#waybar.hidden {
 
 tooltip {
 	color: @foreground;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
+background: rgba(0, 0, 0, 0.8);
+border-radius: 10px;
 }
 
 tooltip label {
     color: @foreground;
-    padding-right: 2px;
-    padding-left: 2px;
+padding-right: 2px;
+padding-left: 2px;
 }
 
 /*-----module groups----*/
@@ -39,32 +39,32 @@ tooltip label {
 .modules-center,
 .modules-right {
     border: 0px solid #b4befe;
-    border-radius: 10px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-    padding-right: 4px;
-    padding-left: 4px;
+border-radius: 10px;
+padding-top: 2px;
+padding-bottom: 2px;
+padding-right: 4px;
+padding-left: 4px;
 }
 
 #taskbar button,
 #workspaces button {
     color: @color12;
-    box-shadow: none;
-	text-shadow: none;
-    padding: 4px;
-    border-radius: 9px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+box-shadow: none;
+text-shadow: none;
+padding: 4px;
+border-radius: 9px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #taskbar button.active,
 #workspaces button.active {
     color: @foreground;
-    border-radius: 15px 15px 15px 15px;
-    padding-left: 8px;
-    padding-right: 8px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+border-radius: 15px 15px 15px 15px;
+padding-left: 8px;
+padding-right: 8px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.focused {
@@ -73,17 +73,17 @@ tooltip label {
 
 #workspaces button.urgent {
     color: #11111b;
-    border-radius: 10px;
+border-radius: 10px;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
     color: @color9;
-    border-radius: 15px;
- 	padding-left: 2px;
-    padding-right: 2px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+border-radius: 15px;
+padding-left: 2px;
+padding-right: 2px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #backlight,
@@ -147,22 +147,20 @@ tooltip label {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
     color: @foreground;
-    border-radius: 8px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-right: 6px;
-	padding-left: 6px;
+border-radius: 8px;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-right: 6px;
+padding-left: 6px;
 }
-
-#temperature.critical {
 
 /* Temperature & Fan */
 #custom-tempfan {
   color: inherit;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 
 #custom-tempfan.temp-cool {
@@ -175,9 +173,7 @@ tooltip label {
 
 #custom-tempfan.temp-hot {
   color: #ff3333;
-  font-weight: bold;
-}
-    background-color: #ff0000;
+font-weight: bold;
 }
 
 @keyframes blink {
@@ -190,37 +186,37 @@ tooltip label {
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
 	color: #39FF14;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+border-bottom: 8px solid rgba(0, 0, 0, 0.2);
 }
 
 #battery.critical:not(.charging) {
 	color: #f53c3c;
-	animation-name: blink;
-	animation-duration: 3.0s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+animation-name: blink;
+animation-duration: 3.0s;
+animation-timing-function: steps(12);
+animation-iteration-count: infinite;
+animation-direction: alternate;
 }
 
 #backlight-slider slider,
 #pulseaudio-slider slider {
 	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+min-height: 0px;
+opacity: 0;
+background-image: none;
+border: none;
+box-shadow: none;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
 	min-width: 80px;
-	min-height: 5px;
-	border-radius: 5px;
+min-height: 5px;
+border-radius: 5px;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
 	min-height: 10px;
-	border-radius: 5px;
+border-radius: 5px;
 }

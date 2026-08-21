@@ -1,23 +1,23 @@
 /* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* .......Crystal Clear....................... */
 /* --- 👍 designed by https://github.com/Krautt  👍 --- */
 
 *{
 	font-family: "JetBrainsMono Nerd Font";
-	font-weight: bold;
-	min-height: 0;	
+font-weight: bold;
+min-height: 0;	
 	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
 	font-size: 97%;
-	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 	
 window#waybar {
 	background:transparent;
-	border-radius: 1px;
-	color: whitesmoke;    text-shadow: 0 0 3px rgba(0,0,0,0.8);
+border-radius: 1px;
+color: whitesmoke;
+text-shadow: 0 0 3px rgba(0,0,0,0.8);
 
-}
 }
 	
 window#waybar.hidden {
@@ -27,30 +27,30 @@ window#waybar.hidden {
 window#waybar.empty	
 window#waybar.empty #window {
    padding: 0px;
-   border: 0px;
-   background-color: transparent;
+border: 0px;
+background-color: transparent;
 }
 
 #taskbar button,	   
 #workspaces button {
 	color: #6E6A86;
-   	box-shadow: none;
-	text-shadow: none;
-   	padding: 0px;
-   	border-radius: 9px;
-   	padding-left: 4px;
-   	padding-right: 4px;
-   	animation: gradient_f 20s ease-in infinite;
-   	transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+box-shadow: none;
+text-shadow: none;
+padding: 0px;
+border-radius: 9px;
+padding-left: 4px;
+padding-right: 4px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
    
 #workspaces button.active {
 	color: whitesmoke;
-   	border-radius: 15px 15px 15px 15px;
-   	padding-left: 8px;
-   	padding-right: 8px;
-   	animation: gradient_f 20s ease-in infinite;
-   	transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+border-radius: 15px 15px 15px 15px;
+padding-left: 8px;
+padding-right: 8px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
   
 #workspaces button.focused {
@@ -59,16 +59,16 @@ window#waybar.empty #window {
    
 #workspaces button.urgent {
 	color: #11111b;
-	border-radius: 10px;
+border-radius: 10px;
 }
 	   
 #workspaces button:hover {
 	color: whitesmoke;
-    border-radius: 15px;
- 	padding-left: 2px;
-    padding-right: 2px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+border-radius: 15px;
+padding-left: 2px;
+padding-right: 2px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 	
 #backlight,
@@ -130,9 +130,9 @@ window#waybar.empty #window {
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-right: 6px;
-	padding-left: 6px;
+padding-bottom: 4px;
+padding-right: 6px;
+padding-left: 6px;
 }
 	 
 #temperature.critical {
@@ -161,56 +161,56 @@ window#waybar.empty #window {
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
 	color: #39FF14;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+border-bottom: 8px solid rgba(0, 0, 0, 0.2);
 }
 
 #taskbar button:hover {
     padding-left: 3px;
-    padding-right: 3px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+padding-right: 3px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
    
 #taskbar button.active {
 	background-color: #7f849c;
-    padding-left: 12px;
-    padding-right: 12px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+padding-left: 12px;
+padding-right: 12px;
+animation: gradient_f 20s ease-in infinite;
+transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 	   
 #battery.critical:not(.charging) {
 	color: #f53c3c;
-	animation-name: blink;
-	animation-duration: 3.0s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
+animation-name: blink;
+animation-duration: 3.0s;
+animation-timing-function: steps(12);
+animation-iteration-count: infinite;
+animation-direction: alternate;
 }
 
 #backlight-slider slider,
 #pulseaudio-slider slider {
 	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+min-height: 0px;
+opacity: 0;
+background-image: none;
+border: none;
+box-shadow: none;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
-	min-width: 80px;  
-	min-height: 10px; 
-	border-radius: 5px;
-	background-color: black;
+	min-width: 80px;
+min-height: 10px;
+border-radius: 5px;
+background-color: black;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
-	min-height: 10px; 
-	border-radius: 5px;
-	background-color: wheat;
+	min-height: 10px;
+border-radius: 5px;
+background-color: wheat;
 }
 	
 	
