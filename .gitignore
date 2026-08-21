@@ -21,3 +21,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Runtime-generated disabled script state
+Hyprland-Dots/config/hypr/UserScripts/RainbowBorders.bak.sh

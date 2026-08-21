@@ -40,6 +40,11 @@ for pid in $(pidof waybar rofi swaync ags swaybg); do
   sleep 0.1
 done
 
+# Kill existing rainbow border processes before relaunching
+pkill -f "RainbowBorders.sh" 2>/dev/null || true
+pkill -f "RainbowBordersSnake.sh" 2>/dev/null || true
+pkill -f "RainbowBordersSmooth.sh" 2>/dev/null || true
+
 #Restart waybar
 sleep 0.1
 waybar &
@@ -51,6 +56,7 @@ swaync >/dev/null 2>&1 &
 swaync-client --reload-config
 
 # Relaunching rainbow borders if the script exists
+# RainbowBorders.sh reads the saved mode from ~/.config/hypr/.rainbow_borders_enabled
 sleep 1
 if file_exists "${UserScripts}/RainbowBorders.sh"; then
   ${UserScripts}/RainbowBorders.sh &

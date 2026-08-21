@@ -1,12 +1,28 @@
 #!/usr/bin/env bash
 # /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
-# RainbowBorders - Snake animation with wallust or rainbow colors
-# Modes: snake | rainbow | wallust_random | gradient_flow
+# RainbowBorders - Border animation with wallust or rainbow colors
+# Modes: snake | rainbow | wallust_random | gradient_flow | neon | boomerang | galaxy
+
+# ---------- PREVENT DUPLICATES ----------
+lock_file="$XDG_RUNTIME_DIR/rainbow-borders.lock"
+exec 200>"$lock_file"
+flock -n 200 || exit 0
 
 # ---------- CONFIG ----------
 EFFECT_TYPE="snake"
-ANIMATION_DELAY=0.23
+ANIMATION_DELAY=0.3
+
+# ---------- RESTORE SAVED MODE ----------
+STATE_FILE="$HOME/.config/hypr/.rainbow_borders_enabled"
+if [[ -f "$STATE_FILE" ]]; then
+    saved_mode=$(cat "$STATE_FILE" 2>/dev/null)
+    case "$saved_mode" in
+        snake|rainbow|wallust_random|gradient_flow|neon|boomerang|galaxy)
+            EFFECT_TYPE="$saved_mode"
+            ;;
+    esac
+fi
 
 # ---------- WALLUST COLORS ----------
 WALLUST_COLORS_SOURCE="$HOME/.config/hypr/wallust/wallust-hyprland.conf"
@@ -45,25 +61,136 @@ load_wallust_colors() {
     fi
 }
 
-# ---------- RAINBOW COLORS ----------
-RAINBOW_COLORS=(
-    "0xffff0000" "0xffff7f00" "0xffffff00" "0xff00ff00"
-    "0xff00ffff" "0xff0000ff" "0xff8b00ff" "0xffff007f"
-    "0xffff5500" "0xffffaa00"
-)
-
-function rainbow_color() {
-    local i=$(( $1 % 10 ))
-    echo "${RAINBOW_COLORS[$i]}"
+# ---------- HSV TO COLOR ----------
+function hsv_to_color() {
+    local h=$1 s=$2 v=$3
+    local region=$(( h / 60 ))
+    local remainder=$(( h % 60 ))
+    local c=$(( v * s / 10000 ))
+    local x=$(( c * (60 - remainder) / 60 ))
+    local m=$(( v - c ))
+    local r=0 g=0 b=0
+    case $(( region % 6 )) in
+        0) r=$c; g=$x; b=0 ;;
+        1) r=$x; g=$c; b=0 ;;
+        2) r=0; g=$c; b=$x ;;
+        3) r=0; g=$x; b=$c ;;
+        4) r=$x; g=0; b=$c ;;
+        5) r=$c; g=0; b=$x ;;
+    esac
+    r=$(( r + m )); g=$(( g + m )); b=$(( b + m ))
+    printf "0xff%02x%02x%02x" "$r" "$g" "$b"
 }
 
-# ---------- WALLUST RANDOM ----------
-function wallust_random() {
-    if [[ ${#WALLUST_COLORS[@]} -gt 0 ]]; then
-        echo "${WALLUST_COLORS[RANDOM % ${#WALLUST_COLORS[@]}]}"
+# ---------- BRIGHT RGB PALETTE ----------
+PALETTE=(
+    "0xff00f0ff"  # cyan
+    "0xfff000ff"  # magenta
+    "0xffffff00"  # yellow
+    "0xffff0000"  # red
+    "0xff00ff00"  # green
+    "0xff0000ff"  # blue
+    "0xffff7f00"  # orange
+    "0xffff007f"  # pink
+    "0xff7fff00"  # lime
+    "0xff8b00ff"  # violet
+)
+
+SNAKE_HEAD=0
+SNAKE_PHASE=0
+BOOMERANG_POS=0
+GLOW_POS=0
+
+# ---------- BOOMERANG MODE ----------
+function get_boomerang_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        local dist=$(( (i - BOOMERANG_POS + 10) % 10 ))
+        if (( dist == 0 )); then
+            colors[$i]="${PALETTE[0]}"               # cyan
+        elif (( dist == 3 )); then
+            colors[$i]="${PALETTE[3]}"               # red
+        elif (( dist == 6 )); then
+            colors[$i]="${PALETTE[6]}"               # orange
+        else
+            colors[$i]="0xff110000"
+        fi
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- NEON MODE ----------
+function get_neon_colors() {
+    local colors=()
+    local phase=$(( (SNAKE_PHASE % 20 + 20) % 20 ))
+    local brightness
+    if (( phase < 10 )); then
+        brightness=$(( phase + 1 ))
     else
-        echo "0xff$(openssl rand -hex 3)"
+        brightness=$(( 20 - phase ))
     fi
+    for (( i = 0; i < 10; i++ )); do
+        local idx=$(( (SNAKE_PHASE / 2 + i) % 10 ))
+        local hex="${PALETTE[$idx]#0xff}"
+        local r=$((16#${hex:0:2}))
+        local g=$((16#${hex:2:2}))
+        local b=$((16#${hex:4:2}))
+        r=$(( r * brightness / 10 ))
+        g=$(( g * brightness / 10 ))
+        b=$(( b * brightness / 10 ))
+        colors[$i]=$(printf "0xff%02x%02x%02x" "$r" "$g" "$b")
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- SNAKE MODE ----------
+function get_snake_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        if (( i == SNAKE_HEAD )); then
+            colors[$i]="${PALETTE[$((SNAKE_HEAD % 10))]}"
+        else
+            colors[$i]="0xff201030"
+        fi
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- GALAXY MODE ----------
+function get_galaxy_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        local hue=$(( (SNAKE_PHASE * 18 + i * 36) % 360 ))
+        colors[$i]=$(hsv_to_color "$hue" 100 100)
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- RAINBOW MODE ----------
+function get_rainbow_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        local hue=$(( (SNAKE_PHASE + i * 36) % 360 ))
+        colors[$i]=$(hsv_to_color "$hue" 100 100)
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- WALLUST RANDOM MODE ----------
+function get_wallust_random_colors() {
+    local colors=()
+    local count=${#WALLUST_COLORS[@]}
+    if (( count > 0 )); then
+        for (( i = 0; i < 10; i++ )); do
+            local idx=$(( (SNAKE_PHASE + i) % count ))
+            colors[$i]="${WALLUST_COLORS[$idx]}"
+        done
+    else
+        for (( i = 0; i < 10; i++ )); do
+            colors[$i]="0xff$(openssl rand -hex 3)"
+        done
+    fi
+    echo "${colors[@]}"
 }
 
 # ---------- GRADIENT FLOW ----------
@@ -72,7 +199,6 @@ GRAD1_COLOR=""
 GRAD2_COLOR=""
 GLOW_COLOR=""
 MAX_POS=10
-GLOW_POS=0
 
 function gradient_flow_color() {
     local pos=$1
@@ -87,13 +213,12 @@ function gradient_flow_color() {
     esac
 }
 
-# ---------- SNAKE ANIMATION ----------
-SNAKE_POS=0
-
-function snake_color() {
-    local pos=$1
-    local idx=$(( (SNAKE_POS + pos) % 10 ))
-    echo "${RAINBOW_COLORS[$idx]}"
+function get_gradient_flow_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        colors[$i]=$(gradient_flow_color $i)
+    done
+    echo "${colors[@]}"
 }
 
 # ---------- INIT ----------
@@ -106,29 +231,20 @@ if [[ "$EFFECT_TYPE" == "gradient_flow" && ${#WALLUST_COLORS[@]} -ge 16 ]]; then
     GLOW_COLOR="${WALLUST_COLORS[15]}"
 fi
 
-function get_color() {
-    case "$EFFECT_TYPE" in
-        snake)        snake_color "$1" ;;
-        rainbow)      rainbow_color "$1" ;;
-        wallust_random) wallust_random ;;
-        gradient_flow)
-            if [[ ${#WALLUST_COLORS[@]} -ge 16 ]]; then
-                gradient_flow_color "$1"
-            else
-                rainbow_color "$1"
-            fi
-            ;;
-        *)            rainbow_color "$1" ;;
-    esac
-}
-
 # ---------- MAIN LOOP ----------
 while true; do
-    hyprctl eval "hl.config({general = {col = {active_border = {colors = {$(get_color 0), $(get_color 1), $(get_color 2), $(get_color 3), $(get_color 4), $(get_color 5), $(get_color 6), $(get_color 7), $(get_color 8), $(get_color 9)}, angle = 270}}}})"
+    case "$EFFECT_TYPE" in
+        galaxy)         colors=($(get_galaxy_colors)); SNAKE_PHASE=$(( (SNAKE_PHASE + 1) % 20 )) ;;
+        snake)          colors=($(get_snake_colors)); SNAKE_HEAD=$(( (SNAKE_HEAD + 1) % 10 )) ;;
+        neon)           colors=($(get_neon_colors)); SNAKE_PHASE=$(( (SNAKE_PHASE + 1) % 20 )) ;;
+        boomerang)      colors=($(get_boomerang_colors)); BOOMERANG_POS=$(( (BOOMERANG_POS + 1) % 10 )) ;;
+        rainbow)        colors=($(get_rainbow_colors)); SNAKE_PHASE=$(( (SNAKE_PHASE + 1) % 20 )) ;;
+        wallust_random) colors=($(get_wallust_random_colors)); SNAKE_PHASE=$(( (SNAKE_PHASE + 1) % 20 )) ;;
+        gradient_flow)  colors=($(get_gradient_flow_colors)); GLOW_POS=$(( (GLOW_POS + 1) % 10 )) ;;
+        *)              colors=($(get_rainbow_colors)); SNAKE_PHASE=$(( (SNAKE_PHASE + 1) % 20 )) ;;
+    esac
 
-    if [[ "$EFFECT_TYPE" == "snake" ]]; then
-        SNAKE_POS=$(( (SNAKE_POS + 1) % 10 ))
-    fi
+    hyprctl eval "hl.config({general = {col = {active_border = {colors = {${colors[0]}, ${colors[1]}, ${colors[2]}, ${colors[3]}, ${colors[4]}, ${colors[5]}, ${colors[6]}, ${colors[7]}, ${colors[8]}, ${colors[9]}}, angle = 270}}}})"
 
     sleep "$ANIMATION_DELAY"
 done

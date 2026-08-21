@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 # /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
 # JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
-# RainbowBorders - Snake animation with wallust or rainbow colors
+# RainbowBorders - Border animation with wallust or rainbow colors
 # Modes: snake | rainbow | wallust_random | gradient_flow
+
+# ---------- PREVENT DUPLICATES ----------
+lock_file="$XDG_RUNTIME_DIR/rainbow-borders.lock"
+exec 200>"$lock_file"
+flock -n 200 || exit 0
 
 # ---------- CONFIG ----------
 EFFECT_TYPE="snake"
-ANIMATION_DELAY=0.23
+ANIMATION_DELAY=0.3
 
 # ---------- WALLUST COLORS ----------
 WALLUST_COLORS_SOURCE="$HOME/.config/hypr/wallust/wallust-hyprland.conf"
@@ -45,25 +50,104 @@ load_wallust_colors() {
     fi
 }
 
-# ---------- RAINBOW COLORS ----------
+# ---------- RAINBOW PALETTE ----------
 RAINBOW_COLORS=(
     "0xffff0000" "0xffff7f00" "0xffffff00" "0xff00ff00"
     "0xff00ffff" "0xff0000ff" "0xff8b00ff" "0xffff007f"
     "0xffff5500" "0xffffaa00"
 )
 
-function rainbow_color() {
-    local i=$(( $1 % 10 ))
-    echo "${RAINBOW_COLORS[$i]}"
+# ---------- SNAKE MODE ----------
+# One bright neon head segment moving clockwise.
+# All other segments are dark purple. Head color is fixed neon.
+SNAKE_HEAD=0
+NEON_HEAD_COLOR="0xff00f0ff"  # neon cyan
+
+function get_snake_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        if (( i == SNAKE_HEAD )); then
+            colors[$i]="$NEON_HEAD_COLOR"
+        else
+            colors[$i]="0xff201030"
+        fi
+    done
+    echo "${colors[@]}"
 }
 
-# ---------- WALLUST RANDOM ----------
-function wallust_random() {
-    if [[ ${#WALLUST_COLORS[@]} -gt 0 ]]; then
-        echo "${WALLUST_COLORS[RANDOM % ${#WALLUST_COLORS[@]}]}"
+# ---------- NEON MODE (edge lighting) ----------
+# Uniform neon glow that pulses in brightness. All 10 segments share
+# the same neon color; brightness cycles up/down.
+SNAKE_PHASE=0
+
+function get_neon_colors() {
+    local colors=()
+    local phase=$(( SNAKE_PHASE % 20 ))
+    local brightness
+    if (( phase <= 10 )); then
+        brightness=$phase
     else
-        echo "0xff$(openssl rand -hex 3)"
+        brightness=$(( 20 - phase ))
     fi
+    local r=$(( 0x00 + (0xf0 - 0x00) * brightness / 10 ))
+    local g=$(( 0x00 + (0xf0 - 0x00) * brightness / 10 ))
+    local b=$(( 0xff + (0xff - 0xff) * brightness / 10 ))
+    local dim_color=$(printf "0xff%02x%02x%02x" "$r" "$g" "$b")
+    for (( i = 0; i < 10; i++ )); do
+        colors[$i]="$dim_color"
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- RAINBOW MODE ----------
+# A true rainbow: each segment gets a different hue from the full
+# 0-359 spectrum, evenly spaced. The whole border shifts as one
+# smooth rainbow wave — no blinking, no color cycling.
+function hsv_to_color() {
+    local h=$1 s=$2 v=$3
+    local c=$(( v * s / 10000 ))
+    local x=$(( v * s / 10000 * (60 - ((h / 60) % 2) * (60 - ((h / 60) % 2) * 60) ) ))
+    local m=$(( v - c ))
+    local r=0 g=0 b=0
+    case $(( (h / 60) % 6 )) in
+        0) r=$c; g=$x; b=0 ;;
+        1) r=$x; g=$c; b=0 ;;
+        2) r=0; g=$c; b=$x ;;
+        3) r=0; g=$x; b=$c ;;
+        4) r=$x; g=0; b=$c ;;
+        5) r=$c; g=0; b=$x ;;
+    esac
+    r=$(( r + m )); g=$(( g + m )); b=$(( b + m ))
+    printf "0xff%02x%02x%02x" "$r" "$g" "$b"
+}
+
+function get_rainbow_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        local hue=$(( (SNAKE_HEAD + i * 36) % 360 ))
+        colors[$i]=$(hsv_to_color "$hue" 100 100)
+    done
+    echo "${colors[@]}"
+}
+
+# ---------- WALLUST RANDOM MODE ----------
+# Uses wallust colors as a gradient palette, rotating through them.
+# Each frame picks a new set of wallust colors and applies them
+# as a gradient along the border — not christmas lights.
+function get_wallust_random_colors() {
+    local colors=()
+    local count=${#WALLUST_COLORS[@]}
+    if (( count > 0 )); then
+        for (( i = 0; i < 10; i++ )); do
+            local idx=$(( (SNAKE_HEAD + i) % count ))
+            colors[$i]="${WALLUST_COLORS[$idx]}"
+        done
+    else
+        for (( i = 0; i < 10; i++ )); do
+            colors[$i]="0xff$(openssl rand -hex 3)"
+        done
+    fi
+    echo "${colors[@]}"
 }
 
 # ---------- GRADIENT FLOW ----------
@@ -87,13 +171,12 @@ function gradient_flow_color() {
     esac
 }
 
-# ---------- SNAKE ANIMATION ----------
-SNAKE_POS=0
-
-function snake_color() {
-    local pos=$1
-    local idx=$(( (SNAKE_POS + pos) % 10 ))
-    echo "${RAINBOW_COLORS[$idx]}"
+function get_gradient_flow_colors() {
+    local colors=()
+    for (( i = 0; i < 10; i++ )); do
+        colors[$i]=$(gradient_flow_color $i)
+    done
+    echo "${colors[@]}"
 }
 
 # ---------- INIT ----------
@@ -106,29 +189,19 @@ if [[ "$EFFECT_TYPE" == "gradient_flow" && ${#WALLUST_COLORS[@]} -ge 16 ]]; then
     GLOW_COLOR="${WALLUST_COLORS[15]}"
 fi
 
-function get_color() {
-    case "$EFFECT_TYPE" in
-        snake)        snake_color "$1" ;;
-        rainbow)      rainbow_color "$1" ;;
-        wallust_random) wallust_random ;;
-        gradient_flow)
-            if [[ ${#WALLUST_COLORS[@]} -ge 16 ]]; then
-                gradient_flow_color "$1"
-            else
-                rainbow_color "$1"
-            fi
-            ;;
-        *)            rainbow_color "$1" ;;
-    esac
-}
-
 # ---------- MAIN LOOP ----------
 while true; do
-    hyprctl eval "hl.config({general = {col = {active_border = {colors = {$(get_color 0), $(get_color 1), $(get_color 2), $(get_color 3), $(get_color 4), $(get_color 5), $(get_color 6), $(get_color 7), $(get_color 8), $(get_color 9)}, angle = 270}}}})"
+    case "$EFFECT_TYPE" in
+        snake)          colors=($(get_snake_colors)) ;;
+        rainbow)        colors=($(get_rainbow_colors)) ;;
+        wallust_random) colors=($(get_wallust_random_colors)) ;;
+        gradient_flow)  colors=($(get_gradient_flow_colors)) ;;
+        *)              colors=($(get_rainbow_colors)) ;;
+    esac
 
-    if [[ "$EFFECT_TYPE" == "snake" ]]; then
-        SNAKE_POS=$(( (SNAKE_POS + 1) % 10 ))
-    fi
+    hyprctl eval "hl.config({general = {col = {active_border = {colors = {${colors[0]}, ${colors[1]}, ${colors[2]}, ${colors[3]}, ${colors[4]}, ${colors[5]}, ${colors[6]}, ${colors[7]}, ${colors[8]}, ${colors[9]}}, angle = 270}}}})"
+
+    SNAKE_HEAD=$(( (SNAKE_HEAD + 1) % 10 ))
 
     sleep "$ANIMATION_DELAY"
 done

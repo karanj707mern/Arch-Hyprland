@@ -62,6 +62,7 @@ toggle_rainbow_borders() {
     local disabled_bak_sh="$UserScripts/RainbowBorders.bak.sh" # RainbowBorders.bak.sh (created by copy.sh when disabled)
     local refresh_script="$scriptsDir/Refresh.sh"
     local state_file="$HOME/.config/hypr/.rainbow_borders_enabled"
+    local current="disabled"
     local status=""
 
     # If both disabled variants exist, keep the newer one to avoid ambiguity
@@ -73,10 +74,16 @@ toggle_rainbow_borders() {
         fi
     fi
 
+    # Read saved mode from state file
+    if [[ -f "$state_file" ]]; then
+        current=$(cat "$state_file" 2>/dev/null)
+        [[ -z "$current" ]] && current="disabled"
+    fi
+
     if [[ -f "$rainbow_script" ]]; then
         # Currently enabled -> disable to canonical .sh.bak
         if mv "$rainbow_script" "$disabled_sh_bak"; then
-            status="disabled"
+            current="disabled"
             rm -f "$state_file"
             kill_rainbow_borders
             reset_active_border
@@ -87,14 +94,14 @@ toggle_rainbow_borders() {
     elif [[ -f "$disabled_sh_bak" ]]; then
         # Disabled (.sh.bak) -> enable
         if mv "$disabled_sh_bak" "$rainbow_script"; then
-            status="enabled"
-            touch "$state_file"
+            current="${current:-snake}"
+            echo "$current" > "$state_file"
         fi
     elif [[ -f "$disabled_bak_sh" ]]; then
         # Disabled (.bak.sh) -> enable (normalize to .sh)
         if mv "$disabled_bak_sh" "$rainbow_script"; then
-            status="enabled"
-            touch "$state_file"
+            current="${current:-snake}"
+            echo "$current" > "$state_file"
         fi
     else
         show_info "RainbowBorders script not found in $UserScripts (checked .sh, .sh.bak, .bak.sh)."
@@ -102,14 +109,16 @@ toggle_rainbow_borders() {
     fi
 
     # Run refresh if available, otherwise apply borders directly
-    if [[ -x "$refresh_script" ]]; then
-        "$refresh_script" >/dev/null 2>&1 &
-    elif [[ "$current" != "disabled" && -x "$rainbow_script" ]]; then
-        "$rainbow_script" >/dev/null 2>&1 &
+    if [[ "$current" != "disabled" ]]; then
+        if [[ -x "$refresh_script" ]]; then
+            "$refresh_script" >/dev/null 2>&1 &
+        elif [[ -x "$rainbow_script" ]]; then
+            "$rainbow_script" >/dev/null 2>&1 &
+        fi
     fi
 
-    if [[ -n "$status" ]]; then
-        show_info "Rainbow Borders ${status}."
+    if [[ -n "$current" ]]; then
+        show_info "Rainbow Borders ${current}."
     fi
 }
 
@@ -135,11 +144,13 @@ rainbow_borders_menu() {
         wallust) current_display="Wallust Gradient" ;;
         rainbow) current_display="Fixed Rainbow" ;;
         snake) current_display="Snake Walking" ;;
+        neon) current_display="Neon Glow" ;;
+        boomerang) current_display="Boomerang" ;;
         disabled) current_display="Disabled" ;;
     esac
 
     # Build options and prompt
-    local options="Disable Rainbow Borders\nWallust Gradient\nFixed Rainbow\nSnake Walking"
+    local options="Disable Rainbow Borders\nWallust Gradient\nFixed Rainbow\nSnake Walking\nNeon Glow\nBoomerang\nGalaxy"
     local choice
     choice=$(printf "%b" "$options" | rofi -i -dmenu -config "$rofi_theme" -mesg "Rainbow Borders: current = $current_display")
 
@@ -173,6 +184,21 @@ rainbow_borders_menu() {
             current="snake"
             echo "$mode" > "$state_file"
             ;;
+        "Neon Glow")
+            mode="neon"
+            current="neon"
+            echo "$mode" > "$state_file"
+            ;;
+        "Boomerang")
+            mode="boomerang"
+            current="boomerang"
+            echo "$mode" > "$state_file"
+            ;;
+        "Galaxy")
+            mode="galaxy"
+            current="galaxy"
+            echo "$mode" > "$state_file"
+            ;;
         *)
             return ;;
     esac
@@ -201,6 +227,30 @@ rainbow_borders_menu() {
                     bash "$snake_script" "snake" >/dev/null 2>&1 &
                 elif [[ -f "$old_script" ]]; then
                     sed -i 's/^EFFECT_TYPE=.*/EFFECT_TYPE="snake"/' "$old_script"
+                    bash "$old_script" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Neon Glow")
+                if [[ -f "$snake_script" ]]; then
+                    bash "$snake_script" "neon" >/dev/null 2>&1 &
+                elif [[ -f "$old_script" ]]; then
+                    sed -i 's/^EFFECT_TYPE=.*/EFFECT_TYPE="neon"/' "$old_script"
+                    bash "$old_script" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Boomerang")
+                if [[ -f "$snake_script" ]]; then
+                    bash "$snake_script" "boomerang" >/dev/null 2>&1 &
+                elif [[ -f "$old_script" ]]; then
+                    sed -i 's/^EFFECT_TYPE=.*/EFFECT_TYPE="boomerang"/' "$old_script"
+                    bash "$old_script" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Galaxy")
+                if [[ -f "$snake_script" ]]; then
+                    bash "$snake_script" "galaxy" >/dev/null 2>&1 &
+                elif [[ -f "$old_script" ]]; then
+                    sed -i 's/^EFFECT_TYPE=.*/EFFECT_TYPE="galaxy"/' "$old_script"
                     bash "$old_script" >/dev/null 2>&1 &
                 fi
                 ;;
