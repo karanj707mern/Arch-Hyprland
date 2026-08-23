@@ -1,3 +1,4 @@
+@define-color textcolor #cdd6f4;
 /*
  * __        __          _                  ____  _         _
  * \ \      / /_ _ _   _| |__   __ _ _ __  / ___|| |_ _   _| | ___
@@ -454,4 +455,10 @@ animation-direction: alternate;
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 background-color: #eb4d4b;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

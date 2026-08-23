@@ -1,3 +1,18 @@
+@define-color background-alt #181825;
+/* fallback defines (matugen palette) referenced but never defined */
+@define-color foreground #cdd6f4;
+@define-color color1 #f38ba8;
+@define-color color2 #a6e3a1;
+@define-color color3 #f9e2af;
+@define-color color4 #89b4fa;
+@define-color color5 #cba6f7;
+@define-color color6 #94e2d5;
+@define-color color7 #bac2de;
+@define-color color9 #f5c2e7;
+@define-color color10 #89dceb;
+@define-color color11 #fab387;
+@define-color color12 #a6adc8;
+@define-color color14 #74c7ec;
 /* ML4W GLASS THEME */
 
 /* SPDX-FileCopyrightText: 2026-present Ahum Maitra theahummaitra@gmail.com
@@ -25,7 +40,7 @@ margin-top: 3px;
 padding-bottom: 2px;
 }
 
-@import "ML4W/glass.css";
+@import "style/ML4W/glass.css";
 /* Soft-neutral override: keeps glass gradients but avoids red-dominant palettes */
 @define-color surface       @background-alt;
 @define-color surface_dim   @background;
@@ -345,8 +360,21 @@ color: @on_surface;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   background-color: transparent;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: @error;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

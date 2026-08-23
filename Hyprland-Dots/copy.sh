@@ -33,9 +33,9 @@
 
 clear
 wallpaper=$HOME/.config/hypr/wallpaper_effects/.wallpaper_current
-waybar_style="$HOME/.config/waybar/style/[Extra] Neon Circuit.css"
-waybar_config="$HOME/.config/waybar/configs/[TOP] Default"
-waybar_config_laptop="$HOME/.config/waybar/configs/[TOP] Default Laptop"
+waybar_style="$HOME/.config/waybar/style/[Colorful] stolen-style.css"
+waybar_config="$HOME/.config/waybar/configs/[TOP & BOT] SummitSplit-glass"
+waybar_config_laptop="$HOME/.config/waybar/configs/[TOP & BOT] SummitSplit-glass"
 
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"

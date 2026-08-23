@@ -1,5 +1,4 @@
-//* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- *//
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
 /* Waybar Modules - Groups Modules */
 /* Basically created to reduce the lines in Waybar Modules bank */
 /* NOTE: This is only for Groups */
@@ -19,7 +18,7 @@
 		"custom/file_manager",
 		"custom/tty",
 		"custom/browser",
-		"custom/settings",
+		"custom/settings"
 	]
 },
 "group/motherboard": {
@@ -28,8 +27,8 @@
 		"cpu",
 		"power-profiles-daemon",
 		"memory",
-		"temperature",
-		"disk",
+		"custom/tempfan",
+		"disk"
 	]
 },
 
@@ -45,14 +44,14 @@
 		"cpu",
 		"power-profiles-daemon",	
 		"memory",
-		"disk",
+		"disk"
 	]
 },
 "group/laptop": {
 	"orientation": "inherit",
 	"modules": [
 		"backlight",
-		"battery",
+		"battery"
 	]
 },
 "group/audio": {
@@ -64,7 +63,7 @@
         },
 	"modules": [
 		"pulseaudio",
-		"pulseaudio#microphone",
+		"pulseaudio#microphone"
 	]
 },
 
@@ -77,7 +76,7 @@
         },
 	"modules": [
 		"network",
-		"bluetooth",
+		"bluetooth"
 	]
 },
 
@@ -92,7 +91,7 @@
 		"custom/power",
 		"custom/lock",
 		"keyboard-state",
-		"custom/keyboard",
+		"custom/keyboard"
 	]
 },
 "group/notify": {
@@ -104,7 +103,7 @@
         },
 	"modules": [
 		"custom/swaync",
-		"custom/dot_update",
+		"custom/dot_update"
 	]
 },
 
@@ -136,5 +135,5 @@
         "custom/logout",
         "custom/reboot"
       ]
-},
+}
 }

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-## /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+## /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # For Dark and Light switching
 # Note: Scripts are looking for keywords Light or Dark except for wallpapers as the are in a separate directories
 
@@ -40,7 +39,7 @@ awww="awww img"
 effect="--transition-bezier .43,1.19,1,.4 --transition-fps 60 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
 
 # Determine current theme mode
-if [ "$(cat "$HOME/.cache/.theme_mode")" = "Light" ]; then
+if [ "$(cat $HOME/.cache/.theme_mode)" = "Light" ]; then
     next_mode="Dark"
     # Logic for Dark mode
     wallpaper_path="$dark_wallpapers"

@@ -1,5 +1,4 @@
-/* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 
 // ### DEFAULT Laptop  - Top ### //
 {
@@ -8,7 +7,7 @@
   "$HOME/.config/waybar/ModulesWorkspaces",
   "$HOME/.config/waybar/ModulesCustom",
   "$HOME/.config/waybar/ModulesGroups",
-  "$HOME/.config/waybar/UserModules",
+  "$HOME/.config/waybar/UserModules"
   ],
 "layer": "top",
 //"mode": "dock",
@@ -28,7 +27,7 @@
 	"custom/separator#blank",
 	"custom/playerctl",
 	"custom/separator#blank_2",
-	"hyprland/window",
+	"hyprland/window"
 	],
 
 "modules-center": [
@@ -42,7 +41,7 @@
 	"custom/weather",
 	"custom/separator#dot-line",
 	"idle_inhibitor",	
-	"custom/hint",	
+	"custom/hint"
 	],
 
 "modules-right": [
@@ -56,6 +55,6 @@
 	"group/audio",
 	"custom/separator#dot-line", 
 	"custom/nightlight",
-	"group/status",
-	],
+	"group/status"
+	]
 }

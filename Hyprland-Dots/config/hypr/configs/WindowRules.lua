@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- Vendor defaults for window rules and layerrules
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/ for more
 

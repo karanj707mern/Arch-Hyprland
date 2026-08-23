@@ -1,3 +1,7 @@
+/* fallback defines for variables referenced but never defined */
+@define-color wb-color #e0def4;
+@define-color wb-act-color #191724;
+@define-color wb-hvr-color #191724;
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Rose Pine */
@@ -161,7 +165,7 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
     color: @main-fg;
@@ -260,4 +264,17 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
 	min-height: 10px;
 border-radius: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # RofiBeats - unified, dynamic UI (add, remove, manage, play)
 
 mDIR="$HOME/Music/"

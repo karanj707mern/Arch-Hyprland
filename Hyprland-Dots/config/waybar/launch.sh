@@ -94,6 +94,8 @@ _toggle_module() {
     local settings_file=$2
     local value=$(cat "$settings_file")
     local file="$HOME/.config/waybar/themes${arrThemes[0]}/config"
+    # Nothing to toggle when the legacy theme layout is not in use
+    [ -f "$file" ] || return 0
     if [ "$value" == "True" ]; then
         search_string=" \"$module_name\""
         if ! grep -qF "$search_string" "$file"; then
@@ -131,9 +133,17 @@ fi
 
 # Check if waybar-disabled file exists
 if [ ! -f $HOME/.config/ml4w/settings/waybar-disabled ]; then
-    HYPRLAND_SIGNATURE=$(hyprctl instances -j | jq -r '.[0].instance')
-    HYPRLAND_INSTANCE_SIGNATURE="$HYPRLAND_SIGNATURE" waybar -c ~/.config/waybar/themes${arrThemes[0]}/$config_file -s ~/.config/waybar/themes${arrThemes[1]}/$style_file &
-    # env GTK_DEBUG=interactive waybar -c ~/.config/waybar/themes${arrThemes[0]}/$config_file -s ~/.config/waybar/themes${arrThemes[1]}/$style_file &
+    # Log to a file: keeps the bar safe from SIGPIPE when the spawning
+    # shell/terminal closes, and keeps startup logs for debugging.
+    waybar_log="$HOME/.config/waybar/waybar.log"
+    if [ -f "$HOME/.config/waybar/themes${arrThemes[0]}/$config_file" ] && [ -f "$HOME/.config/waybar/themes${arrThemes[1]}/$style_file" ]; then
+        HYPRLAND_SIGNATURE=$(hyprctl instances -j | jq -r '.[0].instance')
+        HYPRLAND_INSTANCE_SIGNATURE="$HYPRLAND_SIGNATURE" waybar -c ~/.config/waybar/themes${arrThemes[0]}/$config_file -s ~/.config/waybar/themes${arrThemes[1]}/$style_file >>"$waybar_log" 2>&1 &
+    else
+        # Legacy themes folder absent/incomplete: use the standard symlinked config & style
+        echo ":: Theme files missing, using default ~/.config/waybar/{config,style.css}"
+        waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css >>"$waybar_log" 2>&1 &
+    fi
 else
     echo ":: Waybar disabled"
 fi

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Wallust: derive colors from the current wallpaper and update templates
 # Usage: WallustSwww.sh [absolute_path_to_wallpaper]
 
@@ -78,6 +77,9 @@ fi
 ln -sf "$wallpaper_path" "$rofi_link" || true
 mkdir -p "$(dirname "$wallpaper_current")"
 cp -f "$wallpaper_path" "$wallpaper_current" || true
+
+# Refresh ml4w hyprlock lock-screen cache images (non-blocking)
+"$HOME/.config/ml4w/scripts/ml4w-lockscreen-cache" "$wallpaper_path" >/dev/null 2>&1 &
 
 # Ensure Ghostty directory exists so Wallust can write target even if Ghostty isn't installed
 mkdir -p "$HOME/.config/ghostty" || true

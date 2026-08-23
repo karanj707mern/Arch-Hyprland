@@ -1,3 +1,17 @@
+/* fallback defines (matugen palette) referenced but never defined */
+@define-color foreground #cdd6f4;
+@define-color color1 #f38ba8;
+@define-color color2 #a6e3a1;
+@define-color color3 #f9e2af;
+@define-color color4 #89b4fa;
+@define-color color5 #cba6f7;
+@define-color color6 #94e2d5;
+@define-color color7 #bac2de;
+@define-color color9 #f5c2e7;
+@define-color color10 #89dceb;
+@define-color color11 #fab387;
+@define-color color12 #a6adc8;
+@define-color color14 #74c7ec;
 /* -----------------------------------------------------
  * Import Matugen Colors
  * ----------------------------------------------------- */
@@ -108,4 +122,4 @@
 
     @define-color tertiary_fixed_dim #d7c68d;
 
-@import '../../ml4w-glass/style.css';
+@import "style/ML4W/glass.css";

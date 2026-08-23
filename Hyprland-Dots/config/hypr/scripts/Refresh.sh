@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Scripts for refreshing ags, waybar, rofi, swaync, wallust
 
 SCRIPTSDIR=$HOME/.config/hypr/scripts
@@ -40,11 +39,6 @@ for pid in $(pidof waybar rofi swaync ags swaybg); do
   sleep 0.1
 done
 
-# Kill existing rainbow border processes before relaunching
-pkill -f "RainbowBorders.sh" 2>/dev/null || true
-pkill -f "RainbowBordersSnake.sh" 2>/dev/null || true
-pkill -f "RainbowBordersSmooth.sh" 2>/dev/null || true
-
 #Restart waybar
 sleep 0.1
 waybar &
@@ -55,11 +49,12 @@ swaync >/dev/null 2>&1 &
 # reload swaync
 swaync-client --reload-config
 
-# Relaunching rainbow borders if the script exists
-# RainbowBorders.sh reads the saved mode from ~/.config/hypr/.rainbow_borders_enabled
+# Relaunching rainbow borders if enabled (respects the saved mode)
+state_file="$HOME/.config/hypr/.rainbow_borders_enabled"
 sleep 1
-if file_exists "${UserScripts}/RainbowBorders.sh"; then
-  ${UserScripts}/RainbowBorders.sh &
+border_start="$SCRIPTSDIR/RainbowBorderStart.sh"
+if [[ -f "$state_file" && -x "$border_start" ]]; then
+    "$border_start" "$state_file" &
 fi
 
 exit 0

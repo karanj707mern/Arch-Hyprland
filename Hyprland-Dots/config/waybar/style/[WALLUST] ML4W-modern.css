@@ -2,7 +2,7 @@
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /*  ml4w-modern */
 
-@import '../../wallust/colors-waybar.css';
+@import 'style/../wallust/colors-waybar.css';
 
 @define-color backgroundlight @color0;
 @define-color backgrounddark @color12;
@@ -183,7 +183,7 @@ margin:0;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
     margin-right: 8px;
@@ -409,4 +409,10 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
 	min-height: 10px;
 border-radius: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

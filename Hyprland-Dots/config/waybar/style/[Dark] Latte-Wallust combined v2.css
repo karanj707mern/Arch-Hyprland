@@ -18,8 +18,8 @@
 @define-color button-color          @color10;
 @define-color button-hover          @color13;
 
-@import '../../wallust/colors-waybar.css';
-@import "./catppuccin-themes/latte.css";
+@import 'style/../wallust/colors-waybar.css';
+@import "style/catppuccin-themes/latte.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -167,7 +167,7 @@ border-left: 1px solid @button-hover;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
     color: @foreground;
@@ -308,3 +308,9 @@ border-radius: 15px;
 }
 #swaync{
     color: #ffd700;}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}

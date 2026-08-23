@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # Script for waybar styles
 
 IFS=$'\n\t'

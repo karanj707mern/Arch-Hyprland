@@ -1,5 +1,4 @@
-/* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 
 // ### DEFAULT (Laptop)  - Top (old v2) ### //
 {
@@ -8,7 +7,7 @@
   "$HOME/.config/waybar/ModulesWorkspaces",
   "$HOME/.config/waybar/ModulesCustom",
   "$HOME/.config/waybar/ModulesGroups",
-  "$HOME/.config/waybar/UserModules",
+  "$HOME/.config/waybar/UserModules"
   ],
 "layer": "top",
 //"mode": "dock",

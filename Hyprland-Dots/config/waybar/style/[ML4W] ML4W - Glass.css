@@ -1,3 +1,4 @@
+@define-color icon_color #cdd6f4;
 /* -----------------------------------------------------
  * Import Matugen Colors
  * ----------------------------------------------------- */
@@ -476,4 +477,10 @@ color: @on_surface;
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: @error;
 }

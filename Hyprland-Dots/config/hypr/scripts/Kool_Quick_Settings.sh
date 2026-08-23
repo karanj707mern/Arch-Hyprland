@@ -36,6 +36,7 @@ kill_rainbow_borders() {
     pkill -f "RainbowBorders.sh" 2>/dev/null || true
     pkill -f "RainbowBordersSnake.sh" 2>/dev/null || true
     pkill -f "RainbowBordersSmooth.sh" 2>/dev/null || true
+    pkill -f "WaveBorders.sh" 2>/dev/null || true
 }
 
 # Function to reset active border to default static color
@@ -62,7 +63,6 @@ toggle_rainbow_borders() {
     local disabled_bak_sh="$UserScripts/RainbowBorders.bak.sh" # RainbowBorders.bak.sh (created by copy.sh when disabled)
     local refresh_script="$scriptsDir/Refresh.sh"
     local state_file="$HOME/.config/hypr/.rainbow_borders_enabled"
-    local current="disabled"
     local status=""
 
     # If both disabled variants exist, keep the newer one to avoid ambiguity
@@ -74,16 +74,10 @@ toggle_rainbow_borders() {
         fi
     fi
 
-    # Read saved mode from state file
-    if [[ -f "$state_file" ]]; then
-        current=$(cat "$state_file" 2>/dev/null)
-        [[ -z "$current" ]] && current="disabled"
-    fi
-
     if [[ -f "$rainbow_script" ]]; then
         # Currently enabled -> disable to canonical .sh.bak
         if mv "$rainbow_script" "$disabled_sh_bak"; then
-            current="disabled"
+            status="disabled"
             rm -f "$state_file"
             kill_rainbow_borders
             reset_active_border
@@ -94,14 +88,14 @@ toggle_rainbow_borders() {
     elif [[ -f "$disabled_sh_bak" ]]; then
         # Disabled (.sh.bak) -> enable
         if mv "$disabled_sh_bak" "$rainbow_script"; then
-            current="${current:-snake}"
-            echo "$current" > "$state_file"
+            status="enabled"
+            touch "$state_file"
         fi
     elif [[ -f "$disabled_bak_sh" ]]; then
         # Disabled (.bak.sh) -> enable (normalize to .sh)
         if mv "$disabled_bak_sh" "$rainbow_script"; then
-            current="${current:-snake}"
-            echo "$current" > "$state_file"
+            status="enabled"
+            touch "$state_file"
         fi
     else
         show_info "RainbowBorders script not found in $UserScripts (checked .sh, .sh.bak, .bak.sh)."
@@ -109,16 +103,14 @@ toggle_rainbow_borders() {
     fi
 
     # Run refresh if available, otherwise apply borders directly
-    if [[ "$current" != "disabled" ]]; then
-        if [[ -x "$refresh_script" ]]; then
-            "$refresh_script" >/dev/null 2>&1 &
-        elif [[ -x "$rainbow_script" ]]; then
-            "$rainbow_script" >/dev/null 2>&1 &
-        fi
+    if [[ -x "$refresh_script" ]]; then
+        "$refresh_script" >/dev/null 2>&1 &
+    elif [[ "$current" != "disabled" && -x "$rainbow_script" ]]; then
+        "$rainbow_script" >/dev/null 2>&1 &
     fi
 
-    if [[ -n "$current" ]]; then
-        show_info "Rainbow Borders ${current}."
+    if [[ -n "$status" ]]; then
+        show_info "Rainbow Borders ${status}."
     fi
 }
 
@@ -146,11 +138,22 @@ rainbow_borders_menu() {
         snake) current_display="Snake Walking" ;;
         neon) current_display="Neon Glow" ;;
         boomerang) current_display="Boomerang" ;;
+        galaxy) current_display="Galaxy" ;;
+        wave) current_display="Wave" ;;
+        wave_dual) current_display="Wave Dual" ;;
+        wave_pulse) current_display="Wave Pulse" ;;
+        tide) current_display="Tide" ;;
+        aurora) current_display="Aurora" ;;
+        plasma) current_display="Plasma" ;;
+        breathing) current_display="Breathing" ;;
+        neon_flicker) current_display="Neon Flicker" ;;
+        purple_wave) current_display="Purple Wave" ;;
+        orbit) current_display="Orbit" ;;
         disabled) current_display="Disabled" ;;
     esac
 
     # Build options and prompt
-    local options="Disable Rainbow Borders\nWallust Gradient\nFixed Rainbow\nSnake Walking\nNeon Glow\nBoomerang\nGalaxy"
+    local options="Disable Rainbow Borders\nWallust Gradient\nFixed Rainbow\nSnake Walking\nNeon Glow\nBoomerang\nGalaxy\nAurora\nPlasma\nBreathing\nNeon Flicker\nPurple Wave\nOrbit\nWave\nWave Dual\nWave Pulse\nTide"
     local choice
     choice=$(printf "%b" "$options" | rofi -i -dmenu -config "$rofi_theme" -mesg "Rainbow Borders: current = $current_display")
 
@@ -197,6 +200,56 @@ rainbow_borders_menu() {
         "Galaxy")
             mode="galaxy"
             current="galaxy"
+            echo "$mode" > "$state_file"
+            ;;
+        "Aurora")
+            mode="aurora"
+            current="aurora"
+            echo "$mode" > "$state_file"
+            ;;
+        "Plasma")
+            mode="plasma"
+            current="plasma"
+            echo "$mode" > "$state_file"
+            ;;
+        "Breathing")
+            mode="breathing"
+            current="breathing"
+            echo "$mode" > "$state_file"
+            ;;
+        "Neon Flicker")
+            mode="neon_flicker"
+            current="neon_flicker"
+            echo "$mode" > "$state_file"
+            ;;
+        "Purple Wave")
+            mode="purple_wave"
+            current="purple_wave"
+            echo "$mode" > "$state_file"
+            ;;
+        "Orbit")
+            mode="orbit"
+            current="orbit"
+            echo "$mode" > "$state_file"
+            ;;
+        "Wave")
+            mode="wave"
+            current="wave"
+            echo "$mode" > "$state_file"
+            ;;
+        "Wave Dual")
+            mode="wave_dual"
+            current="wave_dual"
+            echo "$mode" > "$state_file"
+            ;;
+        "Wave Pulse")
+            mode="wave_pulse"
+            current="wave_pulse"
+            echo "$mode" > "$state_file"
+            ;;
+        "Tide")
+            mode="tide"
+            current="tide"
             echo "$mode" > "$state_file"
             ;;
         *)
@@ -252,6 +305,57 @@ rainbow_borders_menu() {
                 elif [[ -f "$old_script" ]]; then
                     sed -i 's/^EFFECT_TYPE=.*/EFFECT_TYPE="galaxy"/' "$old_script"
                     bash "$old_script" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Aurora")
+                # Only the classic RainbowBorders.sh implements these modes
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "aurora" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Plasma")
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "plasma" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Breathing")
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "breathing" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Neon Flicker")
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "neon_flicker" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Purple Wave")
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "purple_wave" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Orbit")
+                if [[ -f "$old_script" ]]; then
+                    bash "$old_script" "orbit" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Wave")
+                if [[ -f "$UserScripts/WaveBorders.sh" ]]; then
+                    bash "$UserScripts/WaveBorders.sh" "wave" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Wave Dual")
+                if [[ -f "$UserScripts/WaveBorders.sh" ]]; then
+                    bash "$UserScripts/WaveBorders.sh" "wave_dual" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Wave Pulse")
+                if [[ -f "$UserScripts/WaveBorders.sh" ]]; then
+                    bash "$UserScripts/WaveBorders.sh" "wave_pulse" >/dev/null 2>&1 &
+                fi
+                ;;
+            "Tide")
+                if [[ -f "$UserScripts/WaveBorders.sh" ]]; then
+                    bash "$UserScripts/WaveBorders.sh" "tide" >/dev/null 2>&1 &
                 fi
                 ;;
         esac

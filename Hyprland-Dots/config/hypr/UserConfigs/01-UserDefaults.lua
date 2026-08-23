@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- This is a file where you put your own default apps, default search Engine etc
 
 hl.env("EDITOR", "nano")

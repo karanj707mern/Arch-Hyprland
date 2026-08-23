@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- User Settings
 -- This is where you put your own settings as this will not be touched during update
 -- if the upgrade.sh is used.

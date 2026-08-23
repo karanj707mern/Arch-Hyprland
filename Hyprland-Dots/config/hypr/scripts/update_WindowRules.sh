@@ -2,8 +2,8 @@
 # Script to update WindowRules config if Hyprland version is >= 0.53
 
 CONFIGS_DIR="$HOME/.config/hypr/configs"
-TARGET_FILE="$CONFIGS_DIR/WindowRules.conf"
-V3_FILE="$CONFIGS_DIR/WindowRules-config-v3.conf"
+TARGET_FILE="$CONFIGS_DIR/WindowRules.lua"
+V3_FILE="$CONFIGS_DIR/WindowRules.lua"
 
 if [[ ! -f "$V3_FILE" ]]; then
   echo "Error: Source configuration file not found: $V3_FILE"
@@ -43,7 +43,7 @@ if [ "$SMALLEST" = "$REQUIRED_VER" ]; then
   echo "Version $VERSION >= $REQUIRED_VER. Updating WindowRules config..."
   # Backup existing config if it exists
   if [ -f "$TARGET_FILE" ]; then
-    echo "Backing up existing WindowRules.conf to WindowRules.conf.bak"
+    echo "Backing up existing WindowRules.lua to WindowRules.lua.bak"
     mv "$TARGET_FILE" "$TARGET_FILE.bak"
   fi
   cp "$V3_FILE" "$TARGET_FILE"

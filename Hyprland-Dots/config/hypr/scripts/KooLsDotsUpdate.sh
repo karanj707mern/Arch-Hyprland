@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # simple bash script to check if update is available by comparing local version and github version
 
 # Local Paths
@@ -17,8 +16,7 @@ fi
 
 # GitHub URL - KooL's dots
 branch="main"
-github_url="https://github.com/karanj707mern/Hyprland-Dots/tree/$branch/config/hypr/"
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+github_url="https://github.com/JaKooLit/Hyprland-Dots/tree/$branch/config/hypr/"
 # Check for required tools (curl)
 if ! command -v curl &> /dev/null; then
   notify-send -i "$iDIR/error.png" "Need curl:" "curl not found. Please install curl."
@@ -52,27 +50,26 @@ else
   			notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Kitty terminal not found. Please install Kitty terminal."
   			exit 1
 		fi
-        kitty -e bash -c '
-          cd "$0" &&
+        kitty -e bash -c "
+          cd \"$KooL_Dots_DIR\" &&
           git stash &&
           git pull &&
           ./copy.sh &&
-          notify-send -u critical -i "$1/ja.png" "Update Completed:" "Kindly log out and relogin to take effect"
-        ' "$KooL_Dots_DIR" "$iDIR"
+		  notify-send -u critical -i "$iDIR/ja.png" 'Update Completed:' 'Kindly log out and relogin to take effect'
+        "
 	
       else
          if ! command -v kitty &> /dev/null; then
   		  	notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Kitty terminal not found. Please install Kitty terminal."
   			exit 1
 		fi
-        kitty -e bash -c '
-          git clone --depth=1 https://github.com/karanj707mern/Hyprland-Dots.git "$0" &&
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
-          cd "$0" &&
+        kitty -e bash -c "
+          git clone --depth=1 https://github.com/JaKooLit/Hyprland-Dots.git $KooL_Dots_DIR &&
+          cd \"$KooL_Dots_DIR\" &&
           chmod +x copy.sh &&
           ./copy.sh &&
-          notify-send -u critical -i "$1/ja.png" "Update Completed:" "Kindly log out and relogin to take effect"
-        ' "$KooL_Dots_DIR" "$iDIR"
+		  notify-send -u critical -i "$iDIR/ja.png" 'Update Completed:' 'Kindly log out and relogin to take effect'
+        "
       fi
       ;;
     "action2")

@@ -40,10 +40,6 @@ Singleton {
         property color m3selectionText: "#F2DCF3"
         property color m3borderSecondary: "#4C444D"
 
-        property color m3onPrimary: "#452152"
-        property color m3onSurface: "#EAE0E7"
-        property color m3onSurfaceVariant: "#CFC3CD"
-
         property color colTooltip: "#1e1e2e"
         property color colOnTooltip: "#F8F9FA"
     }
@@ -51,14 +47,10 @@ Singleton {
     colors: QtObject {
         property color colSubtext: m3colors.m3borderPrimary
         property color colLayer0: ColorUtils.transparentize(m3colors.m3windowBackground, root.transparency)
-        property color colLayer0Border: ColorUtils.transparentize(m3colors.m3borderSecondary, 0.5)
         property color colLayer1: ColorUtils.transparentize(ColorUtils.mix(m3colors.m3layerBackground1, m3colors.m3windowBackground, 0.7), root.contentTransparency);
         property color colOnLayer1: m3colors.m3secondaryText;
         property color colLayer2: ColorUtils.transparentize(ColorUtils.mix(m3colors.m3layerBackground2, m3colors.m3layerBackground3, 0.55), root.contentTransparency)
-        property color colLayer2Base: colLayer2
         property color colOnLayer2: m3colors.m3surfaceText;
-        property color colOnLayer2Disabled: ColorUtils.transparentize(m3colors.m3surfaceText, 0.62)
-        property color colOnSecondary: m3colors.m3accentPrimaryText
         property color colLayer1Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer1, colOnLayer1, 0.92), root.contentTransparency)
         property color colLayer1Active: ColorUtils.transparentize(ColorUtils.mix(colLayer1, colOnLayer1, 0.85), root.contentTransparency);
         property color colLayer2Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer2, colOnLayer2, 0.90), root.contentTransparency)
@@ -66,11 +58,6 @@ Singleton {
         property color colPrimary: m3colors.m3accentPrimary
         property color colPrimaryHover: ColorUtils.mix(colors.colPrimary, colLayer1Hover, 0.87)
         property color colPrimaryActive: ColorUtils.mix(colors.colPrimary, colLayer1Active, 0.7)
-        property color colSecondary: m3colors.m3accentSecondary
-        property color colSecondaryHover: ColorUtils.mix(colors.colSecondary, colLayer1Hover, 0.87)
-        property color colSecondaryActive: ColorUtils.mix(colors.colSecondary, colLayer1Active, 0.7)
-        property color colSecondaryContainer: ColorUtils.transparentize(colors.colSecondary, 0.15)
-        property color colSecondaryContainerHover: ColorUtils.transparentize(colors.colSecondary, 0.25)
         property color colShadow: ColorUtils.transparentize(m3colors.m3shadowColor, 0.7)
     }
 
@@ -195,18 +182,6 @@ Singleton {
             property int type: Easing.BezierSpline
             property list<real> bezierCurve: animationCurves.standardDecel
         }
-        property QtObject elementResize: QtObject {
-            property int duration: 350
-            property int type: Easing.BezierSpline
-            property list<real> bezierCurve: animationCurves.emphasized
-            property Component numberAnimation: Component {
-                NumberAnimation {
-                    duration: root.animation.elementResize.duration
-                    easing.type: root.animation.elementResize.type
-                    easing.bezierCurve: root.animation.elementResize.bezierCurve
-                }
-            }
-        }
         property QtObject menuDecel: QtObject {
             property int duration: 350
             property int type: Easing.OutExpo
@@ -222,7 +197,5 @@ Singleton {
         property real elevationMargin: 10
         property real fabShadowRadius: 5
         property real fabHoveredShadowRadius: 7
-        property real sidebarWidth: 380
-        property real sidebarWidthExtended: 500
     }
 }

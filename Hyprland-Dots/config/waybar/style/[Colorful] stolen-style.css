@@ -10,10 +10,12 @@ min-height: 0;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
-window#waybar {
+window#waybar,
+window#top-bar,
+window#bottom-bar {
   transition-property: background-color;
 transition-duration: 0.5s;
-background: rgba(0, 0, 0, 0.8);
+background: rgba(0, 0, 0, 0.55);
 border-radius: 6px;
 text-shadow: 0 0 3px rgba(0,0,0,0.8);
 
@@ -77,7 +79,7 @@ border: 0px;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   padding-top: 2px;
@@ -103,24 +105,18 @@ transition: all 0.1s linear;
 
 #workspaces button.active {
   color: #00ffff;
-border: 2px solid #455a64;
-border-radius: 16px;
 }
 
 #workspaces button.urgent {
   color: #f7768e;
-border: 2px solid #f7768e;
-border-radius: 16px;
 }
 
 #workspaces button:hover {
-  border: 2px solid #455a64;
-border-radius: 16px;
+  color: #7dcfff;
 }
 
 #idle_inhibitor {
   color: #7aa2f7;
-border-bottom: 2px solid #455a64;
 }
 
 #backlight {
@@ -138,10 +134,6 @@ padding-right: 7px;
 
 #custom-swaync {
   color: #9fe044;
-border: 2px solid #455a64;
-border-radius: 20px;
-padding-left: 13px;
-padding-right: 12px;
 }
 
 #custom-keyboard {
@@ -187,37 +179,23 @@ padding-right: 10px;
 }
 
 #cpu {
-  padding-left: 10px;
+  padding-left: 4px;
 padding-right: 3px;
 color: #ffffed;
-border-top: 2px solid #455a64;
-border-bottom: 2px solid #455a64;
-border-left: 2px solid #455a64;
-border-radius: 20px 0px 0px 20px;
 }
 
 #memory {
   color: #ffffed;
 padding-right: 8px;
-border-bottom: 2px solid #455a64;
-border-top: 2px solid #455a64;
-border-radius: 0px;
 }
 
 #temperature {
   color: #ffffed;
-border-bottom: 2px solid #455a64;
-border-top: 2px solid #455a64;
-border-radius: 0px;
 }
 
 #disk {
-  padding-right: 16px;
+  padding-right: 6px;
 color: #ffffed;
-border-top: 2px solid #455a64;
-border-bottom: 2px solid #455a64;
-border-right: 2px solid #455a64;
-border-radius: 0px 20px 20px 0px;
 }
 
 /* Temperature & Fan */
@@ -269,15 +247,13 @@ padding-right: 12px;
 
   color: #f7768e;
 padding-left: 8px;
-padding-right: 17px;
+padding-right: 8px;
 }
 
 #custom-updater {
   color: #f7768e;
-border: 2px solid #455a64;
-border-radius: 20px;
-padding-left: 10pt;
-padding-right: 12px;
+padding-left: 5px;
+padding-right: 8px;
 
 }
 
@@ -369,4 +345,39 @@ border-radius: 5px;
 #custom-separator {
   padding-left: 6px;
 color: #f7768e;
+}
+
+/* --- battery state alerts (auto polish pass) --- */
+@keyframes blink {
+    to {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #111111;
+    }
+}
+#battery.warning:not(.charging) {
+    color: #f3f809;
+}
+
+#battery.critical:not(.charging) {
+    color: #eb4d4b;
+    }
+
+/* --- combined outer borders: one pill around each bar's module groups --- */
+.bottom-bar .modules-left,
+.bottom-bar .modules-center,
+.bottom-bar .modules-right,
+.top-bar .modules-left,
+.top-bar .modules-center,
+.top-bar .modules-right {
+    border: 2px solid #455a64;
+    border-radius: 20px;
+    padding: 0px 6px;
+}
+
+/* keep the pill hugging content on the right edge of each group */
+.bottom-bar .modules-right > *:last-child,
+.bottom-bar .modules-center > *:last-child,
+.top-bar .modules-right > *:last-child,
+.top-bar .modules-center > *:last-child {
+    margin-right: -2px;
 }

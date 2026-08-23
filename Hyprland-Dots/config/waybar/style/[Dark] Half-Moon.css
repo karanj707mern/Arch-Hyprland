@@ -366,3 +366,16 @@ background-color: #6E6A86;
 border-radius: 5px;
 background-color: purple;
 }
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
+}

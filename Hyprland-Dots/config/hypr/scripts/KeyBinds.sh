@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # searchable enabled keybinds using rofi (supports bindd descriptions)
 
 # kill yad to not interfere with this binds
@@ -12,9 +11,9 @@ if pidof rofi > /dev/null; then
 fi
 
 # define the config files
-keybinds_conf="$HOME/.config/hypr/CONF FILES/configs/Keybinds.conf"
-user_keybinds_conf="$HOME/.config/hypr/CONF FILES/UserConfigs/UserKeybinds.conf"
-laptop_conf="$HOME/.config/hypr/CONF FILES/UserConfigs/Laptops.conf"
+keybinds_conf="$HOME/.config/hypr/configs/Keybinds.lua"
+user_keybinds_conf="$HOME/.config/hypr/UserConfigs/UserKeybinds.lua"
+laptop_conf="$HOME/.config/hypr/UserConfigs/Laptops.lua"
 rofi_theme="$HOME/.config/rofi/config-keybinds.rasi"
 msg='☣️ NOTE ☣️: Clicking with Mouse or Pressing ENTER will have NO function'
 

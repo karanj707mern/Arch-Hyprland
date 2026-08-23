@@ -1,5 +1,4 @@
-/* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 
 // ### DUAL TOP and BOTTOM ### //
 
@@ -12,23 +11,28 @@
   "$HOME/.config/waybar/UserModules",
   ],
 "layer": "top",
+"name": "bottom-bar",
 //"mode": "dock",
 "exclusive": true,
 "passthrough": false,
 "position": "bottom",
 "spacing": 3,
 "fixed-center": true,
-"ipc": true,
-"margin-top": 1,
+"ipc": false,
+"height": 30,
+"margin-top": 0,
+"margin-bottom": 8,
 "margin-left": 8,
 "margin-right": 8,
 
 "modules-left": [
 	"cpu",
-	"power-profiles-daemon", 
-	"custom/tempfan", 
+	// power-profiles-daemon service is masked on this system (dbus error);
+	// uncomment if you re-enable it: systemctl unmask power-profiles-daemon
+	// "power-profiles-daemon",
+	"custom/tempfan",
 	"memory",
-	"disk", 
+	"disk",
 	],
   
 "modules-center": [
@@ -59,14 +63,17 @@
   "$HOME/.config/waybar/UserModules",
   ],
 "layer": "top",
+"name": "top-bar",
 //"mode": "dock",
 "exclusive": true,
 "passthrough": false,
 "position": "top",
 "spacing": 5,
 "fixed-center": true,
-"ipc": true,
-"height": 0,
+"ipc": false,
+"height": 30,
+"margin-top": 8,
+"margin-bottom": 0,
 "margin-left": 8,
 "margin-right": 8,
 //"gtk-layer-shell": true,
@@ -91,4 +98,4 @@
 	"pulseaudio#microphone",	  
 	"custom/power",
 	],  
-}],
+}]

@@ -1,4 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
+-- /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */  --
 -- JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
 
 hl.config({

@@ -129,7 +129,7 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	color: #000000;
@@ -223,4 +223,17 @@ background-color: grey;
 	min-height: 10px;
 border-radius: 5px;
 background-color: #ba5663;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

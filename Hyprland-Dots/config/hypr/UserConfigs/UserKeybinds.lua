@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- This is where you put your own keybinds. Be Mindful to check as well ~/.config/hypr/configs/Keybinds.lua to avoid conflict
 -- if you think I should replace the Pre-defined Keybinds in ~/.config/hypr/configs/Keybinds.lua , submit an issue or let me know in DC and present me a valid reason as to why, such as conflicting with global shortcuts, etc etc
 
@@ -33,5 +32,13 @@ local UserConfigs = os.getenv("HOME") .. "/.config/hypr/UserConfigs"
 
 -- AI Assistant Keybinds
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("code"), { description = "Open VS Code" })
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(scriptsDir .. "/AI_Assistant.sh --menu"), { description = "AI Assistant menu" })
-hl.bind(mainMod .. " + SHIFT + Y", hl.dsp.exec_cmd(scriptsDir .. "/AI_Sidebar_Toggle.sh"), { description = "Toggle AI Sidebar" })
+
+-- OpenCode Agent Keybind (Kilo free models / system tasks)
+hl.unbind(mainMod .. " + G", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(scriptsDir .. "/opencode-toggle.sh"), { description = "Toggle OpenCode Agent" })
+
+-- Performance Mode Toggle (AC/Battery aware)
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("performance-mode.sh toggle"), { description = "Toggle performance mode" })
+
+-- Hibernate (writes RAM to /swapfile and powers off; restores on next boot)
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("systemctl hibernate"), { description = "Hibernate system" })

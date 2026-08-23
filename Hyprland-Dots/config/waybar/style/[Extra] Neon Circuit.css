@@ -1,86 +1,148 @@
 /* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
-/* --- Extra - Neon Circuit - waybar style ---*/
+/* --- Extra - Neon Circuit - waybar style --- */
+/* Neon-circuit: deep-space chips with glowing neon traces.
+   Every chip is a self-contained pill so the layout stays clean
+   even when modules hide (bt off, no updates, weather offline). */
 
-@define-color bar-bg rgba(0, 0, 0, 0);
-@define-color main-bg #313244;
-@define-color main-fg #b4befe;
-@define-color wb-act-bg #b4befe;
-@define-color wb-act-fg #1e1e2e;
-@define-color wb-hvr-bg #f5c2e7;
-@define-color wb-hvr-fg #313244;
+@define-color cc-bg rgba(7, 11, 22, 0.88);
+@define-color cc-bg-hi rgba(13, 19, 38, 0.92);
+@define-color cc-text #c8d3f5;
+@define-color cc-dim #8093b8;
+@define-color cc-trace rgba(0, 229, 255, 0.28);
+
+@define-color neon-cyan #00e5ff;
+@define-color neon-cyan-hi #8dfcff;
+@define-color neon-magenta #ff2ec8;
+@define-color neon-violet #a78bfa;
+@define-color neon-green #00ff9c;
+@define-color neon-lime #39ff14;
+@define-color neon-amber #ffb000;
+@define-color neon-orange #ff9e64;
+@define-color neon-red #ff3355;
+@define-color neon-blue #4da6ff;
+@define-color neon-gold #ffd500;
+@define-color neon-teal #2de1c2;
+@define-color neon-ice #bfefff;
 
 * {
     border: none;
-border-radius: 0px;
-font-family: "JetBrainsMono Nerd Font";
-font-weight: bold;
-min-height: 0;  
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    min-height: 0;
     /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
     font-size: 97%;
-font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
 window#waybar {
-    background: @bar-bg;
+    background: rgba(0, 0, 0, 0);
+}
+
+window#waybar.hidden {
+    opacity: 0.1;
 }
 
 tooltip {
-    background: @main-bg;
-color: @main-fg;
-border-radius: 12px;
-border-width: 0px;
+    background: rgba(5, 8, 16, 0.96);
+    color: @cc-text;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @neon-cyan;
+    box-shadow: 0 0 10px @cc-trace;
 }
 
+tooltip label {
+    color: @cc-text;
+}
+
+/* ---------------- Keyframes (all referenced animations defined) -------- */
+@keyframes neon-blink {
+    to {
+        background-color: @neon-red;
+        color: #14040a;
+    }
+}
+
+@keyframes ws-pulse {
+    to {
+        box-shadow: 0 0 6px 0 alpha(@neon-cyan-hi, 0.45),
+                    inset 0 0 6px alpha(#ffffff, 0.30);
+    }
+}
+
+@keyframes charge-glow {
+    to {
+        box-shadow: 0 0 9px 0 alpha(@neon-cyan, 0.38),
+                    inset 0 0 5px alpha(@neon-cyan, 0.18);
+    }
+}
+
+/* ---------------- Workspaces / Taskbar buttons ------------------------- */
 #taskbar button,
 #workspaces button {
     box-shadow: none;
-text-shadow: none;
-padding: 2px;
-border: 2px;
-border-color: #b4befe;
-border-width: 5px;
-border-radius: 10px;
-margin-top: 2px;
-margin-bottom: 2px;
-margin-left: 0px;
-padding-left: 6px;
-padding-right: 0px;
-margin-right: 0px;
-color: @wb-act-fg;
-background-color: #b4befe;
-animation: ws_normal 2s ease-in-out 1;
+    text-shadow: none;
+    padding: 0px 6px;
+    margin: 3px 2px;
+    border-radius: 10px;
+    color: @neon-cyan-hi;
+    background: alpha(@neon-cyan, 0.08);
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.empty,
+#workspaces button.persistent {
+    color: alpha(@neon-cyan-hi, 0.55);
+    background: transparent;
 }
 
 #taskbar button.active,
 #workspaces button.active {
-    background-image: linear-gradient(45deg, #89b4fa 50%, #cba6f7 50%);
-color: @wb-act-fg;
-border-radius: 12px;
-margin-left: 4px;
-padding-left: 12px;
-padding-right: 12px;
-margin-right: 4px;
-animation: ws_active 2s ease-in-out 1;
-transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+    color: #052030;
+    background: linear-gradient(180deg, #d6ffff, #00e5ff);
+    box-shadow: 0 0 12px 0 alpha(@neon-cyan-hi, 0.80),
+                inset 0 0 8px alpha(#ffffff, 0.60);
+    animation: ws-pulse 2s ease-in-out infinite alternate;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
-    background: @wb-hvr-bg;
-color: @wb-hvr-fg;
-animation: ws_hover 20s ease-in-out 1;
-transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    color: #ffffff;
+    background: alpha(@neon-cyan, 0.22);
+    box-shadow: 0 0 8px 0 alpha(@neon-cyan, 0.50);
+    text-shadow: 0 0 8px alpha(@neon-cyan-hi, 0.85);
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#taskbar button.active:hover,
+#workspaces button.active:hover {
+    color: #052030;
+}
+
+#workspaces button.urgent {
+    color: #ffffff;
+    background-color: @neon-red;
+    box-shadow: 0 0 10px 0 alpha(@neon-red, 0.75);
+    animation-name: neon-blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(6);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* ---------------- Tray menus ------------------------------------------- */
 #tray menu * {
-    min-height: 18px
+    min-height: 18px;
 }
 
 #tray menu separator {
-    min-height: 16px
+    min-height: 16px;
 }
 
+/* ---------------- Generic module chip ---------------------------------- */
 #backlight,
 #backlight-slider,
 #battery,
@@ -92,11 +154,11 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #keyboard-state,
 #memory,
 #mode,
+#mpris,
 #network,
 #power-profiles-daemon,
 #pulseaudio,
 #pulseaudio-slider,
-#taskbar button,
 #taskbar,
 #temperature,
 #tray,
@@ -104,7 +166,6 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #wireplumber,
 #workspaces,
 #custom-backlight,
-#custom-nightlight,
 #custom-browser,
 #custom-cava_mviz,
 #custom-cycle_wall,
@@ -131,315 +192,365 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-tempfan,
 #custom-hyprpicker,
 #custom-weather,
+#custom-weather.sunnyDay,
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default, 
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
-    color: @main-fg;
-background: @main-bg;
-opacity: 1;
-margin: 3px 0px 3px 0px;
-padding-left: 4px;
-padding-right: 4px;
+#custom-weather.severe,
+#custom-weather.default,
+#custom-weather.Unavailable,
+#custom-weather.Offline {
+    color: @cc-text;
+    background: linear-gradient(180deg, @cc-bg-hi, @cc-bg);
+    opacity: 1;
+    margin: 3px 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @cc-trace;
 }
 
-#workspaces {
-    border-radius: 20px;
-border-width: 2px;
-border-style: solid;
-border-color: #b4befe;
-padding-right: 8px;
-padding-left: 8px;
-margin-right: 5px;
-}
-
-#taskbar {
-    padding: 0px;
-color: #b4befe;
+/* ---------------- Top-left: menu / window / mpris ---------------------- */
+#custom-menu {
+    color: @neon-red;
+    padding-right: 10px;
+    border-color: alpha(@neon-red, 0.45);
+    text-shadow: 0 0 6px alpha(@neon-red, 0.75);
 }
 
 #window {
-    color: #F2CCCC;
-border-radius: 20px;
-border-style: solid;
-border-width: 2px;
-border-color: #F2CCCC;
-margin-right: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    padding-right: 10px;
+    border-color: alpha(@cc-text, 0.30);
+    text-shadow: 0 0 6px alpha(@cc-text, 0.45);
 }
 
-#clock {
-    color: #F38BA8;
-border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-border-width: 2px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-left-width: 0px;
-border-width: 2px;
-border-color: #F38BA8;
-margin-right: 5px;
+#mpris {
+    color: @neon-violet;
+    border-color: alpha(@neon-violet, 0.45);
+    text-shadow: 0 0 6px alpha(@neon-violet, 0.55);
 }
 
-#idle_inhibitor {
-    color: #94e2d5;
-border-radius: 12px;
-border-top-right-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-right-style: none;
-border-width: 2px;
-border-color: #F38BA8;
-margin-right: 0px;
+#mpris.paused {
+    color: alpha(@neon-violet, 0.60);
+    text-shadow: none;
 }
 
-#idle_inhibitor.activated {
-	color: #39FF14;
+/* ---------------- Top-center: workspaces ------------------------------- */
+#workspaces {
+    padding-left: 6px;
+    padding-right: 6px;
+    border-color: alpha(@neon-cyan, 0.60);
+    box-shadow: 0 0 8px 0 alpha(@neon-cyan, 0.32),
+                inset 0 0 8px alpha(@neon-cyan, 0.10);
 }
 
-#temperature {
-    color: #cdd6f4;
-border-radius: 20px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-style: solid;
-border-right-style: none;
-border-width: 2px;
-border-color: #cdd6f4;
-margin-left: 5px;
+/* ---------------- Top-right: tray / notify / audio / power ------------- */
+#tray {
+    color: @cc-text;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-color: alpha(@neon-violet, 0.40);
+}
+
+#tray > .active,
+#tray > .passive {
+    color: @cc-text;
+}
+
+#custom-swaync {
+    color: @neon-magenta;
+    border-color: alpha(@neon-magenta, 0.45);
+}
+
+#custom-dot_update {
+    color: @neon-lime;
+    border-color: alpha(@neon-lime, 0.45);
+}
+
+#pulseaudio {
+    color: @neon-magenta;
+    border-color: alpha(@neon-magenta, 0.45);
+    text-shadow: 0 0 6px alpha(@neon-magenta, 0.55);
+}
+
+#pulseaudio.muted {
+    color: @neon-red;
+    text-shadow: none;
+}
+
+#pulseaudio.microphone {
+    color: @neon-teal;
+    border-color: alpha(@neon-teal, 0.45);
+}
+
+#pulseaudio.microphone.source-muted {
+    color: @neon-red;
+}
+
+#custom-power {
+    color: @neon-red;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color: alpha(@neon-red, 0.55);
+    text-shadow: 0 0 8px alpha(@neon-red, 0.85);
+}
+
+/* ---------------- Bottom-left: system stats ---------------------------- */
+#cpu {
+    color: @neon-green;
+    border-color: alpha(@neon-green, 0.4);
+}
+
+#memory {
+    color: @neon-violet;
+    border-color: alpha(@neon-violet, 0.4);
+}
+
+#disk {
+    color: @neon-amber;
+    border-color: alpha(@neon-amber, 0.4);
+}
+
+#power-profiles-daemon {
+    color: @neon-gold;
+    border-color: alpha(@neon-gold, 0.4);
 }
 
 /* Temperature & Fan */
 #custom-tempfan {
-  color: inherit;
-padding-top: 4px;
-padding-bottom: 4px;
-padding-right: 6px;
-padding-left: 6px;
+    color: @neon-cyan;
+    border-color: alpha(@neon-cyan, 0.4);
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 #custom-tempfan.temp-cool {
-  color: inherit;
+    color: @neon-green;
+    border-color: alpha(@neon-green, 0.4);
 }
 
 #custom-tempfan.temp-warm {
-  color: #ffaa00;
+    color: @neon-amber;
+    border-color: alpha(@neon-amber, 0.5);
+    text-shadow: 0 0 6px alpha(@neon-amber, 0.6);
 }
 
 #custom-tempfan.temp-hot {
-  color: #ff3333;
-font-weight: bold;
+    color: @neon-red;
+    border-color: alpha(@neon-red, 0.6);
+    text-shadow: 0 0 8px alpha(@neon-red, 0.85);
 }
 
-@keyframes blink {
-    to {
-        color: #000000;
-    }
+/* ---------------- Bottom-center: inhibitor / clock / light-dark -------- */
+#idle_inhibitor {
+    color: @neon-teal;
+    border-color: alpha(@neon-teal, 0.45);
 }
 
-#cpu,
-#disk,
-#memory {
-    color: #cdd6f4;
-border-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-width: 2px;
-border-color: #cdd6f4;
-margin-right: 0px;
+#idle_inhibitor.activated {
+    color: @neon-lime;
+    border-color: alpha(@neon-lime, 0.6);
+    text-shadow: 0 0 8px alpha(@neon-lime, 0.8);
 }
 
-#custom-menu {
-    color: #ff5a5a;
-border-radius: 6px;
-border-top-right-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-width: 2px;
-border-color: #cdd6f4;
-padding-right: 5px;
-padding-left: 5px;
+#clock {
+    color: @neon-magenta;
+    border-color: alpha(@neon-magenta, 0.5);
+    padding-left: 10px;
+    padding-right: 10px;
+    text-shadow: 0 0 7px alpha(@neon-magenta, 0.65);
 }
 
-#network {
-    border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-left-width: 0px;
-border-width: 2px;
-border-color: #cdd6f4;
-margin-right: 5px;
+#custom-light_dark {
+    color: @neon-gold;
+    border-color: alpha(@neon-gold, 0.45);
 }
 
-#backlight {
-    color: #F5E0DC;
-border-radius: 12px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-style: solid;
-border-right-style: none;
-border-width: 2px;
-border-color: #F5E0DC;
-margin-left: 5px;
+/* ---------------- Bottom-right: net / battery / extras ------------------ */
+#custom-weather {
+    border-color: alpha(@neon-blue, 0.4);
 }
 
-#pulseaudio {
-    color: #F5E0DC;
-border-radius: 20px;
-border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-width: 2px;
-border-color: #F5E0DC;
-margin-right: 0px;
+#custom-weather.sunnyDay {
+    color: @neon-gold;
+    border-color: alpha(@neon-gold, 0.5);
+    text-shadow: 0 0 6px alpha(@neon-gold, 0.6);
 }
 
-#pulseaudio.muted {
-    color: red;
+#custom-weather.clearNight {
+    color: @neon-violet;
+    border-color: alpha(@neon-violet, 0.5);
+    text-shadow: 0 0 6px alpha(@neon-violet, 0.6);
 }
 
-#keyboard-state {    
-    color: #F5E0DC;
-border-radius: 20px;
-border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-left-width: 0px;
-border-width: 2px;
-border-color: #F5E0DC;
-margin-right: 5px;
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight {
+    color: #9aa7c7;
+    border-color: alpha(#9aa7c7, 0.4);
 }
 
-#custom-updater {
-    color: #F5E0DC;
-border-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-width: 2px;
-border-color: #F5E0DC;
-margin-right: 0px;
+#custom-weather.rainyDay,
+#custom-weather.rainyNight {
+    color: @neon-blue;
+    border-color: alpha(@neon-blue, 0.5);
+    text-shadow: 0 0 6px alpha(@neon-blue, 0.55);
 }
 
-#custom-hint {
-    color: #F5E0DC;
-border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-left-width: 0px;
-border-width: 2px;
-border-color: #F5E0DC;
-margin-right: 5px;
+#custom-weather.snowyIcyDay,
+#custom-weather.snowyIcyNight {
+    color: @neon-ice;
+    border-color: alpha(@neon-ice, 0.5);
 }
 
-#tray {
-    color: #b4befe;
-font-size: 16;
-border-radius: 12px;
-border-top-right-radius: 0px;
-border-bottom-left-radius: 0px;
-border-width: 2px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-width: 2px;
-border-color: #b4befe;
-margin-left: 5px;
-padding-left: 8px;
+#custom-weather.severe {
+    color: @neon-red;
+    border-color: alpha(@neon-red, 0.6);
+    animation-name: neon-blink;
+    animation-duration: 1.2s;
+    animation-timing-function: steps(6);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
-#tray > .active,
-#tray > .passive,
-#tray menu {
-    color: #b4befe;
-}
-
-#custom-swaync {
-    border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-width: 2px;
-border-color: #b4befe;
-margin-right: 0px;
+#custom-weather.Unavailable,
+#custom-weather.Offline {
+    color: @cc-dim;
+    border-color: alpha(@cc-dim, 0.4);
 }
 
 #battery {
-    border-radius: 20px;
-border-top-left-radius: 0px;
-border-bottom-left-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-left-width: 0px;
-border-width: 2px;
-border-color: #b4befe;
-margin-right: 5px;
-padding-right: 8px;
+    color: @neon-green;
+    border-color: alpha(@neon-green, 0.45);
+    padding-right: 10px;
 }
 
-#custom-power {
-    border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-border-style: solid;
-border-left-style: none;
-border-width: 2px;
-border-color: #F38BA8;
-padding-left: 0px;
-padding-right: 5px;
-margin-right: 5px;
+#battery.charging,
+#battery.plugged {
+    color: @neon-cyan;
+    border-color: alpha(@neon-cyan, 0.55);
+    text-shadow: 0 0 6px alpha(@neon-cyan, 0.6);
+    animation: charge-glow 2.4s ease-in-out infinite alternate;
 }
 
-#custom-weather,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.default, 
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
-    border-radius: 12px;
-border-top-left-radius: 0px;
-border-bottom-right-radius: 0px;
-border-width: 2px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-color: #E06C75;
-color: #E06C75;
-margin-right: 5px;
+#battery.full {
+    color: @neon-green;
 }
 
-#window {
-    background-image: linear-gradient(45deg, #89b4fa 50%, #cba6f7 50%);
-color: black;
-border-radius: 20px;
-border-width: 2px;
-border-style: solid;
-border-left-style: none;
-border-right-style: none;
-border-color: #f5e0dc;
-margin-right: 5px;
+#battery.warning:not(.charging) {
+    color: @neon-amber;
+    border-color: alpha(@neon-amber, 0.6);
+    text-shadow: 0 0 6px alpha(@neon-amber, 0.7);
+}
+
+#battery.critical:not(.charging) {
+    color: @neon-red;
+    border-color: alpha(@neon-red, 0.7);
+    animation-name: neon-blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(8);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#backlight {
+    color: #ffe9a8;
+    border-color: alpha(#ffe9a8, 0.4);
+}
+
+#bluetooth {
+    color: @neon-blue;
+    border-color: alpha(@neon-blue, 0.45);
+}
+
+#network {
+    color: @neon-cyan;
+    border-color: alpha(@neon-cyan, 0.45);
+    padding-right: 10px;
+}
+
+#network.disconnected,
+#network.disabled {
+    color: @neon-red;
+    border-color: alpha(@neon-red, 0.5);
+    animation-name: neon-blink;
+    animation-duration: 2s;
+    animation-timing-function: steps(8);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-updater {
+    color: @neon-orange;
+    border-color: alpha(@neon-orange, 0.45);
+}
+
+#custom-cycle_wall {
+    color: @neon-magenta;
+    border-color: alpha(@neon-magenta, 0.4);
+}
+
+#custom-nightlight {
+    color: @cc-dim;
+    border-color: alpha(@cc-dim, 0.35);
+}
+
+#custom-nightlight.on {
+    color: @neon-amber;
+    border-color: alpha(@neon-amber, 0.6);
+    text-shadow: 0 0 7px alpha(@neon-amber, 0.75);
+}
+
+#custom-lock {
+    color: #ff6e9c;
+    border-color: alpha(#ff6e9c, 0.45);
+}
+
+#keyboard-state {
+    color: @neon-teal;
+    border-color: alpha(@neon-teal, 0.4);
+}
+
+#mode {
+    color: #04121a;
+    background: @neon-magenta;
+    border-color: @neon-magenta;
+}
+
+#temperature.critical {
+    color: @neon-red;
+}
+
+/* ---------------- Sliders (hidden handles, neon tracks) ----------------- */
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background: alpha(@cc-dim, 0.35);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, @neon-cyan, @neon-magenta);
+    box-shadow: 0 0 6px 0 alpha(@neon-cyan, 0.5);
 }

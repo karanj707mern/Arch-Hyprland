@@ -79,7 +79,7 @@ animation: gradient_f 20s ease-in infinite;
 transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     background-color: #bbccdd;
 color: @accent2;
     /* box-shadow: inset 0 -3px #ffffff; */
@@ -151,9 +151,10 @@ border-bottom: 3px solid #ffffff;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
+#custom-weather.Unavailable,
+#custom-weather.Offline {
 	padding-top: 4px;
 padding-bottom: 4px;
 padding-right: 6px;
@@ -178,6 +179,10 @@ padding-left: 6px;
 
 #battery {
     color: @accent5;
+}
+
+#battery.warning:not(.charging) {
+    color: @warning;
 }
 
 /* #battery.charging {
@@ -239,18 +244,17 @@ label:focus {
     color: @accent4;
 }
 
-#pulseaudio-muted {
-    color: @accent2;
-}
 #wireplumber {
     color: @accent4;
 }
 
-#wireplumber-muted {
+#wireplumber.muted {
     color: @accent2;
 }
 
-#pluseaudio-source-muted{
+/* waybar adds class "source-muted" on the mic instance when input is muted */
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
     color: #a0a0a0;
 }
 
@@ -261,7 +265,8 @@ label:focus {
 #disk {
     color: @accent5;
 }
-#custom-power_profile {
+#custom-power_profile,
+#power-profiles-daemon {
     color: @accent3;
 }
 #custom-media {
@@ -373,4 +378,11 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
 	min-height: 10px;
 border-radius: 5px;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

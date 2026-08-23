@@ -1,3 +1,6 @@
+/* fallback defines for variables referenced but never defined */
+@define-color theme_base_color #1e1e2e;
+@define-color theme_text_color #cdd6f4;
 /* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- */
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Catppuccin Mocha */
@@ -11,7 +14,7 @@ min-height: 0;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
-@import "./catppuccin-themes/mocha.css";
+@import "style/catppuccin-themes/mocha.css";
 
 window#waybar {
   	transition-property: background-color;
@@ -150,7 +153,7 @@ border-radius: 10px;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-top: 4px;

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # For Searching via web browsers
 
 # Define the path to the config file
-config_file="$HOME/.config/hypr/CONF FILES/UserConfigs/01-UserDefaults.conf"
+config_file=$HOME/.config/hypr/UserConfigs/01-UserDefaults.lua
 if ! command -v jq >/dev/null 2>&1; then
     notify-send -u low "Rofi Search" "jq is required for URL encoding. Please install jq."
     exit 1
@@ -16,20 +15,8 @@ if [[ ! -f "$config_file" ]]; then
     exit 1
 fi
 
-# Parse config file safely (only simple variable=value assignments)
-while IFS= read -r line; do
-    # Remove $ prefix and normalize spacing
-    line="${line#\$}"
-    line="${line/ = /=}"
-    # Skip empty lines and comments
-    case "$line" in
-        ''|'#'*) continue ;;
-    esac
-    # Only allow simple variable assignments
-    if [[ "$line" =~ ^[a-zA-Z_][a-zA-Z0-9_]*= ]]; then
-        declare "$line"
-    fi
-done < "$config_file"
+# Parse Lua config for shell variables
+eval "$(grep -E '^local Search_Engine ' "$config_file" | sed -E 's/^local ([^ ]+) = (.+)$/\1=\2/')"
 
 # Check if $term is set correctly
 if [[ -z "$Search_Engine" ]]; then

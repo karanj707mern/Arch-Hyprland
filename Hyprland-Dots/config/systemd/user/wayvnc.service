@@ -1,0 +1,15 @@
+[Unit]
+Description=WayVNC Server
+After=graphical-session.target
+Requires=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wayvnc 0.0.0.0:15900 --max-fps=60 --log-level=warning
+Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

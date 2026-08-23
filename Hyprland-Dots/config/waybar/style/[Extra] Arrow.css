@@ -17,7 +17,7 @@ margin: 0;
 padding: 0;
 box-shadow: none;
 text-shadow: none;
-icon-shadow: none;
+-gtk-icon-shadow: none;
 }
 
 /* Colors (gruvbox) */
@@ -119,7 +119,7 @@ icon-shadow: none;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-left: 8pt;
@@ -201,6 +201,7 @@ background: @inactive;
 }
 
 /* Active (on focused output) */
+#workspaces button.active,
 #workspaces button.focused {
 	color: @black;
 background: @focused;
@@ -315,4 +316,11 @@ background: transparent;
 #custom-arrow10 {
 	color: @unfocused;
 background: transparent;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

@@ -1,7 +1,7 @@
 /* -----------------------------------------------------
  * Import Pywal colors
  * ----------------------------------------------------- */
- @import '../../../colors.css';
+ @import "colors.css";
 
  @define-color backgroundlight #FFFFFF;
  @define-color backgrounddark #FFFFFF;
@@ -539,4 +539,10 @@ animation-direction: alternate;
 
 #custom-chatgpt {
     background-image: url("../../../assets/openai-white.svg");
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

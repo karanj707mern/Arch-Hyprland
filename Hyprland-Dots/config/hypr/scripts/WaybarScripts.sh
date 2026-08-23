@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  #
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
-# This file used on waybar modules sourcing defaults set in $HOME/.config/hypr/CONF FILES/UserConfigs/01-UserDefaults.conf
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+# This file used on waybar modules sourcing defaults set in $HOME/.config/hypr/UserConfigs/01-UserDefaults.lua
 
 # Define the path to the config file
-config_file="$HOME/.config/hypr/CONF FILES/UserConfigs/01-UserDefaults.conf"
+config_file=$HOME/.config/hypr/UserConfigs/01-UserDefaults.lua
 
 # Check if the config file exists
 if [[ ! -f "$config_file" ]]; then
@@ -12,20 +11,8 @@ if [[ ! -f "$config_file" ]]; then
     exit 1
 fi
 
-# Parse config file safely (only simple variable=value assignments)
-while IFS= read -r line; do
-    # Remove $ prefix and normalize spacing
-    line="${line#\$}"
-    line="${line/ = /=}"
-    # Skip empty lines and comments
-    case "$line" in
-        ''|'#'*) continue ;;
-    esac
-    # Only allow simple variable assignments
-    if [[ "$line" =~ ^[a-zA-Z_][a-zA-Z0-9_]*= ]]; then
-        declare "$line"
-    fi
-done < "$config_file"
+# Parse Lua config for shell variables
+eval "$(grep -E '^local (term|files) ' "$config_file" | sed -E 's/^local ([^ ]+) = (.+)$/\1=\2/')"
 
 # Check if $term is set correctly
 if [[ -z "$term" ]]; then
@@ -36,10 +23,10 @@ fi
 # Execute accordingly based on the passed argument
 launch_files() {
     if [[ -z "$files" ]]; then
-        notify-send -u low -i "$HOME/.config/swaync/images/error.png" "Waybar: files" "Set \$files in CONF FILES/UserConfigs/01-UserDefaults.conf or install a default file manager."
+        notify-send -u low -i "$HOME/.config/swaync/images/error.png" "Waybar: files" "Set \$files in 01-UserDefaults.lua or install a default file manager."
         return 1
     fi
-    $files &
+    eval "$files &"
 }
 
 if [[ "$1" == "--btop" ]]; then

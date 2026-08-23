@@ -1,3 +1,5 @@
+/* fallback define for variable referenced but never defined */
+@define-color bg #2D353B;
 /* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* --- Designed by https://github.com/DevNChill --- */
@@ -341,9 +343,15 @@ background-color: #ba5663;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-right: 5px;
 padding-left: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

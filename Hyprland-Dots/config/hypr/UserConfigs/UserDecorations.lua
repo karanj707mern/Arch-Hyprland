@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- Decoration Settings
 
 -- Hyprland Wiki Links
@@ -9,14 +8,33 @@
 -- Load wallust colors
 local colors = require("wallust.colors")
 
+-- Check if border animation is enabled (skip static active_border if so)
+local border_state_file = os.getenv("HOME") .. "/.config/hypr/.rainbow_borders_enabled"
+local border_anim_enabled = false
+local border_file = io.open(border_state_file, "r")
+if border_file then
+    local mode = border_file:read("*all"):gsub("%s+", "")
+    border_file:close()
+    if mode ~= "disabled" and mode ~= "" then
+        border_anim_enabled = true
+    end
+end
+
+local active_border_color = colors.color12
+if border_anim_enabled then
+    active_border_color = "0xff8800ff"  -- placeholder, animation will override immediately
+end
+
 hl.config({
     general = {
-        border_size = 2,
-        gaps_in = 2,
-        gaps_out = 4,
+        border_size = 3,
+        gaps_in = 1,
+        -- per-side gaps (top/right/bottom/left via named fields)
+        -- top/bottom = distinct space between window borders and waybar pills
+        gaps_out = { top = 8, bottom = 8 },
         col = {
-            active_border = colors.color12,
-            inactive_border = colors.color10,
+            active_border = active_border_color,
+            inactive_border = colors.color6,
         },
     },
 })
@@ -24,28 +42,20 @@ hl.config({
 hl.config({
     decoration = {
         rounding = 10,
-        active_opacity = 1.0,
+        active_opacity = 0.9,
         inactive_opacity = 0.9,
-        fullscreen_opacity = 1.0,
+        fullscreen_opacity = 0.9,
         dim_inactive = true,
         dim_strength = 0.1,
         dim_special = 0.8,
         shadow = {
             enabled = true,
-            range = 3,
-            render_power = 1,
-            color = colors.color12,
-            color_inactive = colors.color10,
         },
         blur = {
             enabled = true,
-            size = 6,
-            passes = 3,
+            size = 5,
+            passes=2,
             new_optimizations = true,
-            xray = true,
-            ignore_opacity = true,
-            special = true,
-            popups = true,
         },
     },
 })

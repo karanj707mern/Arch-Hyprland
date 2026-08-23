@@ -143,7 +143,7 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	padding-top: 4px;
@@ -223,4 +223,10 @@ border-radius: 5px;
 #backlight-slider highlight {
 	min-width: 10px;
 border-radius: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

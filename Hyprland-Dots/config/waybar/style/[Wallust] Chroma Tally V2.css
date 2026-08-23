@@ -4,7 +4,7 @@
 
 /* edited by: https://github.com/prateekshukla1108 */ 
 
-@import '../../wallust/colors-waybar.css';
+@import 'style/../wallust/colors-waybar.css';
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -126,7 +126,7 @@ color: @color7; /* Light text */
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
     padding-top: 5px;

@@ -11,7 +11,7 @@ font-size: 97%;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
-@import '../../wallust/colors-waybar.css';
+@import 'style/../wallust/colors-waybar.css';
 
 #waybar.empty, #waybar.tiled, #waybar.floating {
 	background-color: transparent;
@@ -146,7 +146,7 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
  	color: @foreground;
@@ -236,4 +236,10 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
 	min-height: 10px;
 border-radius: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
 }

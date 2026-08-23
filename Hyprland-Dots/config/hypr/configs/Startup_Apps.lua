@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- Commands and Apps to be executed at launch (vendor defaults)
 
 local scriptsDir = os.getenv("HOME") .. "/.config/hypr/scripts"
@@ -17,10 +16,10 @@ hl.on("hyprland.start", function()
     -- Startup
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/Dropterminal.sh kitty &")
+    hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/Dropterminal.sh kitty")
     hl.exec_cmd(scriptsDir .. "/Polkit.sh")
     hl.exec_cmd("nm-applet --indicator")
-    hl.exec_cmd("nm-tray")
+    -- nm-tray removed: not installed, nm-applet already handles network tray
     hl.exec_cmd("swaync")
     hl.exec_cmd("waybar")
     hl.exec_cmd("qs -c overview")
@@ -33,6 +32,10 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("rog-control-center")
     hl.exec_cmd("blueman-applet")
-    hl.exec_cmd("qs")
+    -- Duplicate qs removed: overview config already launched above
     hl.exec_cmd(scriptsDir .. "/KeybindsLayoutInit.sh")
+    -- Rainbow / Wave borders (only if enabled via state file).
+    -- RainbowBorderStart.sh reads the state file and launches the correct
+    -- effect, keeping boot identical to Refresh.sh and the Quick Settings menu.
+    hl.exec_cmd(scriptsDir .. "/RainbowBorderStart.sh &")
 end)

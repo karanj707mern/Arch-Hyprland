@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  ##
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 
 # Modified version of Refresh.sh but waybar wont refresh
 # Used by automatic wallpaper change
@@ -39,10 +38,12 @@ sleep 0.2
 # reload swaync
 swaync-client --reload-config
 
-# Relaunching rainbow borders if the script exists
+# Relaunching rainbow borders if enabled (respects the saved mode)
 sleep 1
-if file_exists "${UserScripts}/RainbowBorders.sh"; then
-    ${UserScripts}/RainbowBorders.sh &
+state_file="$HOME/.config/hypr/.rainbow_borders_enabled"
+border_start="$SCRIPTSDIR/RainbowBorderStart.sh"
+if [[ -f "$state_file" && -x "$border_start" ]]; then
+    "$border_start" "$state_file" &
 fi
 
 

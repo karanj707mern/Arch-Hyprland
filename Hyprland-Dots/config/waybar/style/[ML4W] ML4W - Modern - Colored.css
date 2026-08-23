@@ -680,3 +680,9 @@ animation-direction: alternate;
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: @error;
+}

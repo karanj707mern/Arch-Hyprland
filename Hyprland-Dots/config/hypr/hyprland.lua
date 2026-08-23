@@ -1,5 +1,4 @@
--- /* ---- 💫 https://github.com/karanj707mern 💫 ---- */  --
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+-- /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  --
 -- Hyprland Lua Configuration
 -- Refer to the wiki for more information: https://wiki.hypr.land/Configuring/Start/
 
@@ -63,14 +62,8 @@ require("configs.WindowRules")
 require("configs.SystemSettings")
 require("application-style")
 require("UserConfigs.UserDecorations")
-
--- Load user animation preset if present; fall back to default if missing
-local user_animations_ok, user_animations_err = pcall(require, "UserConfigs.UserAnimations")
-if not user_animations_ok then
-  print("Warning: UserAnimations.lua not found or invalid, loading default animation preset. Error: " .. tostring(user_animations_err))
-  require("animations.00-default")
-end
-
+require("UserConfigs.UserAnimations")
+require("animations.00-default")
 require("UserConfigs.UserKeybinds")
 require("UserConfigs.UserSettings")
 require("UserConfigs.01-UserDefaults")
@@ -81,3 +74,9 @@ require("UserConfigs.LaptopDisplay")
 require("UserConfigs.WindowRules")
 require("monitors")
 require("workspaces")
+
+-- Load user animation preset if present (written by Animations.sh)
+hl.exec_cmd("source = " .. UserConfigs .. "/UserAnimations.conf")
+
+-- HyprMod managed settings
+require("hyprland-gui")

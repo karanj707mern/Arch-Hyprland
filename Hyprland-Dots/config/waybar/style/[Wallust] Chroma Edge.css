@@ -2,7 +2,7 @@
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Wallust Chroma Edge */
 
-@import '../../wallust/colors-waybar.css';
+@import 'style/../wallust/colors-waybar.css';
 
 * {
 font-family: "JetBrainsMono Nerd Font";
@@ -143,7 +143,7 @@ transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
 	color: #e5e5e5;
@@ -221,7 +221,7 @@ padding: 0 0px;
 	color: #5aaca5;
 }
 
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight {
 	color: #d6e7e5;
 }
@@ -397,4 +397,11 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
 	min-height: 10px;
 border-radius: 5px;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

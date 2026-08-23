@@ -1,89 +1,69 @@
-/* ----------- 💫 https://github.com/Karran-JaKooLit 💫 -------- */
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
-/* wallust-wlogout */
+/* ── wlogout · floating square cards · Tokyo Night ──────────────────── */
 
-/* Importing wallust colors */
-@import '../../.config/waybar/wallust/colors-waybar.css';
+* {
+	background-image: none;
+	box-shadow: none;
+}
 
 window {
-    font-size: 24pt;
-    color: @foreground; /* text */
-    background-color: rgba(30, 30, 46, 0.8);
+	/* active wallpaper (symlink kept updated by WallustSwww.sh) */
+	background-image: image(url("/home/karran/.config/rofi/.current_wallpaper"));
+	background-size: cover;
+	background-position: center;
+	/* fallback if wallpaper missing */
+	background-color: rgba(26, 27, 38, 0.95);
 }
 
 button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20%;
-    background-color: rgba(200, 220, 255, 0);
-    animation: gradient_f 10s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    border-radius: 80px;
-	border:0px;
+	border-radius: 24px;
+	/* bright borders */
+	border-color: #7aa2f7;
+	text-decoration-color: #c0caf5;
+	color: #c0caf5;
+	background-color: rgba(26, 27, 38, 0.75);
+	border-style: solid;
+	border-width: 3px;
+	/* square cards: cell 320x680 → 240x240 */
+	margin: 220px 40px;
 	outline-style: none;
+	font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
+	font-size: 14px;
+	background-repeat: no-repeat;
+	background-position: center 35%;
+	background-size: 42%;
+	transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
 }
 
-button:focus {
-    background-size: 50%;
-	border: 0px;
-	outline-style: none;
-
-}
-
+button:focus,
+button:active,
 button:hover {
-    background-color: transparent; 
-    color: @color13;
-    background-size: 50%;
-    margin: 30px;
-    border-radius: 80px;
-    outline-style: none;
-	
+	background-color: rgba(122, 162, 247, 0.45);
+	border-color: #c0caf5;
+	outline-style: none;
 }
 
-/* Adjust the size of the icon or content inside the button */
-button span {
-    font-size: 1.2em; /* Increase the font size */
-}
-
+/* ── icons ──────────────────────────────────────────────────────────── */
 
 #lock {
-    background-image: image(url("./icons/lock.png"));
-}
-#lock:hover {
-    background-image: image(url("./icons/lock-hover.png"));
+	background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
 }
 
 #logout {
-    background-image: image(url("./icons/logout.png"));
-}
-#logout:hover {
-    background-image: image(url("./icons/logout-hover.png"));
+	background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
 }
 
 #suspend {
-    background-image: image(url("./icons/sleep.png"));
-}
-#suspend:hover {
-    background-image: image(url("./icons/sleep-hover.png"));
-}
-
-#shutdown {
-    background-image: image(url("./icons/power.png"));
-}
-#shutdown:hover {
-    background-image: image(url("./icons/power-hover.png"));
-}
-
-#reboot {
-    background-image: image(url("./icons/restart.png"));
-}
-#reboot:hover {
-    background-image: image(url("./icons/restart-hover.png"));
+	background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
 }
 
 #hibernate {
-    background-image: image(url("./icons/hibernate.png"));
+	background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
 }
-#hibernate:hover {
-    background-image: image(url("./icons/hibernate-hover.png"));
+
+#shutdown {
+	background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+	background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
 }

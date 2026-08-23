@@ -1,5 +1,4 @@
-//* ---- 💫 https://github.com/Karran-JaKooLit 💫 ---- *//
-# JaKooLit-Arch-Dots-Luafied-by-Karran-Patel
+//* ---- 💫 https://github.com/JaKooLit 💫 ---- *//
 /* Waybar Workspaces modules */
 
 /* Generally, this is a potential expanding of choices for hyprland/workspace */
@@ -20,8 +19,8 @@
 	},
 	"format-icons": {
 		"active": "",
-		"default": "",
-	},
+		"default": ""
+	}
 },
 // ROMAN Numerals style
 "hyprland/workspaces#roman": {
@@ -45,8 +44,8 @@
 		"7": "VII",
 		"8": "VIII",
 		"9": "IX",
-		"10": "X",
-	},
+		"10": "X"
+	}
 },
 // PACMAN Style
 "hyprland/workspaces#pacman": {
@@ -64,8 +63,8 @@
 	"format-icons": {
             "active": "<span font='12'>󰮯</span>",
             "empty": "<span font='8'></span>",
-            "default": "󰊠",
-	},
+            "default": "󰊠"
+	}
 },
 // Kanji / Japanese style
 "hyprland/workspaces#kanji": {
@@ -86,7 +85,7 @@
 		"7": "七",
 		"8": "八",
 		"9": "九",
-		"10": "十",
+		"10": "十"
 	}
 },
 // for Camilla or Spanish
@@ -138,8 +137,8 @@
 		"9": "",
 		"10": "10",
 		"focused": "",
-		"default": "",
-	},
+		"default": ""
+	}
 },
 // numbers styles
 "hyprland/workspaces#numbers": {
@@ -163,8 +162,8 @@
 		"7": "7",
 		"8": "8",
 		"9": "9",
-		"10": "10",
-	},
+		"10": "10"
+	}
 },
 // NUMBERS and ICONS style with window rewrite 
 "hyprland/workspaces#rw": {
@@ -173,11 +172,11 @@
 	"warp-on-scroll": false,
 	"sort-by-number": true,
 	"show-special": false,
-	"on-click": "activate",
-	"on-scroll-up": "hyprctl dispatch workspace e+1",
-	"on-scroll-down": "hyprctl dispatch workspace e-1",
+	"on-click": "hyprctl eval \"hl.dispatch(hl.dsp.focus({workspace='$1'}))\"",
+	"on-scroll-up": "hyprctl eval \"hl.dispatch(hl.dsp.focus({workspace='e+1'}))\"",
+	"on-scroll-down": "hyprctl eval \"hl.dispatch(hl.dsp.focus({workspace='e-1'}))\"",
 	"persistent-workspaces": {
-		"*": 5
+		"*": 10
 	  },
 	"format": "{icon} {windows}",
 	"format-window-separator": " ",
@@ -292,7 +291,7 @@
 		"title<Documentation Viewer>": " ",
 		"title<^Wallpapers$>": " ",
 		"title<^Video Wallpapers$>": " ",
-		"title<^qs-wlogout$>": " ",
+		"title<^qs-wlogout$>": " "
 		}
-	},
+	}
 }

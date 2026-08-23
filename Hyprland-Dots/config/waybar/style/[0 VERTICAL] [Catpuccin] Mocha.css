@@ -12,7 +12,7 @@ min-height: 0;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
-@import "./catppuccin-themes/mocha.css";
+@import "style/catppuccin-themes/mocha.css";
 
 window#waybar {
   background-color: @base;
@@ -125,7 +125,7 @@ border-radius: 15px;
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   opacity: 1;
@@ -249,4 +249,17 @@ background-color: @surface0;
   min-width: 5px;
 border-radius: 5px;
 background-color: @blue;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }

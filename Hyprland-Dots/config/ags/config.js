@@ -3,7 +3,6 @@ import GLib from 'gi://GLib';
 import App from 'resource:///com/github/Aylur/ags/app.js'
 import userOptions from './modules/.configuration/user_options.js';
 import Overview from './modules/overview/main.js';
-import AISidebar from './modules/ai_sidebar/main.js';
 
 const COMPILED_STYLE_DIR = `${GLib.get_user_config_dir()}/ags/user/`
 
@@ -17,7 +16,6 @@ applyStyle().catch(print);
 
 const Windows = () => [
     Overview(),
-    AISidebar(),
 ];
 const CLOSE_ANIM_TIME = 210;
 App.config({

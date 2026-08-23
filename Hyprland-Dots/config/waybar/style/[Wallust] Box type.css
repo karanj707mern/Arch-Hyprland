@@ -2,7 +2,7 @@
 /* JaKooLit-Arch-Dots-Luafied-by-Karran-Patel */
 /* Wallust - Box type */
 
-@import "../../wallust/colors-waybar.css";
+@import "style/../wallust/colors-waybar.css";
 
 * {
   font-family: "JetBrainsMono Nerd Font";
@@ -138,7 +138,7 @@ transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
-#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
   padding-top: 4px;
@@ -241,4 +241,17 @@ border-radius: 5px;
 #pulseaudio-slider highlight {
   min-height: 10px;
 border-radius: 5px;
+}
+
+/* --- state alerts (auto polish pass) --- */
+#network.disconnected,
+#network.disabled {
+    color: #eb4d4b;
+}
+
+#pulseaudio.muted,
+#wireplumber.muted,
+#pulseaudio.source-muted,
+#pulseaudio.microphone.source-muted {
+    color: #a0a0a0;
 }
