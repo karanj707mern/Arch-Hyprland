@@ -42,3 +42,6 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("performance-mode.sh toggle"), { desc
 
 -- Hibernate (writes RAM to /swapfile and powers off; restores on next boot)
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("systemctl hibernate"), { description = "Hibernate system" })
+
+-- Disk Cleanup (threshold-based: only runs if disk >= 60% full)
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(scriptsDir .. "/CleanDisk.sh"), { description = "Run disk cleanup" })
